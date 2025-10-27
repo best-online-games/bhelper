@@ -1,7 +1,7 @@
 $bog_prof_app $mol_page
 	title \Профиль
 	plugins /
-		<= Theme $mol_theme_auto
+		<= Theme $bog_prof_theme_auto
 	body /
 		<= Content $mol_text
 			text @ \Привет, мир!
