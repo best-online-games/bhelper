@@ -2,10 +2,10 @@ $bog_prof_app_prof $bog_prof_app_page
 	title \Профессии
 	Logo $mol_icon_script_text
 	body /
-		<= Tabs $mol_deck items 
-			<= Categories / Category_page* $mol_list
-				title <= category_title* \Категория
-				# Список профессий для каждой категории
+		<= Tabs $mol_deck items <= Categories / 
+	Category_page* $mol_list
+		title <= category_title* \Категория
+			# Список профессий для каждой категории
 				rows <= profession_names* /
 					<= Profession $mol_link
 						title <= item_name* \Профессия
