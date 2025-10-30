@@ -3,9 +3,17 @@ $bog_prof_app_prof $mol_book2_catalog
 	spreads *
 		all <= All $mol_page
 			title @ \All Professions
+			body /
+				<= All_gallery $mol_gallery
 		development <= Development $mol_page
 			title @ \Development
+			body /
+				<= Dev_gallery $mol_gallery
 		design <= Design $mol_page
 			title @ \Design
+			body /
+				<= Design_gallery $mol_gallery
 		devops <= DevOps $mol_page
 			title @ \DevOps
+			body /
+				<= Devops_gallery $mol_gallery
