@@ -28,39 +28,70 @@ namespace $.$$ {
 			textAlign: 'center',
 			opacity: 0.7,
 		},
+		Empty: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'center',
+			justifyContent: 'center',
+			padding: $mol_gap.block,
+			minHeight: '300px',
+			gap: $mol_gap.block,
+		},
+		Empty_icon: {
+			fontSize: '4rem',
+			color: $mol_theme.shade,
+			opacity: 0.5,
+		},
+		Empty_message: {
+			textAlign: 'center',
+			color: $mol_theme.shade,
+			fontSize: '1.1rem',
+			maxWidth: '500px',
+			lineHeight: '1.6',
+		},
 	})
 
 	$mol_style_define($bog_prof_app_vaka_item, {
+		display: 'flex',
+		flexDirection: 'column',
 		padding: $mol_gap.block,
 		gap: $mol_gap.text,
 		background: {
 			color: $mol_theme.card,
 		},
 		border: {
-			radius: $mol_gap.text,
+			radius: '8px',
 		},
-		boxShadow: `0 2px 8px ${$mol_theme.shade}`,
+		boxShadow: `0 2px 12px rgba(0, 0, 0, 0.08)`,
+		transition: 'all 0.2s ease',
+		':hover': {
+			boxShadow: `0 4px 16px rgba(0, 0, 0, 0.12)`,
+			transform: 'translateY(-2px)',
+		},
 		Title: {
-			fontSize: '1.2rem',
-			fontWeight: 'bold',
-			color: $mol_theme.focus,
+			fontSize: '1.25rem',
+			fontWeight: '600',
 			textDecoration: 'none',
+			lineHeight: '1.4',
 			':hover': {
 				textDecoration: 'underline',
 			},
 		},
 		Meta: {
-			color: $mol_theme.shade,
 			fontSize: '0.9rem',
+			lineHeight: '1.5',
+			display: 'flex',
+			flexWrap: 'wrap',
+			gap: '0.5rem',
 		},
 		Salary: {
-			color: $mol_theme.special,
-			fontWeight: 'bold',
-			fontSize: '1rem',
+			fontWeight: '600',
+			fontSize: '1.1rem',
+			padding: [$mol_gap.text, 0] as any,
 		},
 		Snippet: {
-			color: $mol_theme.text,
 			fontSize: '0.95rem',
+			lineHeight: '1.6',
 			whiteSpace: 'pre-wrap',
 		},
 	})

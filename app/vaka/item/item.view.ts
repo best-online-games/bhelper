@@ -12,43 +12,63 @@ namespace $.$$ {
 			return vacancy?.name ?? 'Без названия'
 		}
 
-		// Ссылка на вакансию
+		// Ссылка на вакансию (используем alternate_url)
 		@$mol_mem
 		url(): string {
 			const vacancy = this.vacancy()
-			return vacancy?.url ?? '#'
+			return vacancy?.alternate_url ?? '#'
 		}
 
-		// Метаинформация (работодатель и регион)
+		// Метаинформация (работодатель, регион, опыт, график)
 		@$mol_mem
 		meta(): string {
 			const vacancy = this.vacancy()
 			if (!vacancy) return ''
 
-			const employer = vacancy.employer?.name ?? 'Неизвестный работодатель'
-			const area = vacancy.area?.name ?? 'Не указан'
+			const parts: string[] = []
 
-			return `${employer} • ${area}`
+			// Работодатель
+			if (vacancy.employer?.name) {
+				parts.push(`🏢 ${vacancy.employer.name}`)
+			}
+
+			// Регион
+			if (vacancy.area?.name) {
+				parts.push(`📍 ${vacancy.area.name}`)
+			}
+
+			// Опыт работы
+			if (vacancy.experience?.name) {
+				parts.push(`💼 ${vacancy.experience.name}`)
+			}
+
+			// График работы
+			if (vacancy.schedule?.name) {
+				parts.push(`⏰ ${vacancy.schedule.name}`)
+			}
+
+			return parts.join(' • ')
 		}
 
 		// Зарплата
 		@$mol_mem
 		salary(): string {
 			const vacancy = this.vacancy()
-			if (!vacancy?.salary) return 'Зарплата не указана'
+			if (!vacancy?.salary) return '💰 Зарплата не указана'
 
-			const { from, to, currency } = vacancy.salary
+			const { from, to, currency, gross } = vacancy.salary
 			const curr = this.currency_symbol(currency)
+			const taxInfo = gross ? ' (до вычета налогов)' : ''
 
 			if (from && to) {
-				return `💰 ${from.toLocaleString()} - ${to.toLocaleString()} ${curr}`
+				return `💰 ${from.toLocaleString('ru-RU')} - ${to.toLocaleString('ru-RU')} ${curr}${taxInfo}`
 			} else if (from) {
-				return `💰 от ${from.toLocaleString()} ${curr}`
+				return `💰 от ${from.toLocaleString('ru-RU')} ${curr}${taxInfo}`
 			} else if (to) {
-				return `💰 до ${to.toLocaleString()} ${curr}`
+				return `💰 до ${to.toLocaleString('ru-RU')} ${curr}${taxInfo}`
 			}
 
-			return 'Зарплата не указана'
+			return '💰 Зарплата не указана'
 		}
 
 		// Преобразование кода валюты в символ
@@ -61,6 +81,10 @@ namespace $.$$ {
 				KZT: '₸',
 				UAH: '₴',
 				BYR: 'Br',
+				BYN: 'Br',
+				AZN: '₼',
+				UZS: 'сўм',
+				GEL: '₾',
 			}
 			return symbols[code] ?? code
 		}
@@ -74,23 +98,43 @@ namespace $.$$ {
 			const parts: string[] = []
 
 			if (vacancy.snippet.requirement) {
-				parts.push(`📋 Требования: ${this.clean_html(vacancy.snippet.requirement)}`)
+				const req = this.clean_html(vacancy.snippet.requirement)
+				if (req) {
+					parts.push(`📋 Требования:\n${req}`)
+				}
 			}
 
 			if (vacancy.snippet.responsibility) {
-				parts.push(`✅ Обязанности: ${this.clean_html(vacancy.snippet.responsibility)}`)
+				const resp = this.clean_html(vacancy.snippet.responsibility)
+				if (resp) {
+					parts.push(`✅ Обязанности:\n${resp}`)
+				}
 			}
 
 			return parts.join('\n\n')
 		}
 
-		// Очистка HTML-тегов из текста
+		// Очистка HTML-тегов из текста и форматирование
 		clean_html(text: string): string {
-			return text
-				.replace(/<highlighttext>/gi, '**')
-				.replace(/<\/highlighttext>/gi, '**')
-				.replace(/<[^>]+>/g, '')
-				.trim()
+			if (!text) return ''
+
+			return (
+				text
+					// Заменяем highlighttext на жирный текст
+					.replace(/<highlighttext>/gi, '**')
+					.replace(/<\/highlighttext>/gi, '**')
+					// Удаляем все остальные HTML теги
+					.replace(/<[^>]+>/g, '')
+					// Декодируем HTML entities
+					.replace(/&nbsp;/g, ' ')
+					.replace(/&quot;/g, '"')
+					.replace(/&amp;/g, '&')
+					.replace(/&lt;/g, '<')
+					.replace(/&gt;/g, '>')
+					// Убираем лишние пробелы
+					.replace(/\s+/g, ' ')
+					.trim()
+			)
 		}
 	}
 }
