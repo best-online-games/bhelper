@@ -1,24 +1,5 @@
-$bog_prof_app_prof $bog_prof_app_page
+$bog_prof_app_prof $mol_page
 	title \Профессии
-	Logo $mol_icon_script_text
 	body /
-		<= Tabs $mol_deck items <= Categories / 
-	Category_page* $mol_page
-		title <= category_title* \Категория
-		body /
-			<= Gallery $mol_gallery
-				items <= profession_names* /
-					<= Item* $bog_prof_app_prof_item
-						item_name <= item_name*
-						item_uri <= item_uri*
-						item_icon <= item_icon*
-
-$bog_prof_app_prof_item $mol_card
-	content /
-		<= Link $mol_link
-			uri <= item_uri 
-			sub /
-				<= Icon $mol_image
-					uri <= item_icon 
-				<= Name $mol_text
-					text <= item_name 
+		<= Results $mol_list
+			rows <= prof_rows /
