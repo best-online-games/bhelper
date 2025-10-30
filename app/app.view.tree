@@ -8,5 +8,6 @@ $bog_prof_app $mol_book2_catalog
 		<= Theme $bog_prof_theme_auto
 	spreads *
 		\
+			<= Vaka $bog_prof_app_vaka
 			<= Bot $gd_bot
 				Space null
