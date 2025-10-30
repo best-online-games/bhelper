@@ -1,7 +1,7 @@
 $bog_prof_app $mol_book2_catalog
 	Placeholder null
 	Menu_logo $mol_icon_newspaper
-	menu_title @ \VibeJobs - your favorites 
+	menu_title @ \VibeJobs 
 	menu_tools /
 		<= Lights $mol_lights_toggle
 	plugins /
@@ -10,4 +10,9 @@ $bog_prof_app $mol_book2_catalog
 		\
 			<= Bot $gd_bot
 				Space null
+				Sources null
+				Donate null
+				Support null
+				Lights null
 		prof <= Prof $bog_prof_app_prof
+		settings <= Settings $bog_prof_app_settings
