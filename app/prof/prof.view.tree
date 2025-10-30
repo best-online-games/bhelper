@@ -1,19 +1,40 @@
 $bog_prof_app_prof $mol_book2_catalog
 	menu_title @ \Professions
 	spreads *
-		all <= All $mol_page
-			title @ \All Professions
-			body /
-				<= All_gallery $mol_gallery
+		\
+			<= All $mol_page
+				title @ \All Professions
+				body /
+					<= All_gallery $mol_gallery
+						items <= All_gallery_items /$mol_view
 		development <= Development $mol_page
 			title @ \Development
 			body /
 				<= Dev_gallery $mol_gallery
+					items <= Dev_gallery_items /$mol_view
 		design <= Design $mol_page
 			title @ \Design
 			body /
 				<= Design_gallery $mol_gallery
+					items <= Design_gallery_items /$mol_view
 		devops <= DevOps $mol_page
 			title @ \DevOps
 			body /
 				<= Devops_gallery $mol_gallery
+					items <= Devops_gallery_items /$mol_view
+	All_item* $mol_card
+		sub /
+			<= All_item_label* $mol_dimmer
+				title <= all_title* \
+	Dev_item* $mol_card
+		sub /
+			<= Dev_item_label* $mol_dimmer
+				title <= dev_title* \
+	Design_item* $mol_card
+		sub /
+			<= Design_item_label* $mol_dimmer
+				title <= design_title* \
+	Devops_item* $mol_card
+		sub /
+			<= Devops_item_label* $mol_dimmer
+				title <= devops_title* \
