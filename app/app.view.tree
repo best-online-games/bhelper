@@ -1,6 +1,7 @@
 $bog_prof_app $mol_book2_catalog
 	Placeholder null
-	Menu_logo $mol_icon_newspaper
+	Menu_logo $mol_image
+		uri \/bog/prof/assets/job.png
 	menu_title @ \VibeJobs 
 	menu_tools /
 		<= Lights $mol_lights_toggle

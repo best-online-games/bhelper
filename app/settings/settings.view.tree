@@ -14,7 +14,7 @@ $bog_prof_app_settings $mol_page
 			content /
 				<= Install_button $mol_button_major
 					title @ \Add to Home Screen
-					click? <=> install?
+					click? <=> install? null
 	install_ios_instruction @ \To add to Home Screen on iPhone or iPad, tap Share and choose "Add to Home Screen".
 	install_android_instruction @ \In Chrome on Android, open the menu (⋮) and choose "Install app".
 	install_desktop_instruction @ \On desktop, use the install button in the address bar or the browser menu "Install app".
