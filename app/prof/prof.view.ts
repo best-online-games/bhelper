@@ -31,5 +31,10 @@ namespace $.$$ {
 		item_uri(name: string) {
 			return `#${encodeURIComponent(name)}`
 		}
+
+		item_icon(name: string) {
+			return `/bog/prof/assets/${ encodeURIComponent(name) }.png`
+		}
 	}
 }
+
