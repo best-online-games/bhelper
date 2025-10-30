@@ -14,3 +14,4 @@ $bog_prof_app $mol_book2_catalog
 				Donate null
 				Support null
 				Lights null
+		settings <= Settings $bog_prof_app_settings
