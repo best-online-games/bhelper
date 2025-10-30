@@ -1,7 +1,7 @@
 $bog_prof_app $mol_book2_catalog
 	Placeholder null
 	Menu_logo $mol_icon_newspaper
-	menu_title @ \VibeJobs - your favorites 
+	menu_title @ \VibeJobs 
 	menu_tools /
 		<= Lights $mol_lights_toggle
 	plugins /
