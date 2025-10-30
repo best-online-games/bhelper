@@ -1,4 +1,5 @@
 $bog_prof_app_vaka $mol_page
+	search? null
 	title @ \Вакансии HH.ru
 	tools /
 		<= Tools $mol_bar
@@ -7,7 +8,6 @@ $bog_prof_app_vaka $mol_page
 					hint @ \Поисковый запрос
 					value? <=> query? \
 				<= Area $mol_select
-					label @ \Регион
 					options /
 						\Россия
 						\Москва
@@ -22,20 +22,8 @@ $bog_prof_app_vaka $mol_page
 		<= Results $mol_list
 			rows <= vacancy_ids /
 				<= Row* $bog_prof_app_vaka_item
-					vacancy <= vacancy* 
+					vacancy <= vacancy* null
 	foot /
 		<= Credits $mol_link
 			uri \https://api.hh.ru
 			title @ \HeadHunter API
-
-$bog_prof_app_vaka_item $mol_card
-	sub /
-		<= Title $mol_link
-			title <= title? \
-			uri <= url? \
-		<= Meta $mol_text
-			text <= meta? \
-		<= Salary $mol_text
-			text <= salary? \
-		<= Snippet $mol_text
-			text <= snippet? \
