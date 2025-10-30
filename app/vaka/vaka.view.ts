@@ -64,25 +64,32 @@ namespace $.$$ {
 			return AREA_MAP[this.area_name()] ?? '113'
 		}
 
-		// Триггер поиска - просто меняет значение для инвалидации кэша
+		// Статус загрузки
 		@$mol_mem
-		search_trigger(next?: number): number {
+		loading_status(next?: any): any {
+			return next ?? null
+		}
+
+		// Триггер для принудительного обновления
+		@$mol_mem
+		update_trigger(next?: number): number {
 			return next ?? 0
 		}
 
 		search(next?: any): any {
 			if (next !== undefined) {
-				// Увеличиваем счётчик для инвалидации кэша
-				this.search_trigger(this.search_trigger() + 1)
+				// Увеличиваем счётчик для обновления
+				this.update_trigger(this.update_trigger() + 1)
 			}
 			return next
 		}
 
 		// Получение данных о вакансиях с API
+		// Service Worker автоматически кэширует GET запросы через $mol_offline
 		@$mol_mem
 		vacancies_data(): HHSearchResponse | null {
-			// Подписываемся на триггер поиска для автоматической инвалидации
-			this.search_trigger()
+			// Подписываемся на триггер обновления
+			this.update_trigger()
 
 			const query = this.query()
 			const area = this.area_id()
@@ -103,17 +110,24 @@ namespace $.$$ {
 			const url = `https://api.hh.ru/vacancies?${params.toString()}`
 
 			try {
-				// Выполняем запрос
-				const response = this.$.$mol_fetch.json(url, {
-					headers: {
-						'User-Agent': 'VibeJobs/1.0 (bog.prof.app)',
-					},
-				}) as HHSearchResponse
+				this.loading_status('⏳ Загрузка...')
+
+				// $mol_fetch автоматически кэшируется Service Worker'ом
+				const response = this.$.$mol_fetch.json(url) as HHSearchResponse
+
+				console.log(`🌐 Загружено ${response.items.length} вакансий с API HH.ru`)
+				this.loading_status(null)
 
 				return response
 			} catch (error) {
-				console.error('Ошибка загрузки вакансий:', error)
-				// Возвращаем пустой результат при ошибке
+				// Игнорируем ошибки при отмене запроса
+				if (error && typeof error === 'object' && 'message' in error) {
+					const errMsg = (error as any).message || ''
+					if (!errMsg.includes('aborted')) {
+						console.error('❌ Ошибка загрузки с API:', errMsg)
+					}
+				}
+				this.loading_status(null)
 				return { items: [], found: 0, pages: 0, page: 0, per_page: 0 }
 			}
 		}
@@ -126,7 +140,7 @@ namespace $.$$ {
 				if (!data || !data.items) return []
 				return data.items.map(v => v.id)
 			} catch (error) {
-				console.error('Ошибка при загрузке вакансий:', error)
+				console.error('❌ Ошибка при загрузке вакансий:', error)
 				return []
 			}
 		}
@@ -139,7 +153,7 @@ namespace $.$$ {
 				if (!data || !data.items) return null
 				return data.items.find(v => v.id === id) ?? null
 			} catch (error) {
-				console.error('Ошибка при получении вакансии:', error)
+				console.error('❌ Ошибка при получении вакансии:', error)
 				return null
 			}
 		}
@@ -174,6 +188,15 @@ namespace $.$$ {
 			}
 
 			return ''
+		}
+
+		// Статистика поиска
+		@$mol_mem
+		stats_message(): string {
+			const data = this.vacancies_data()
+			if (!data || data.items.length === 0) return ''
+
+			return `📊 Найдено: ${data.found.toLocaleString('ru-RU')} • Показано: ${data.items.length}`
 		}
 	}
 }

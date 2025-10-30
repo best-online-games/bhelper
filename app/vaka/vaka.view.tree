@@ -19,6 +19,12 @@ $bog_prof_app_vaka $mol_page
 					sub /
 						<= Search_icon $mol_icon_magnify
 	body /
+		<= Status $mol_status
+			status <= loading_status null
+		<= Stats_bar $mol_bar
+			sub /
+				<= Stats_text $mol_text
+					text <= stats_message \
 		<= Results $mol_list
 			rows <= vacancy_rows /
 		<= Empty $mol_view
