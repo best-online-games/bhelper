@@ -1,5 +1,11 @@
-$bog_prof_app_prof $mol_page
-	title \Профессии
-	body /
-		<= Results $mol_list
-			rows <= prof_rows /
+$bog_prof_app_prof $mol_book2_catalog
+	menu_title @ \Professions
+	spreads *
+		all <= All $mol_page
+			title @ \All Professions
+		development <= Development $mol_page
+			title @ \Development
+		design <= Design $mol_page
+			title @ \Design
+		devops <= DevOps $mol_page
+			title @ \DevOps
