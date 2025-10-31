@@ -112,10 +112,32 @@ namespace $.$$ {
 			try {
 				this.loading_status('⏳ Загрузка...')
 
-				// $mol_fetch автоматически кэшируется Service Worker'ом
-				const response = this.$.$mol_fetch.json(url) as HHSearchResponse
+				console.log('🔍 [FETCH] Запрос вакансий:', {
+					url,
+					query: query.trim(),
+					area: this.area_name(),
+					cache: 'force-cache',
+					timestamp: new Date().toISOString(),
+				})
 
-				console.log(`🌐 Загружено ${response.items.length} вакансий с API HH.ru`)
+				const startTime = performance.now()
+
+				// Используем force-cache для кеширования GET запросов в HTTP-кеше браузера
+				const response = this.$.$mol_fetch.json(url, {
+					cache: 'force-cache',
+				}) as HHSearchResponse
+
+				const endTime = performance.now()
+				const duration = Math.round(endTime - startTime)
+
+				console.log('✅ [CACHE] Получен ответ:', {
+					items: response.items.length,
+					found: response.found,
+					duration: `${duration}ms`,
+					source: duration < 50 ? '💾 from cache' : '🌐 from network',
+					timestamp: new Date().toISOString(),
+				})
+
 				this.loading_status(null)
 
 				return response
@@ -124,7 +146,12 @@ namespace $.$$ {
 				if (error && typeof error === 'object' && 'message' in error) {
 					const errMsg = (error as any).message || ''
 					if (!errMsg.includes('aborted')) {
-						console.error('❌ Ошибка загрузки с API:', errMsg)
+						console.error('❌ [FETCH] Ошибка загрузки с API:', {
+							url,
+							query: query.trim(),
+							error: errMsg,
+							timestamp: new Date().toISOString(),
+						})
 					}
 				}
 				this.loading_status(null)
