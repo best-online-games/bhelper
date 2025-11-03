@@ -1,6 +1,10 @@
 namespace $.$$ {
-	export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
+export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
 		// Ensure nested routing uses path like "prof/development"
+		@ $mol_mem
+		override param() {
+			return 'book'
+		}
 		@$mol_mem
 		override spread(next?: string) {
 			const param = this.param()
@@ -88,6 +92,68 @@ namespace $.$$ {
 		@$mol_mem
 		All_gallery_items() {
 			return this.all_titles().map((_, i) => this.All_item(i))
+		}
+
+		// Link URIs to open Bot with seeded prompt
+		All_item_uri(index: number) {
+			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', prompt: this.all_title(index) })
+		}
+
+		Dev_item_uri(index: number) {
+			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', prompt: this.dev_title(index) })
+		}
+
+		Design_item_uri(index: number) {
+			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', prompt: this.design_title(index) })
+		}
+
+		Devops_item_uri(index: number) {
+			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', prompt: this.devops_title(index) })
+		}
+
+		// Ensure bot starts fresh when opened from a card, set role, seed prompt and navigate
+		@$mol_action
+		All_item_open(index: number, event?: Event) {
+			event?.preventDefault()
+			const title = this.all_title(index)
+			try { this.$.$mol_state_session?.value('history', null as any) } catch {}
+			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
+			try { this.$.$mol_state_session?.value('digest', '') } catch {}
+			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
+			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', prompt: 'привет расскажи о себе' })
+		}
+
+		@$mol_action
+		Dev_item_open(index: number, event?: Event) {
+			event?.preventDefault()
+			const title = this.dev_title(index)
+			try { this.$.$mol_state_session?.value('history', null as any) } catch {}
+			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
+			try { this.$.$mol_state_session?.value('digest', '') } catch {}
+			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
+			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', prompt: 'привет расскажи о себе' })
+		}
+
+		@$mol_action
+		Design_item_open(index: number, event?: Event) {
+			event?.preventDefault()
+			const title = this.design_title(index)
+			try { this.$.$mol_state_session?.value('history', null as any) } catch {}
+			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
+			try { this.$.$mol_state_session?.value('digest', '') } catch {}
+			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
+			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', prompt: 'привет расскажи о себе' })
+		}
+
+		@$mol_action
+		Devops_item_open(index: number, event?: Event) {
+			event?.preventDefault()
+			const title = this.devops_title(index)
+			try { this.$.$mol_state_session?.value('history', null as any) } catch {}
+			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
+			try { this.$.$mol_state_session?.value('digest', '') } catch {}
+			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
+			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', prompt: 'привет расскажи о себе' })
 		}
 	}
 }
