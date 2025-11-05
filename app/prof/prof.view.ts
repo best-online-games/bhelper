@@ -1,29 +1,5 @@
 namespace $.$$ {
 export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
-		// Ensure nested routing uses path like "prof/development"
-		@ $mol_mem
-		override param() {
-			return 'book'
-		}
-		@$mol_mem
-		override spread(next?: string) {
-			const param = this.param()
-			if (next !== undefined) {
-				const value = next ? `prof/${next}` : 'prof'
-				this.$.$mol_state_arg.value(param, value)
-				return next ?? ''
-			}
-			const raw = this.$.$mol_state_arg.value(param) ?? ''
-			const parts = String(raw).split('/')
-			if (parts[0] !== 'prof') return ''
-			return parts[1] ?? ''
-		}
-
-		override arg(spread: string) {
-			const param = this.param()
-			const value = spread ? `prof/${spread}` : 'prof'
-			return { [param]: value || null }
-		}
 		// Development list
 		@$mol_mem
 		dev_titles(): readonly string[] {
@@ -96,23 +72,19 @@ export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
 
 		// Link URIs to open Bot with seeded prompt
 		All_item_uri(index: number) {
-			const title = this.all_title(index)
-			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
+			return this.$.$mol_state_arg.link({ '': '\t', prompt: 'привет расскажи о себе' })
 		}
 
 		Dev_item_uri(index: number) {
-			const title = this.dev_title(index)
-			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
+			return this.$.$mol_state_arg.link({ '': '\t', prompt: 'привет расскажи о себе' })
 		}
 
 		Design_item_uri(index: number) {
-			const title = this.design_title(index)
-			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
+			return this.$.$mol_state_arg.link({ '': '\t', prompt: 'привет расскажи о себе' })
 		}
 
 		Devops_item_uri(index: number) {
-			const title = this.devops_title(index)
-			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
+			return this.$.$mol_state_arg.link({ '': '\t', prompt: 'привет расскажи о себе' })
 		}
 
 		// Ensure bot starts fresh when opened from a card, set role, seed prompt and navigate
@@ -124,7 +96,7 @@ export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
 			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
 			try { this.$.$mol_state_session?.value('digest', '') } catch {}
 			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
-			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
+			this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' })
 		}
 
 		@$mol_action
@@ -135,7 +107,7 @@ export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
 			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
 			try { this.$.$mol_state_session?.value('digest', '') } catch {}
 			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
-			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
+			this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' })
 		}
 
 		@$mol_action
@@ -146,7 +118,7 @@ export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
 			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
 			try { this.$.$mol_state_session?.value('digest', '') } catch {}
 			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
-			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
+			this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' })
 		}
 
 		@$mol_action
@@ -157,7 +129,7 @@ export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
 			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
 			try { this.$.$mol_state_session?.value('digest', '') } catch {}
 			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
-			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
+			this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' })
 		}
 	}
 }

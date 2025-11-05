@@ -1,16 +1,19 @@
 namespace $.$$ {
   export class $bog_prof_app extends $.$bog_prof_app {
-    @ $mol_mem
-    override param() {
-      return 'book'
+    // Override child property via code instead of view.tree binding
+    override Bot() {
+      const obj = super.Bot()
+      ;(obj as any).context = () => this.Bot_context()
+      return obj
     }
-    @ $mol_mem
-    override spread(next?: string) {
-      const param = this.param()
-      if (next !== undefined) return this.$.$mol_state_arg.value(param, next) ?? ''
-      const raw = this.$.$mol_state_arg.value(param) ?? ''
-      const head = String(raw).split('/')[0] || ''
-      return head
+
+    // Compute extended system prompt for bot
+    Bot_context() {
+      const base = this.Bot().rules()
+      const prof = this.$.$mol_state_session.value('gd_profession') as string | null
+      return prof
+        ? `${base}\nТы сейчас отвечаешь как ${prof}. Если пользователь поздоровается и попросит рассказать о себе, ответь кратко: \"я ${prof}\".`
+        : base
     }
   }
 }
