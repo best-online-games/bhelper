@@ -96,19 +96,23 @@ export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
 
 		// Link URIs to open Bot with seeded prompt
 		All_item_uri(index: number) {
-			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', prompt: this.all_title(index) })
+			const title = this.all_title(index)
+			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
 		}
 
 		Dev_item_uri(index: number) {
-			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', prompt: this.dev_title(index) })
+			const title = this.dev_title(index)
+			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
 		}
 
 		Design_item_uri(index: number) {
-			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', prompt: this.design_title(index) })
+			const title = this.design_title(index)
+			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
 		}
 
 		Devops_item_uri(index: number) {
-			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', prompt: this.devops_title(index) })
+			const title = this.devops_title(index)
+			return this.$.$mol_state_arg.link({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
 		}
 
 		// Ensure bot starts fresh when opened from a card, set role, seed prompt and navigate
@@ -120,7 +124,7 @@ export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
 			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
 			try { this.$.$mol_state_session?.value('digest', '') } catch {}
 			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
-			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', prompt: 'привет расскажи о себе' })
+			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
 		}
 
 		@$mol_action
@@ -131,7 +135,7 @@ export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
 			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
 			try { this.$.$mol_state_session?.value('digest', '') } catch {}
 			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
-			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', prompt: 'привет расскажи о себе' })
+			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
 		}
 
 		@$mol_action
@@ -142,7 +146,7 @@ export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
 			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
 			try { this.$.$mol_state_session?.value('digest', '') } catch {}
 			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
-			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', prompt: 'привет расскажи о себе' })
+			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
 		}
 
 		@$mol_action
@@ -153,7 +157,7 @@ export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
 			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
 			try { this.$.$mol_state_session?.value('digest', '') } catch {}
 			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
-			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', prompt: 'привет расскажи о себе' })
+			this.$.$mol_state_arg.go({ bog_prof_app: '', book: '\t', role: title, prompt: 'привет расскажи о себе' })
 		}
 	}
 }
