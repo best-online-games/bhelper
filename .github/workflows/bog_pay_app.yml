@@ -1,4 +1,4 @@
-name: $bog_prof_app
+name: $bog_bhelper_app
 
 permissions: write-all
 
@@ -17,10 +17,10 @@ jobs:
     
     - uses: hyoo-ru/mam_build@master2
       with:
-        package: 'bog/prof'
+        package: 'bog/bhelper'
         modules: 'app'
     
     - uses: hyoo-ru/gh-deploy@v4.4.1
       if: github.ref == 'refs/heads/master'
       with:
-        folder: 'bog/prof/app/-'
+        folder: 'bog/bhelper/app/-'
