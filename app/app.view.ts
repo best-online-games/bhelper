@@ -1,5 +1,5 @@
 namespace $.$$ {
-	export class $bog_prof_app extends $.$bog_prof_app {
+	export class $bog_bhelper_app extends $.$bog_bhelper_app {
 		// Override child property via code instead of view.tree binding
 		override Bot() {
 			const obj = super.Bot()

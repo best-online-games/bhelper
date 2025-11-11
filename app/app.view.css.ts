@@ -1,7 +1,7 @@
 namespace $ {
   const { rem } = $mol_style_unit
 
-  $mol_style_define($bog_prof_app, {
+  $mol_style_define($bog_bhelper_app, {
     Menu_logo: {
       height: rem(2),
       width: rem(2),

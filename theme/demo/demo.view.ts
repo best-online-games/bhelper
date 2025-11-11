@@ -1,5 +1,5 @@
 namespace $.$$ {
-  export class $bog_prof_theme_demo extends $.$bog_prof_theme_demo {
+  export class $bog_bhelper_theme_demo extends $.$bog_bhelper_theme_demo {
     hue_deg() {
       return this.hue() + 'deg'
     }

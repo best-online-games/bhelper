@@ -1,4 +1,4 @@
-$bog_prof_app $mol_book2_catalog
+$bog_bhelper_app $mol_book2_catalog
 	Placeholder null
 	Menu_logo $mol_image
 		uri \bog/prof/assets/job.png
@@ -6,7 +6,7 @@ $bog_prof_app $mol_book2_catalog
 	menu_tools /
 		<= Lights $mol_lights_toggle
 	plugins /
-		<= Theme $bog_prof_theme_auto
+		<= Theme $bog_bhelper_theme_auto
 	spreads *
 		\	
 			<= Bot $gd_bot
@@ -15,6 +15,6 @@ $bog_prof_app $mol_book2_catalog
 				Donate null
 				Support null
 				Lights null
-		prof <= Prof $bog_prof_app_prof
-		settings <= Settings $bog_prof_app_settings
-		vaka <= Vaka $bog_prof_app_vaka
+		prof <= Prof $bog_bhelper_app_prof
+		settings <= Settings $bog_bhelper_app_settings
+		vaka <= Vaka $bog_bhelper_app_vaka

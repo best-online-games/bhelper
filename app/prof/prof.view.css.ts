@@ -1,5 +1,5 @@
 namespace $.$$ {
-	$mol_style_define($bog_prof_app_prof, {
+	$mol_style_define($bog_bhelper_app_prof, {
 		All_item: {
 			padding: $mol_gap.block,
 			flex: {

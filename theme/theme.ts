@@ -3,7 +3,7 @@ namespace $ {
    * Theme css variables
    * @see https://mol.hyoo.ru/#!section=demos/demo=mol_textarea_demo
    */
-  export const $bog_prof_theme = $mol_style_prop('mol_theme', [
+  export const $bog_bhelper_theme = $mol_style_prop('mol_theme', [
     'back',
     'hover',
     'card',

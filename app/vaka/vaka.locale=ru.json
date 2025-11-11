@@ -1,6 +1,6 @@
 {
-	"$bog_prof_app_vaka_title": "Вакансии HH.ru",
-	"$bog_prof_app_vaka_Query_hint": "Поисковый запрос",
-	"$bog_prof_app_vaka_Search_hint": "Найти",
-	"$bog_prof_app_vaka_Credits_title": "Данные предоставлены HeadHunter API"
+	"$bog_bhelper_app_vaka_title": "Вакансии HH.ru",
+	"$bog_bhelper_app_vaka_Query_hint": "Поисковый запрос",
+	"$bog_bhelper_app_vaka_Search_hint": "Найти",
+	"$bog_bhelper_app_vaka_Credits_title": "Данные предоставлены HeadHunter API"
 }

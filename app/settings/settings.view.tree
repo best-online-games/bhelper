@@ -1,4 +1,4 @@
-$bog_prof_app_settings $mol_page
+$bog_bhelper_app_settings $mol_page
 	title @ \Settings
 	body /
 		<= Language_labeler $mol_labeler

@@ -45,7 +45,7 @@ namespace $.$$ {
 		'Санкт-Петербург': '2',
 	}
 
-	export class $bog_prof_app_vaka extends $.$bog_prof_app_vaka {
+	export class $bog_bhelper_app_vaka extends $.$bog_bhelper_app_vaka {
 		// Текущий поисковый запрос
 		@$mol_mem
 		query(next?: string): string {
@@ -195,7 +195,7 @@ namespace $.$$ {
 		// Переопределяем Row для передачи данных вакансии
 		@$mol_mem_key
 		Row(id: string) {
-			const row = new this.$.$bog_prof_app_vaka_item()
+			const row = new this.$.$bog_bhelper_app_vaka_item()
 			row.vacancy = () => this.vacancy(id)
 			return row
 		}

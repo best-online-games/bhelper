@@ -1,5 +1,5 @@
 namespace $.$$ {
-	export class $bog_prof_app_vaka_item extends $.$bog_prof_app_vaka_item {
+	export class $bog_bhelper_app_vaka_item extends $.$bog_bhelper_app_vaka_item {
 		// Данные вакансии передаются извне
 		vacancy(next?: any): any {
 			return next ?? null

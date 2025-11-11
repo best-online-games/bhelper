@@ -1,4 +1,4 @@
-$bog_prof_app_vaka_item $mol_card
+$bog_bhelper_app_vaka_item $mol_card
 	vacancy null
 	sub /
 		<= Title $mol_link

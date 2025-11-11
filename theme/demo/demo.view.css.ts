@@ -1,5 +1,5 @@
 namespace $.$$ {
-  $mol_style_define($bog_prof_theme_demo_case, {
+  $mol_style_define($bog_bhelper_theme_demo_case, {
     gap: $mol_gap.block,
     padding: $mol_gap.block,
     border: {

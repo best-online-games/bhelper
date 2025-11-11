@@ -1,4 +1,4 @@
-$bog_prof_app_vaka $mol_page
+$bog_bhelper_app_vaka $mol_page
 	search? null
 	title @ \Вакансии HH.ru
 	tools /

@@ -1,5 +1,5 @@
 namespace $.$$ {
-	$mol_style_define($bog_prof_app_vaka, {
+	$mol_style_define($bog_bhelper_app_vaka, {
 		flex: {
 			grow: 1,
 		},
@@ -51,7 +51,7 @@ namespace $.$$ {
 		},
 	})
 
-	$mol_style_define($bog_prof_app_vaka_item, {
+	$mol_style_define($bog_bhelper_app_vaka_item, {
 		display: 'flex',
 		flexDirection: 'column',
 		padding: $mol_gap.block,

@@ -1,5 +1,5 @@
 namespace $.$$ {
-export class $bog_prof_app_prof extends $.$bog_prof_app_prof {
+export class $bog_bhelper_app_prof extends $.$bog_bhelper_app_prof {
 		// Development list
 		@$mol_mem
 		dev_titles(): readonly string[] {

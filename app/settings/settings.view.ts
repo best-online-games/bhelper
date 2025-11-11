@@ -1,5 +1,5 @@
 namespace $.$$ {
-  export class $bog_prof_app_settings extends $.$bog_prof_app_settings {
+  export class $bog_bhelper_app_settings extends $.$bog_bhelper_app_settings {
     private deferredPrompt: any = null
 
     override auto() {
