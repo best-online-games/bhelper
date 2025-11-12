@@ -1,12 +1,13 @@
 $bog_bhelper_app $mol_book2_catalog
 	Placeholder null
 	Menu_logo $mol_image
-		uri \bog/prof/assets/job.png
-	menu_title @ \VibeJobs 
+		uri \bog/bhelper/assets/favicon_dark.ico
+	menu_title @ \VibeHelpers 
 	menu_tools /
-		<= Lights $mol_lights_toggle
+		<= Lights $bog_theme_toggle
+			theme_auto <= Theme
 	plugins /
-		<= Theme $bog_bhelper_theme_auto
+		<= Theme $bog_theme_auto
 	spreads *
 		\	
 			<= Bot $gd_bot
@@ -15,6 +16,5 @@ $bog_bhelper_app $mol_book2_catalog
 				Donate null
 				Support null
 				Lights null
-		prof <= Prof $bog_bhelper_app_prof
+		prof <= Prof $bog_bhelper_app_helpers
 		settings <= Settings $bog_bhelper_app_settings
-		vaka <= Vaka $bog_bhelper_app_vaka

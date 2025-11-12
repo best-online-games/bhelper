@@ -1,5 +1,5 @@
 namespace $.$$ {
-export class $bog_bhelper_app_prof extends $.$bog_bhelper_app_prof {
+	export class $bog_bhelper_app_helpers extends $.$bog_bhelper_app_helpers {
 		// Development list
 		@$mol_mem
 		dev_titles(): readonly string[] {
@@ -92,10 +92,18 @@ export class $bog_bhelper_app_prof extends $.$bog_bhelper_app_prof {
 		All_item_open(index: number, event?: Event) {
 			event?.preventDefault()
 			const title = this.all_title(index)
-			try { this.$.$mol_state_session?.value('history', null as any) } catch {}
-			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
-			try { this.$.$mol_state_session?.value('digest', '') } catch {}
-			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
+			try {
+				this.$.$mol_state_session?.value('history', null as any)
+			} catch {}
+			try {
+				this.$.$mol_state_session?.value('title', null as any)
+			} catch {}
+			try {
+				this.$.$mol_state_session?.value('digest', '')
+			} catch {}
+			try {
+				this.$.$mol_state_session?.value('gd_profession', title)
+			} catch {}
 			this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' })
 		}
 
@@ -103,10 +111,18 @@ export class $bog_bhelper_app_prof extends $.$bog_bhelper_app_prof {
 		Dev_item_open(index: number, event?: Event) {
 			event?.preventDefault()
 			const title = this.dev_title(index)
-			try { this.$.$mol_state_session?.value('history', null as any) } catch {}
-			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
-			try { this.$.$mol_state_session?.value('digest', '') } catch {}
-			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
+			try {
+				this.$.$mol_state_session?.value('history', null as any)
+			} catch {}
+			try {
+				this.$.$mol_state_session?.value('title', null as any)
+			} catch {}
+			try {
+				this.$.$mol_state_session?.value('digest', '')
+			} catch {}
+			try {
+				this.$.$mol_state_session?.value('gd_profession', title)
+			} catch {}
 			this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' })
 		}
 
@@ -114,10 +130,18 @@ export class $bog_bhelper_app_prof extends $.$bog_bhelper_app_prof {
 		Design_item_open(index: number, event?: Event) {
 			event?.preventDefault()
 			const title = this.design_title(index)
-			try { this.$.$mol_state_session?.value('history', null as any) } catch {}
-			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
-			try { this.$.$mol_state_session?.value('digest', '') } catch {}
-			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
+			try {
+				this.$.$mol_state_session?.value('history', null as any)
+			} catch {}
+			try {
+				this.$.$mol_state_session?.value('title', null as any)
+			} catch {}
+			try {
+				this.$.$mol_state_session?.value('digest', '')
+			} catch {}
+			try {
+				this.$.$mol_state_session?.value('gd_profession', title)
+			} catch {}
 			this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' })
 		}
 
@@ -125,10 +149,18 @@ export class $bog_bhelper_app_prof extends $.$bog_bhelper_app_prof {
 		Devops_item_open(index: number, event?: Event) {
 			event?.preventDefault()
 			const title = this.devops_title(index)
-			try { this.$.$mol_state_session?.value('history', null as any) } catch {}
-			try { this.$.$mol_state_session?.value('title', null as any) } catch {}
-			try { this.$.$mol_state_session?.value('digest', '') } catch {}
-			try { this.$.$mol_state_session?.value('gd_profession', title) } catch {}
+			try {
+				this.$.$mol_state_session?.value('history', null as any)
+			} catch {}
+			try {
+				this.$.$mol_state_session?.value('title', null as any)
+			} catch {}
+			try {
+				this.$.$mol_state_session?.value('digest', '')
+			} catch {}
+			try {
+				this.$.$mol_state_session?.value('gd_profession', title)
+			} catch {}
 			this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' })
 		}
 	}
