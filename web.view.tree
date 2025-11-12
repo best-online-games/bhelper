@@ -989,7 +989,17 @@ $mol_card $mol_list
 $bog_bhelper_app_helpers $mol_page
 	title @ \Helpers
 	body /
+		<= hero $mol_view
+			sub /
+				<= hero_title $mol_text
+					text @ \Helpers Hub
+				<= hero_descr $mol_text
+					text @ \Pick helper or type a task, AI will orchestrate the right modules.
+				<= search $mol_string
+					hint @ \Find module or task
+					value? <=> query? \
 		<= gallery $mol_gallery
+			items <= helper_cards /$mol_view
 	item* $mol_card
 		sub /
 			<= link* $mol_link
@@ -1000,8 +1010,10 @@ $bog_bhelper_app_helpers $mol_page
 					<= icon* $mol_icon
 						path <= icon_path* \
 					<= title_view* $mol_view
+						sub /
+							<= helper_title* \
 					<= descr_view* $mol_text
-						text <= description* \
+						text <= helper_description* \
 
 $mol_pick $mol_pop
 	event *

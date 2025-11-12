@@ -5487,49 +5487,91 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_icon__path_bog_bhelper_app_helpers_1 = $mol_type_enforce<
+	type $mol_text__text_bog_bhelper_app_helpers_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_text__text_bog_bhelper_app_helpers_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_string__hint_bog_bhelper_app_helpers_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_string__value_bog_bhelper_app_helpers_4 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['query'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_view__sub_bog_bhelper_app_helpers_5 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_gallery__items_bog_bhelper_app_helpers_6 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['helper_cards'] >
+		,
+		ReturnType< $mol_gallery['items'] >
+	>
+	type $mol_icon__path_bog_bhelper_app_helpers_7 = $mol_type_enforce<
 		ReturnType< $bog_bhelper_app_helpers['icon_path'] >
 		,
 		ReturnType< $mol_icon['path'] >
 	>
-	type $mol_text__text_bog_bhelper_app_helpers_2 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_helpers['description'] >
+	type $mol_view__sub_bog_bhelper_app_helpers_8 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_text__text_bog_bhelper_app_helpers_9 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['helper_description'] >
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_link__uri_bog_bhelper_app_helpers_3 = $mol_type_enforce<
+	type $mol_link__uri_bog_bhelper_app_helpers_10 = $mol_type_enforce<
 		ReturnType< $bog_bhelper_app_helpers['item_uri'] >
 		,
 		ReturnType< $mol_link['uri'] >
 	>
-	type $mol_link__click_bog_bhelper_app_helpers_4 = $mol_type_enforce<
+	type $mol_link__click_bog_bhelper_app_helpers_11 = $mol_type_enforce<
 		ReturnType< $bog_bhelper_app_helpers['item_open'] >
 		,
 		ReturnType< $mol_link['click'] >
 	>
-	type $mol_link__title_bog_bhelper_app_helpers_5 = $mol_type_enforce<
+	type $mol_link__title_bog_bhelper_app_helpers_12 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $mol_link['title'] >
 	>
-	type $mol_link__sub_bog_bhelper_app_helpers_6 = $mol_type_enforce<
+	type $mol_link__sub_bog_bhelper_app_helpers_13 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_card__sub_bog_bhelper_app_helpers_7 = $mol_type_enforce<
+	type $mol_card__sub_bog_bhelper_app_helpers_14 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_card['sub'] >
 	>
 	export class $bog_bhelper_app_helpers extends $mol_page {
+		hero_title( ): $mol_text
+		hero_descr( ): $mol_text
+		query( next?: string ): string
+		search( ): $mol_string
+		hero( ): $mol_view
+		helper_cards( ): readonly($mol_view)[]
 		gallery( ): $mol_gallery
 		item_uri( id: any): string
 		item_open( id: any, next?: any ): any
 		icon_path( id: any): string
 		icon( id: any): $mol_icon
+		helper_title( id: any): string
 		title_view( id: any): $mol_view
-		description( id: any): string
+		helper_description( id: any): string
 		descr_view( id: any): $mol_text
 		link( id: any): $mol_link
 		title( ): string
@@ -5541,17 +5583,26 @@ declare namespace $ {
 
 //# sourceMappingURL=helpers.view.tree.d.ts.map
 declare namespace $.$$ {
+    const $mol_github_model_polyglots: string[];
     class $bog_bhelper_app_helpers extends $.$bog_bhelper_app_helpers {
-        items(): {
+        private readonly helper_catalog_data;
+        query(next?: string): string;
+        items(): readonly {
             default_promt: string;
             title: string;
+            description: string;
+            icon: string;
         }[];
+        helper_cards(): readonly $mol_view[];
+        helper_title(index: number): string;
+        helper_description(index: number): string;
+        icon_path(index: number): string;
         item_uri(index: number): string;
         item_open(index: number, event?: Event): void;
     }
 }
 
-declare namespace $.$$ {
+declare namespace $ {
 }
 
 declare namespace $ {

@@ -12806,8 +12806,41 @@ var $;
 
 ;
 	($.$bog_bhelper_app_helpers) = class $bog_bhelper_app_helpers extends ($.$mol_page) {
+		hero_title(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.$.$mol_locale.text("$bog_bhelper_app_helpers_hero_title_text")));
+			return obj;
+		}
+		hero_descr(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.$.$mol_locale.text("$bog_bhelper_app_helpers_hero_descr_text")));
+			return obj;
+		}
+		query(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		search(){
+			const obj = new this.$.$mol_string();
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_bhelper_app_helpers_search_hint")));
+			(obj.value) = (next) => ((this.query(next)));
+			return obj;
+		}
+		hero(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.hero_title()), 
+				(this.hero_descr()), 
+				(this.search())
+			]);
+			return obj;
+		}
+		helper_cards(){
+			return [];
+		}
 		gallery(){
 			const obj = new this.$.$mol_gallery();
+			(obj.items) = () => ((this.helper_cards()));
 			return obj;
 		}
 		item_uri(id){
@@ -12825,16 +12858,20 @@ var $;
 			(obj.path) = () => ((this.icon_path(id)));
 			return obj;
 		}
+		helper_title(id){
+			return "";
+		}
 		title_view(id){
 			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.helper_title(id))]);
 			return obj;
 		}
-		description(id){
+		helper_description(id){
 			return "";
 		}
 		descr_view(id){
 			const obj = new this.$.$mol_text();
-			(obj.text) = () => ((this.description(id)));
+			(obj.text) = () => ((this.helper_description(id)));
 			return obj;
 		}
 		link(id){
@@ -12853,7 +12890,7 @@ var $;
 			return (this.$.$mol_locale.text("$bog_bhelper_app_helpers_title"));
 		}
 		body(){
-			return [(this.gallery())];
+			return [(this.hero()), (this.gallery())];
 		}
 		item(id){
 			const obj = new this.$.$mol_card();
@@ -12861,6 +12898,11 @@ var $;
 			return obj;
 		}
 	};
+	($mol_mem(($.$bog_bhelper_app_helpers.prototype), "hero_title"));
+	($mol_mem(($.$bog_bhelper_app_helpers.prototype), "hero_descr"));
+	($mol_mem(($.$bog_bhelper_app_helpers.prototype), "query"));
+	($mol_mem(($.$bog_bhelper_app_helpers.prototype), "search"));
+	($mol_mem(($.$bog_bhelper_app_helpers.prototype), "hero"));
 	($mol_mem(($.$bog_bhelper_app_helpers.prototype), "gallery"));
 	($mol_mem_key(($.$bog_bhelper_app_helpers.prototype), "item_open"));
 	($mol_mem_key(($.$bog_bhelper_app_helpers.prototype), "icon"));
@@ -12879,18 +12921,46 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
+        $$.$mol_github_model_polyglots = ['xai/grok-3'];
         class $bog_bhelper_app_helpers extends $.$bog_bhelper_app_helpers {
+            helper_catalog_data = [
+                {
+                    title: 'Юрист',
+                    description: 'Документы, договоры, правовые заключения, сопровождение сделок.',
+                    icon: 'briefcase',
+                    default_promt: `Ты корпоративный юрист. Разбери ввод пользователя, объясни, какие договоры или документы нужны, предложи структуру и шаблон.`,
+                },
+                {
+                    title: 'Адвокат',
+                    description: 'Судебные стратегии, консультации по спорам, анализ доказательств.',
+                    icon: 'scales',
+                    default_promt: `Ты адвокат по гражданским делам. Сформируй стратегию защиты, составь план аргументов и список необходимых доказательств.`,
+                },
+            ];
+            query(next) {
+                return next ?? '';
+            }
             items() {
-                return [
-                    {
-                        title: 'Юрист',
-                        default_promt: `Ты корпоративный юрист. Разбери ввод пользователя, объясни, какие договоры или документы нужны, предложи структуру и шаблон.`,
-                    },
-                    {
-                        title: 'Адвокат',
-                        default_promt: `Ты адвокат по гражданским делам. Сформируй стратегию защиты, составь план аргументов и список необходимых доказательств.`,
-                    },
-                ];
+                const query = this.query().trim().toLowerCase();
+                const catalog = this.helper_catalog_data;
+                if (!query)
+                    return catalog;
+                return catalog.filter(helper => {
+                    const haystack = `${helper.title} ${helper.description}`.toLowerCase();
+                    return haystack.includes(query);
+                });
+            }
+            helper_cards() {
+                return this.items().map((_, index) => this.item(index));
+            }
+            helper_title(index) {
+                return this.items()[index]?.title ?? '';
+            }
+            helper_description(index) {
+                return this.items()[index]?.description ?? '';
+            }
+            icon_path(index) {
+                return this.items()[index]?.icon ?? '';
             }
             item_uri(index) {
                 const helper = this.items()[index] ?? this.items()[0];
@@ -12921,6 +12991,15 @@ var $;
             }
         }
         __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_helpers.prototype, "query", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_helpers.prototype, "items", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_helpers.prototype, "helper_cards", null);
+        __decorate([
             $mol_action
         ], $bog_bhelper_app_helpers.prototype, "item_open", null);
         $$.$bog_bhelper_app_helpers = $bog_bhelper_app_helpers;
@@ -12931,13 +13010,10 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    var $$;
-    (function ($$) {
-        const { rem } = $mol_style_unit;
-        $mol_style_define($bog_bhelper_app_helpers, {
-            width: rem(100),
-        });
-    })($$ = $.$$ || ($.$$ = {}));
+    const { rem } = $mol_style_unit;
+    $mol_style_define($bog_bhelper_app_helpers, {
+        width: rem(100),
+    });
 })($ || ($ = {}));
 
 ;
