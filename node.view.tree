@@ -986,87 +986,22 @@ $mol_card $mol_list
 			sub /
 				<= status_text <= status \
 
-$bog_bhelper_app_helpers $mol_book2_catalog
-	param \prof
-	menu_title @ \Professions
-	spreads *
-		\
-			<= All $mol_page
-				title @ \All Professions
-				body /
-					<= All_gallery $mol_gallery
-						items <= All_gallery_items /$mol_view
-		development <= Development $mol_page
-			title @ \Development
-			body /
-				<= Dev_gallery $mol_gallery
-					items <= Dev_gallery_items /$mol_view
-		design <= Design $mol_page
-			title @ \Design
-			body /
-				<= Design_gallery $mol_gallery
-					items <= Design_gallery_items /$mol_view
-		devops <= DevOps $mol_page
-			title @ \DevOps
-			body /
-				<= Devops_gallery $mol_gallery
-					items <= Devops_gallery_items /$mol_view
-	All_item* $mol_card
+$bog_bhelper_app_helpers $mol_page
+	title @ \Helpers
+	body /
+		<= gallery $mol_gallery
+	item* $mol_card
 		sub /
-			<= All_link* $mol_link
-				uri <= All_item_uri* \
-				click?event <=> All_item_open*?event null
+			<= link* $mol_link
+				uri <= item_uri* \
+				click?event <=> item_open*?event null
 				title null
 				sub /
-					<= All_icon* $mol_icon
-						path <= All_icon_path* \
-					<= All_title_view* $mol_view
-						sub /
-							<= all_title* \
-					<= All_descr_view* $mol_text
-						text <= all_description* \
-	Dev_item* $mol_card
-		sub /
-			<= Dev_link* $mol_link
-				uri <= Dev_item_uri* \
-				click?event <=> Dev_item_open*?event null
-				title null
-				sub /
-					<= Dev_icon* $mol_icon
-						path <= Dev_icon_path* \
-					<= Dev_title_view* $mol_view
-						sub /
-							<= dev_title* \
-					<= Dev_descr_view* $mol_text
-						text <= dev_description* \
-	Design_item* $mol_card
-		sub /
-			<= Design_link* $mol_link
-				uri <= Design_item_uri* \
-				click?event <=> Design_item_open*?event null
-				title null
-				sub /
-					<= Design_icon* $mol_icon
-						path <= Design_icon_path* \
-					<= Design_title_view* $mol_view
-						sub /
-							<= design_title* \
-					<= Design_descr_view* $mol_text
-						text <= design_description* \
-	Devops_item* $mol_card
-		sub /
-			<= Devops_link* $mol_link
-				uri <= Devops_item_uri* \
-				click?event <=> Devops_item_open*?event null
-				title null
-				sub /
-					<= Devops_icon* $mol_icon
-						path <= Devops_icon_path* \
-					<= Devops_title_view* $mol_view
-						sub /
-							<= devops_title* \
-					<= Devops_descr_view* $mol_text
-						text <= devops_description* \
+					<= icon* $mol_icon
+						path <= icon_path* \
+					<= title_view* $mol_view
+					<= descr_view* $mol_text
+						text <= description* \
 
 $mol_pick $mol_pop
 	event *
@@ -1175,5 +1110,5 @@ $bog_bhelper_app $mol_book2_catalog
 				Donate null
 				Support null
 				Lights null
-		prof <= Prof $bog_bhelper_app_helpers
+		helpers <= Helpers $bog_bhelper_app_helpers
 		settings <= Settings $bog_bhelper_app_settings
