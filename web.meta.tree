@@ -47,4 +47,4 @@
 \/bog/bhelper/app
 	include \/mol/offline/install
 	include \/mol/test
-	deploy \/bog/prof/assets
+	deploy \/bog/bhelper/assets

@@ -331,35 +331,73 @@ $mol_book2_catalog $mol_book2
 		sub /
 			<= Spread_close_icon $mol_icon_close
 
-$mol_check $mol_button_minor
-	attr *
-		^
-		mol_check_checked <= checked? false
-		aria-checked <= aria_checked \false
-		role <= aria_role \checkbox
-	sub /$mol_view_content
-		<= Icon null
-		<= label /
-			<= Title $mol_view
-				sub /
-					<= title \
-
-$mol_check_icon $mol_check
-
 $mol_icon_brightness_4 $mol_icon path \M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z
 
-$mol_lights_toggle $mol_check_icon
-	Icon <= Lights_icon $mol_icon_brightness_4
-	hint @ \Toggle lights
-	checked? <=> lights? false
+$bog_theme_auto $mol_plugin
+	themes <= themes_default /
+	theme_next? null
+	theme_prev? null
+	theme_set? null
+	attr * mol_theme <= theme \
+
+$bog_theme_picker_row $mol_button_minor
+	theme_name \
+	title <= theme_name
+	attr *
+		^
+		bog_theme_picker_row_focused <= focused_str \
+	event *
+		^
+		pointerenter?event <=> hover?event null
+
+$bog_theme_picker $mol_scroll
+	theme_auto $bog_theme_auto
+	close? null
+	query?val \
+	focused_index?val -1
+	Theme_row* $bog_theme_picker_row
+		theme_name <= theme_name* \
+		focused <= theme_focused* false
+		click?event <=> theme_select*?event null
+		hover?event <=> theme_hover*?event null
+	sub /
+		<= Content $mol_list rows /
+			<= Search $mol_string
+				value?val <=> query?val
+				hint @ \Just start typing
+			<= Theme_list $mol_list
+				rows <= theme_rows /
+	event *
+		^
+		keydown?event <=> key_down?event null
+
+$bog_theme_toggle $mol_pop
+	theme_auto $bog_theme_auto
+	showed?val false
+	align \bottom_right
+	Anchor $mol_button_minor
+		sub /
+			<= Icon $mol_icon_brightness_4
+		hint @ \Cycle through themes
+		click?event <=> clicked?event null
+		event *
+			^
+			pointerdown?event <=> press_start?event null
+			pointermove?event <=> press_move?event null
+			pointerup?event <=> press_end?event null
+			pointercancel?event <=> press_cancel?event null
+			lostpointercapture?event <=> press_lost?event null
+	bubble_content /
+		<= Backdrop $mol_view
+			event *
+				click?event <=> backdrop_click?event null
+		<= Picker $bog_theme_picker
+			theme_auto <= theme_auto
+			close? <=> picker_close? null
 
 $mol_theme_auto $mol_plugin
 	light \$mol_theme_light
 	attr * mol_theme <= theme <= dark \$mol_theme_dark
-
-$bog_bhelper_theme_auto $mol_theme_auto
-	light \$mol_theme_light
-	dark \$mol_theme_dark
 
 $mol_embed_native $mol_scroll
 	dom_name \iframe
@@ -483,6 +521,19 @@ $mol_float $mol_view
 	style *
 		^
 		minHeight \auto
+
+$mol_check $mol_button_minor
+	attr *
+		^
+		mol_check_checked <= checked? false
+		aria-checked <= aria_checked \false
+		role <= aria_role \checkbox
+	sub /$mol_view_content
+		<= Icon null
+		<= label /
+			<= Title $mol_view
+				sub /
+					<= title \
 
 $mol_icon_chevron $mol_icon path \M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z
 
@@ -837,6 +888,13 @@ $mol_link_support $mol_link
 	sub /
 		<= Icon $mol_icon_face_agent
 
+$mol_check_icon $mol_check
+
+$mol_lights_toggle $mol_check_icon
+	Icon <= Lights_icon $mol_icon_brightness_4
+	hint @ \Toggle lights
+	checked? <=> lights? false
+
 $mol_text_list $mol_text
 	auto_scroll null
 	attr *
@@ -928,7 +986,7 @@ $mol_card $mol_list
 			sub /
 				<= status_text <= status \
 
-$bog_bhelper_app_prof $mol_book2_catalog
+$bog_bhelper_app_helpers $mol_book2_catalog
 	param \prof
 	menu_title @ \Professions
 	spreads *
@@ -1099,75 +1157,16 @@ $bog_bhelper_app_settings $mol_page
 	install_unsupported_browser @ \Add to Home Screen is not supported in this browser.
 	install_already_installed @ \The app is already installed or installation is not supported.
 
-$mol_icon_magnify $mol_icon path \M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z
-
-$mol_bar $mol_view
-
-$mol_icon_information $mol_icon path \M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z
-
-$mol_icon_information_outline $mol_icon path \M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z
-
-$bog_bhelper_app_vaka $mol_page
-	search? null
-	title @ \Вакансии HH.ru
-	tools /
-		<= Tools $mol_bar
-			sub /
-				<= Query $mol_string
-					hint @ \Поисковый запрос
-					value? <=> query? \
-				<= Area $mol_select
-					options /
-						\Россия
-						\Москва
-						\Санкт-Петербург
-					value? <=> area_name? \
-				<= Search $mol_button_minor
-					hint @ \Найти
-					click? <=> search?
-					sub /
-						<= Search_icon $mol_icon_magnify
-	body /
-		<= Status $mol_status
-			status <= loading_status null
-		<= Stats_bar $mol_bar
-			sub /
-				<= Stats_text $mol_text
-					text <= stats_message \
-		<= Results $mol_list
-			rows <= vacancy_rows /
-		<= Empty $mol_view
-			sub /
-				<= Empty_icon $mol_icon_information_outline
-				<= Empty_message $mol_text
-					text <= empty_message \
-	foot /
-		<= Credits $mol_link
-			uri \https://api.hh.ru
-			title @ \HeadHunter API
-
-$bog_bhelper_app_vaka_item $mol_card
-	vacancy null
-	sub /
-		<= Title $mol_link
-			title <= title? \
-			uri <= url? \
-		<= Meta $mol_text
-			text <= meta? \
-		<= Salary $mol_text
-			text <= salary? \
-		<= Snippet $mol_text
-			text <= snippet? \
-
 $bog_bhelper_app $mol_book2_catalog
 	Placeholder null
 	Menu_logo $mol_image
-		uri \bog/prof/assets/job.png
-	menu_title @ \VibeJobs 
+		uri \bog/bhelper/assets/favicon_dark.ico
+	menu_title @ \VibeHelpers 
 	menu_tools /
-		<= Lights $mol_lights_toggle
+		<= Lights $bog_theme_toggle
+			theme_auto <= Theme
 	plugins /
-		<= Theme $bog_bhelper_theme_auto
+		<= Theme $bog_theme_auto
 	spreads *
 		\	
 			<= Bot $gd_bot
@@ -1176,6 +1175,5 @@ $bog_bhelper_app $mol_book2_catalog
 				Donate null
 				Support null
 				Lights null
-		prof <= Prof $bog_bhelper_app_prof
+		prof <= Prof $bog_bhelper_app_helpers
 		settings <= Settings $bog_bhelper_app_settings
-		vaka <= Vaka $bog_bhelper_app_vaka

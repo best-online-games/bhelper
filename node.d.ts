@@ -2684,54 +2684,14 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-}
-
-declare namespace $ {
-
-	type $mol_view__sub_mol_check_1 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	export class $mol_check extends $mol_button_minor {
-		checked( next?: boolean ): boolean
-		aria_checked( ): string
-		aria_role( ): string
-		Icon( ): any
-		title( ): string
-		Title( ): $mol_view
-		label( ): readonly(any)[]
-		attr( ): ({ 
-			'mol_check_checked': ReturnType< $mol_check['checked'] >,
-			'aria-checked': ReturnType< $mol_check['aria_checked'] >,
-			'role': ReturnType< $mol_check['aria_role'] >,
-		})  & ReturnType< $mol_button_minor['attr'] >
-		sub( ): readonly($mol_view_content)[]
-	}
-	
-}
-
-//# sourceMappingURL=check.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_check extends $.$mol_check {
-        click(next?: Event): void;
-        sub(): readonly $mol_view_content[];
-        label(): readonly any[];
-        aria_checked(): string;
-    }
+    const $bog_theme: Record<"image" | "line" | "text" | "field" | "focus" | "back" | "hover" | "card" | "current" | "special" | "control" | "shade" | "spirit", $mol_style_func<"var", unknown>>;
+    const $bog_theme_names: readonly ["$mol_theme_light", "$mol_theme_dark", "$mol_theme_upwork"];
+    type $bog_theme_name = (typeof $bog_theme_names)[number];
 }
 
 declare namespace $ {
 }
 
-declare namespace $ {
-
-	export class $mol_check_icon extends $mol_check {
-	}
-	
-}
-
-//# sourceMappingURL=icon.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $mol_icon_brightness_4 extends $mol_icon {
@@ -2743,28 +2703,232 @@ declare namespace $ {
 //# sourceMappingURL=4.view.tree.d.ts.map
 declare namespace $ {
 
-	export class $mol_lights_toggle extends $mol_check_icon {
-		Lights_icon( ): $mol_icon_brightness_4
-		lights( next?: boolean ): boolean
-		Icon( ): ReturnType< $mol_lights_toggle['Lights_icon'] >
-		hint( ): string
-		checked( next?: ReturnType< $mol_lights_toggle['lights'] > ): ReturnType< $mol_lights_toggle['lights'] >
+	export class $bog_theme_auto extends $mol_plugin {
+		themes_default( ): readonly(any)[]
+		theme( ): string
+		themes( ): ReturnType< $bog_theme_auto['themes_default'] >
+		theme_next( next?: any ): any
+		theme_prev( next?: any ): any
+		theme_set( next?: any ): any
+		attr( ): ({ 
+			'mol_theme': ReturnType< $bog_theme_auto['theme'] >,
+		}) 
+	}
+	
+}
+
+//# sourceMappingURL=auto.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_theme_auto extends $.$bog_theme_auto {
+        themes_default(): readonly $.$bog_theme_name[];
+        theme_index(next?: number): number;
+        system_theme_index(): number;
+        theme(): any;
+        theme_next(): void;
+        theme_prev(): void;
+        theme_set(index: number): void;
+    }
+}
+
+declare namespace $ {
+
+	export class $bog_theme_picker_row extends $mol_button_minor {
+		focused_str( ): string
+		hover( next?: any ): any
+		theme_name( ): string
+		title( ): ReturnType< $bog_theme_picker_row['theme_name'] >
+		attr( ): ({ 
+			'bog_theme_picker_row_focused': ReturnType< $bog_theme_picker_row['focused_str'] >,
+		})  & ReturnType< $mol_button_minor['attr'] >
+		event( ): ({ 
+			pointerenter( next?: ReturnType< $bog_theme_picker_row['hover'] > ): ReturnType< $bog_theme_picker_row['hover'] >,
+		})  & ReturnType< $mol_button_minor['event'] >
+	}
+	
+}
+
+//# sourceMappingURL=row.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_theme_picker_row extends $.$bog_theme_picker_row {
+        focused_str(): "" | "true";
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $mol_string__value_bog_theme_picker_1 = $mol_type_enforce<
+		ReturnType< $bog_theme_picker['query'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_theme_picker_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_list__rows_bog_theme_picker_3 = $mol_type_enforce<
+		ReturnType< $bog_theme_picker['theme_rows'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_list__rows_bog_theme_picker_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $bog_theme_picker_row__theme_name_bog_theme_picker_5 = $mol_type_enforce<
+		ReturnType< $bog_theme_picker['theme_name'] >
+		,
+		ReturnType< $bog_theme_picker_row['theme_name'] >
+	>
+	type $bog_theme_picker_row__focused_bog_theme_picker_6 = $mol_type_enforce<
+		ReturnType< $bog_theme_picker['theme_focused'] >
+		,
+		ReturnType< $bog_theme_picker_row['focused'] >
+	>
+	type $bog_theme_picker_row__click_bog_theme_picker_7 = $mol_type_enforce<
+		ReturnType< $bog_theme_picker['theme_select'] >
+		,
+		ReturnType< $bog_theme_picker_row['click'] >
+	>
+	type $bog_theme_picker_row__hover_bog_theme_picker_8 = $mol_type_enforce<
+		ReturnType< $bog_theme_picker['theme_hover'] >
+		,
+		ReturnType< $bog_theme_picker_row['hover'] >
+	>
+	export class $bog_theme_picker extends $mol_scroll {
+		theme_name( id: any): string
+		theme_focused( id: any): boolean
+		theme_select( id: any, next?: any ): any
+		theme_hover( id: any, next?: any ): any
+		Search( ): $mol_string
+		theme_rows( ): readonly(any)[]
+		Theme_list( ): $mol_list
+		Content( ): $mol_list
+		key_down( next?: any ): any
+		theme_auto( ): $bog_theme_auto
+		close( next?: any ): any
+		query( next?: string ): string
+		focused_index( next?: number ): number
+		Theme_row( id: any): $bog_theme_picker_row
+		sub( ): readonly(any)[]
+		event( ): ({ 
+			keydown( next?: ReturnType< $bog_theme_picker['key_down'] > ): ReturnType< $bog_theme_picker['key_down'] >,
+		})  & ReturnType< $mol_scroll['event'] >
+	}
+	
+}
+
+//# sourceMappingURL=picker.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_theme_picker extends $.$bog_theme_picker {
+        theme_rows(): $.$bog_theme_picker_row[];
+        filtered_themes(): ("$mol_theme_light" | "$mol_theme_dark" | "$mol_theme_upwork")[];
+        theme_name(index: number): "$mol_theme_light" | "$mol_theme_dark" | "$mol_theme_upwork";
+        theme_focused(index: number): boolean;
+        theme_select(index: number, event?: MouseEvent): null;
+        theme_hover(index: number, event?: PointerEvent): null;
+        key_down(event?: KeyboardEvent): null;
+        private select_theme;
+        private preview_theme;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $mol_view__event_bog_theme_toggle_1 = $mol_type_enforce<
+		({ 
+			click( next?: ReturnType< $bog_theme_toggle['backdrop_click'] > ): ReturnType< $bog_theme_toggle['backdrop_click'] >,
+		}) 
+		,
+		ReturnType< $mol_view['event'] >
+	>
+	type $bog_theme_picker__theme_auto_bog_theme_toggle_2 = $mol_type_enforce<
+		ReturnType< $bog_theme_toggle['theme_auto'] >
+		,
+		ReturnType< $bog_theme_picker['theme_auto'] >
+	>
+	type $bog_theme_picker__close_bog_theme_toggle_3 = $mol_type_enforce<
+		ReturnType< $bog_theme_toggle['picker_close'] >
+		,
+		ReturnType< $bog_theme_picker['close'] >
+	>
+	type $mol_button_minor__sub_bog_theme_toggle_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_button_minor__hint_bog_theme_toggle_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['hint'] >
+	>
+	type $mol_button_minor__click_bog_theme_toggle_6 = $mol_type_enforce<
+		ReturnType< $bog_theme_toggle['clicked'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__event_bog_theme_toggle_7 = $mol_type_enforce<
+		({ 
+			pointerdown( next?: ReturnType< $bog_theme_toggle['press_start'] > ): ReturnType< $bog_theme_toggle['press_start'] >,
+			pointermove( next?: ReturnType< $bog_theme_toggle['press_move'] > ): ReturnType< $bog_theme_toggle['press_move'] >,
+			pointerup( next?: ReturnType< $bog_theme_toggle['press_end'] > ): ReturnType< $bog_theme_toggle['press_end'] >,
+			pointercancel( next?: ReturnType< $bog_theme_toggle['press_cancel'] > ): ReturnType< $bog_theme_toggle['press_cancel'] >,
+			lostpointercapture( next?: ReturnType< $bog_theme_toggle['press_lost'] > ): ReturnType< $bog_theme_toggle['press_lost'] >,
+		})  & ReturnType< $mol_pop['Anchor'] >
+		,
+		ReturnType< $mol_button_minor['event'] >
+	>
+	export class $bog_theme_toggle extends $mol_pop {
+		Icon( ): $mol_icon_brightness_4
+		clicked( next?: any ): any
+		press_start( next?: any ): any
+		press_move( next?: any ): any
+		press_end( next?: any ): any
+		press_cancel( next?: any ): any
+		press_lost( next?: any ): any
+		backdrop_click( next?: any ): any
+		Backdrop( ): $mol_view
+		picker_close( next?: any ): any
+		Picker( ): $bog_theme_picker
+		theme_auto( ): $bog_theme_auto
+		showed( next?: boolean ): boolean
+		align( ): string
+		Anchor( ): $mol_button_minor
+		bubble_content( ): readonly(any)[]
 	}
 	
 }
 
 //# sourceMappingURL=toggle.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $mol_lights_toggle extends $.$mol_lights_toggle {
-        lights(next?: boolean): boolean;
+    class $bog_theme_toggle extends $.$bog_theme_toggle {
+        long_press_delay: number;
+        move_threshold: number;
+        private press_timer;
+        private press_start_x;
+        private press_start_y;
+        private is_long_press;
+        clicked(event?: MouseEvent): null;
+        press_start(event?: PointerEvent): null;
+        press_move(event?: PointerEvent): null;
+        press_end(event?: PointerEvent): null;
+        press_cancel(event?: PointerEvent): null;
+        press_lost(event?: Event): null;
+        private clear_press_timer;
+        private on_long_press;
+        picker_close(): void;
+        backdrop_click(event?: MouseEvent): null;
     }
 }
 
-declare namespace $ {
-    const $bog_bhelper_theme: Record<"image" | "line" | "text" | "field" | "focus" | "back" | "hover" | "card" | "current" | "special" | "control" | "shade" | "spirit", $mol_style_func<"var", unknown>>;
-}
-
-declare namespace $ {
+declare namespace $.$$ {
 }
 
 declare namespace $ {
@@ -2787,16 +2951,6 @@ declare namespace $.$$ {
     }
 }
 
-declare namespace $ {
-
-	export class $bog_bhelper_theme_auto extends $mol_theme_auto {
-		light( ): string
-		dark( ): string
-	}
-	
-}
-
-//# sourceMappingURL=auto.view.tree.d.ts.map
 declare namespace $ {
     function $mol_wait_timeout_async(this: $, timeout: number): Promise<void>;
     function $mol_wait_timeout(this: $, timeout: number): void;
@@ -3340,6 +3494,44 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=float.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_view__sub_mol_check_1 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $mol_check extends $mol_button_minor {
+		checked( next?: boolean ): boolean
+		aria_checked( ): string
+		aria_role( ): string
+		Icon( ): any
+		title( ): string
+		Title( ): $mol_view
+		label( ): readonly(any)[]
+		attr( ): ({ 
+			'mol_check_checked': ReturnType< $mol_check['checked'] >,
+			'aria-checked': ReturnType< $mol_check['aria_checked'] >,
+			'role': ReturnType< $mol_check['aria_role'] >,
+		})  & ReturnType< $mol_button_minor['attr'] >
+		sub( ): readonly($mol_view_content)[]
+	}
+	
+}
+
+//# sourceMappingURL=check.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_check extends $.$mol_check {
+        click(next?: Event): void;
+        sub(): readonly $mol_view_content[];
+        label(): readonly any[];
+        aria_checked(): string;
+    }
+}
+
 declare namespace $ {
 
 	export class $mol_icon_chevron extends $mol_icon {
@@ -4582,6 +4774,36 @@ declare namespace $ {
 
 //# sourceMappingURL=support.view.tree.d.ts.map
 declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_check_icon extends $mol_check {
+	}
+	
+}
+
+//# sourceMappingURL=icon.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_lights_toggle extends $mol_check_icon {
+		Lights_icon( ): $mol_icon_brightness_4
+		lights( next?: boolean ): boolean
+		Icon( ): ReturnType< $mol_lights_toggle['Lights_icon'] >
+		hint( ): string
+		checked( next?: ReturnType< $mol_lights_toggle['lights'] > ): ReturnType< $mol_lights_toggle['lights'] >
+	}
+	
+}
+
+//# sourceMappingURL=toggle.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_lights_toggle extends $.$mol_lights_toggle {
+        lights(next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
     type $mol_data_value<Input = any, Output = any> = (val: Input) => Output;
 }
 
@@ -5404,227 +5626,227 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_gallery__items_bog_bhelper_app_prof_1 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['All_gallery_items'] >
+	type $mol_gallery__items_bog_bhelper_app_helpers_1 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['All_gallery_items'] >
 		,
 		ReturnType< $mol_gallery['items'] >
 	>
-	type $mol_page__title_bog_bhelper_app_prof_2 = $mol_type_enforce<
+	type $mol_page__title_bog_bhelper_app_helpers_2 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_page['title'] >
 	>
-	type $mol_page__body_bog_bhelper_app_prof_3 = $mol_type_enforce<
+	type $mol_page__body_bog_bhelper_app_helpers_3 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['body'] >
 	>
-	type $mol_gallery__items_bog_bhelper_app_prof_4 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['Dev_gallery_items'] >
+	type $mol_gallery__items_bog_bhelper_app_helpers_4 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['Dev_gallery_items'] >
 		,
 		ReturnType< $mol_gallery['items'] >
 	>
-	type $mol_page__title_bog_bhelper_app_prof_5 = $mol_type_enforce<
+	type $mol_page__title_bog_bhelper_app_helpers_5 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_page['title'] >
 	>
-	type $mol_page__body_bog_bhelper_app_prof_6 = $mol_type_enforce<
+	type $mol_page__body_bog_bhelper_app_helpers_6 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['body'] >
 	>
-	type $mol_gallery__items_bog_bhelper_app_prof_7 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['Design_gallery_items'] >
+	type $mol_gallery__items_bog_bhelper_app_helpers_7 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['Design_gallery_items'] >
 		,
 		ReturnType< $mol_gallery['items'] >
 	>
-	type $mol_page__title_bog_bhelper_app_prof_8 = $mol_type_enforce<
+	type $mol_page__title_bog_bhelper_app_helpers_8 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_page['title'] >
 	>
-	type $mol_page__body_bog_bhelper_app_prof_9 = $mol_type_enforce<
+	type $mol_page__body_bog_bhelper_app_helpers_9 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['body'] >
 	>
-	type $mol_gallery__items_bog_bhelper_app_prof_10 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['Devops_gallery_items'] >
+	type $mol_gallery__items_bog_bhelper_app_helpers_10 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['Devops_gallery_items'] >
 		,
 		ReturnType< $mol_gallery['items'] >
 	>
-	type $mol_page__title_bog_bhelper_app_prof_11 = $mol_type_enforce<
+	type $mol_page__title_bog_bhelper_app_helpers_11 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_page['title'] >
 	>
-	type $mol_page__body_bog_bhelper_app_prof_12 = $mol_type_enforce<
+	type $mol_page__body_bog_bhelper_app_helpers_12 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['body'] >
 	>
-	type $mol_icon__path_bog_bhelper_app_prof_13 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['All_icon_path'] >
+	type $mol_icon__path_bog_bhelper_app_helpers_13 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['All_icon_path'] >
 		,
 		ReturnType< $mol_icon['path'] >
 	>
-	type $mol_view__sub_bog_bhelper_app_prof_14 = $mol_type_enforce<
+	type $mol_view__sub_bog_bhelper_app_helpers_14 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_text__text_bog_bhelper_app_prof_15 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['all_description'] >
+	type $mol_text__text_bog_bhelper_app_helpers_15 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['all_description'] >
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_link__uri_bog_bhelper_app_prof_16 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['All_item_uri'] >
+	type $mol_link__uri_bog_bhelper_app_helpers_16 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['All_item_uri'] >
 		,
 		ReturnType< $mol_link['uri'] >
 	>
-	type $mol_link__click_bog_bhelper_app_prof_17 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['All_item_open'] >
+	type $mol_link__click_bog_bhelper_app_helpers_17 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['All_item_open'] >
 		,
 		ReturnType< $mol_link['click'] >
 	>
-	type $mol_link__title_bog_bhelper_app_prof_18 = $mol_type_enforce<
+	type $mol_link__title_bog_bhelper_app_helpers_18 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $mol_link['title'] >
 	>
-	type $mol_link__sub_bog_bhelper_app_prof_19 = $mol_type_enforce<
+	type $mol_link__sub_bog_bhelper_app_helpers_19 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_icon__path_bog_bhelper_app_prof_20 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['Dev_icon_path'] >
+	type $mol_icon__path_bog_bhelper_app_helpers_20 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['Dev_icon_path'] >
 		,
 		ReturnType< $mol_icon['path'] >
 	>
-	type $mol_view__sub_bog_bhelper_app_prof_21 = $mol_type_enforce<
+	type $mol_view__sub_bog_bhelper_app_helpers_21 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_text__text_bog_bhelper_app_prof_22 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['dev_description'] >
+	type $mol_text__text_bog_bhelper_app_helpers_22 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['dev_description'] >
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_link__uri_bog_bhelper_app_prof_23 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['Dev_item_uri'] >
+	type $mol_link__uri_bog_bhelper_app_helpers_23 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['Dev_item_uri'] >
 		,
 		ReturnType< $mol_link['uri'] >
 	>
-	type $mol_link__click_bog_bhelper_app_prof_24 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['Dev_item_open'] >
+	type $mol_link__click_bog_bhelper_app_helpers_24 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['Dev_item_open'] >
 		,
 		ReturnType< $mol_link['click'] >
 	>
-	type $mol_link__title_bog_bhelper_app_prof_25 = $mol_type_enforce<
+	type $mol_link__title_bog_bhelper_app_helpers_25 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $mol_link['title'] >
 	>
-	type $mol_link__sub_bog_bhelper_app_prof_26 = $mol_type_enforce<
+	type $mol_link__sub_bog_bhelper_app_helpers_26 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_icon__path_bog_bhelper_app_prof_27 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['Design_icon_path'] >
+	type $mol_icon__path_bog_bhelper_app_helpers_27 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['Design_icon_path'] >
 		,
 		ReturnType< $mol_icon['path'] >
 	>
-	type $mol_view__sub_bog_bhelper_app_prof_28 = $mol_type_enforce<
+	type $mol_view__sub_bog_bhelper_app_helpers_28 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_text__text_bog_bhelper_app_prof_29 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['design_description'] >
+	type $mol_text__text_bog_bhelper_app_helpers_29 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['design_description'] >
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_link__uri_bog_bhelper_app_prof_30 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['Design_item_uri'] >
+	type $mol_link__uri_bog_bhelper_app_helpers_30 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['Design_item_uri'] >
 		,
 		ReturnType< $mol_link['uri'] >
 	>
-	type $mol_link__click_bog_bhelper_app_prof_31 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['Design_item_open'] >
+	type $mol_link__click_bog_bhelper_app_helpers_31 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['Design_item_open'] >
 		,
 		ReturnType< $mol_link['click'] >
 	>
-	type $mol_link__title_bog_bhelper_app_prof_32 = $mol_type_enforce<
+	type $mol_link__title_bog_bhelper_app_helpers_32 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $mol_link['title'] >
 	>
-	type $mol_link__sub_bog_bhelper_app_prof_33 = $mol_type_enforce<
+	type $mol_link__sub_bog_bhelper_app_helpers_33 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_icon__path_bog_bhelper_app_prof_34 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['Devops_icon_path'] >
+	type $mol_icon__path_bog_bhelper_app_helpers_34 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['Devops_icon_path'] >
 		,
 		ReturnType< $mol_icon['path'] >
 	>
-	type $mol_view__sub_bog_bhelper_app_prof_35 = $mol_type_enforce<
+	type $mol_view__sub_bog_bhelper_app_helpers_35 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_text__text_bog_bhelper_app_prof_36 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['devops_description'] >
+	type $mol_text__text_bog_bhelper_app_helpers_36 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['devops_description'] >
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_link__uri_bog_bhelper_app_prof_37 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['Devops_item_uri'] >
+	type $mol_link__uri_bog_bhelper_app_helpers_37 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['Devops_item_uri'] >
 		,
 		ReturnType< $mol_link['uri'] >
 	>
-	type $mol_link__click_bog_bhelper_app_prof_38 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_prof['Devops_item_open'] >
+	type $mol_link__click_bog_bhelper_app_helpers_38 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_helpers['Devops_item_open'] >
 		,
 		ReturnType< $mol_link['click'] >
 	>
-	type $mol_link__title_bog_bhelper_app_prof_39 = $mol_type_enforce<
+	type $mol_link__title_bog_bhelper_app_helpers_39 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $mol_link['title'] >
 	>
-	type $mol_link__sub_bog_bhelper_app_prof_40 = $mol_type_enforce<
+	type $mol_link__sub_bog_bhelper_app_helpers_40 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_card__sub_bog_bhelper_app_prof_41 = $mol_type_enforce<
+	type $mol_card__sub_bog_bhelper_app_helpers_41 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_card['sub'] >
 	>
-	type $mol_card__sub_bog_bhelper_app_prof_42 = $mol_type_enforce<
+	type $mol_card__sub_bog_bhelper_app_helpers_42 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_card['sub'] >
 	>
-	type $mol_card__sub_bog_bhelper_app_prof_43 = $mol_type_enforce<
+	type $mol_card__sub_bog_bhelper_app_helpers_43 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_card['sub'] >
 	>
-	type $mol_card__sub_bog_bhelper_app_prof_44 = $mol_type_enforce<
+	type $mol_card__sub_bog_bhelper_app_helpers_44 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_card['sub'] >
 	>
-	export class $bog_bhelper_app_prof extends $mol_book2_catalog {
+	export class $bog_bhelper_app_helpers extends $mol_book2_catalog {
 		All_gallery_items( ): readonly($mol_view)[]
 		All_gallery( ): $mol_gallery
 		All( ): $mol_page
@@ -5676,10 +5898,10 @@ declare namespace $ {
 		param( ): string
 		menu_title( ): string
 		spreads( ): ({ 
-			'': ReturnType< $bog_bhelper_app_prof['All'] >,
-			'development': ReturnType< $bog_bhelper_app_prof['Development'] >,
-			'design': ReturnType< $bog_bhelper_app_prof['Design'] >,
-			'devops': ReturnType< $bog_bhelper_app_prof['DevOps'] >,
+			'': ReturnType< $bog_bhelper_app_helpers['All'] >,
+			'development': ReturnType< $bog_bhelper_app_helpers['Development'] >,
+			'design': ReturnType< $bog_bhelper_app_helpers['Design'] >,
+			'devops': ReturnType< $bog_bhelper_app_helpers['DevOps'] >,
 		}) 
 		All_item( id: any): $mol_card
 		Dev_item( id: any): $mol_card
@@ -5689,9 +5911,9 @@ declare namespace $ {
 	
 }
 
-//# sourceMappingURL=prof.view.tree.d.ts.map
+//# sourceMappingURL=helpers.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $bog_bhelper_app_prof extends $.$bog_bhelper_app_prof {
+    class $bog_bhelper_app_helpers extends $.$bog_bhelper_app_helpers {
         dev_titles(): readonly string[];
         dev_title(id: number): string;
         Dev_gallery_items(): $.$mol_card[];
@@ -6422,308 +6644,47 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	export class $mol_icon_magnify extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=magnify.view.tree.d.ts.map
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_bar extends $mol_view {
-	}
-	
-}
-
-//# sourceMappingURL=bar.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_information extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=information.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_information_outline extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=outline.view.tree.d.ts.map
-declare namespace $ {
-
-	type $mol_link__title_bog_bhelper_app_vaka_item_1 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_vaka_item['title'] >
+	type $bog_theme_toggle__theme_auto_bog_bhelper_app_1 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app['Theme'] >
 		,
-		ReturnType< $mol_link['title'] >
+		ReturnType< $bog_theme_toggle['theme_auto'] >
 	>
-	type $mol_link__uri_bog_bhelper_app_vaka_item_2 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_vaka_item['url'] >
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_text__text_bog_bhelper_app_vaka_item_3 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_vaka_item['meta'] >
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_text__text_bog_bhelper_app_vaka_item_4 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_vaka_item['salary'] >
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_text__text_bog_bhelper_app_vaka_item_5 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_vaka_item['snippet'] >
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	export class $bog_bhelper_app_vaka_item extends $mol_card {
-		title( next?: string ): string
-		url( next?: string ): string
-		Title( ): $mol_link
-		meta( next?: string ): string
-		Meta( ): $mol_text
-		salary( next?: string ): string
-		Salary( ): $mol_text
-		snippet( next?: string ): string
-		Snippet( ): $mol_text
-		vacancy( ): any
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=item.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $bog_bhelper_app_vaka_item extends $.$bog_bhelper_app_vaka_item {
-        vacancy(next?: any): any;
-        title(): string;
-        url(): string;
-        meta(): string;
-        salary(): string;
-        currency_symbol(code: string): string;
-        snippet(): string;
-        clean_html(text: string): string;
-    }
-}
-
-declare namespace $ {
-
-	type $mol_string__hint_bog_bhelper_app_vaka_1 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_string['hint'] >
-	>
-	type $mol_string__value_bog_bhelper_app_vaka_2 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_vaka['query'] >
-		,
-		ReturnType< $mol_string['value'] >
-	>
-	type $mol_select__options_bog_bhelper_app_vaka_3 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_select['options'] >
-	>
-	type $mol_select__value_bog_bhelper_app_vaka_4 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_vaka['area_name'] >
-		,
-		ReturnType< $mol_select['value'] >
-	>
-	type $mol_button_minor__hint_bog_bhelper_app_vaka_5 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_button_minor['hint'] >
-	>
-	type $mol_button_minor__click_bog_bhelper_app_vaka_6 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_vaka['search'] >
-		,
-		ReturnType< $mol_button_minor['click'] >
-	>
-	type $mol_button_minor__sub_bog_bhelper_app_vaka_7 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_button_minor['sub'] >
-	>
-	type $mol_bar__sub_bog_bhelper_app_vaka_8 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_bar['sub'] >
-	>
-	type $mol_status__status_bog_bhelper_app_vaka_9 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_vaka['loading_status'] >
-		,
-		ReturnType< $mol_status['status'] >
-	>
-	type $mol_text__text_bog_bhelper_app_vaka_10 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_vaka['stats_message'] >
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_bar__sub_bog_bhelper_app_vaka_11 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_bar['sub'] >
-	>
-	type $mol_list__rows_bog_bhelper_app_vaka_12 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_vaka['vacancy_rows'] >
-		,
-		ReturnType< $mol_list['rows'] >
-	>
-	type $mol_text__text_bog_bhelper_app_vaka_13 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_vaka['empty_message'] >
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_view__sub_bog_bhelper_app_vaka_14 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_link__uri_bog_bhelper_app_vaka_15 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__title_bog_bhelper_app_vaka_16 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['title'] >
-	>
-	export class $bog_bhelper_app_vaka extends $mol_page {
-		query( next?: string ): string
-		Query( ): $mol_string
-		area_name( next?: string ): string
-		Area( ): $mol_select
-		Search_icon( ): $mol_icon_magnify
-		Search( ): $mol_button_minor
-		Tools( ): $mol_bar
-		loading_status( ): any
-		Status( ): $mol_status
-		stats_message( ): string
-		Stats_text( ): $mol_text
-		Stats_bar( ): $mol_bar
-		vacancy_rows( ): readonly(any)[]
-		Results( ): $mol_list
-		Empty_icon( ): $mol_icon_information_outline
-		empty_message( ): string
-		Empty_message( ): $mol_text
-		Empty( ): $mol_view
-		Credits( ): $mol_link
-		search( next?: any ): any
-		title( ): string
-		tools( ): readonly(any)[]
-		body( ): readonly(any)[]
-		foot( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=vaka.view.tree.d.ts.map
-declare namespace $.$$ {
-    interface HHVacancy {
-        id: string;
-        name: string;
-        alternate_url: string;
-        salary: {
-            from: number | null;
-            to: number | null;
-            currency: string;
-            gross?: boolean;
-        } | null;
-        employer: {
-            name: string;
-            alternate_url?: string;
-        };
-        area: {
-            name: string;
-        };
-        snippet: {
-            requirement: string | null;
-            responsibility: string | null;
-        } | null;
-        published_at: string;
-        schedule?: {
-            name: string;
-        };
-        experience?: {
-            name: string;
-        };
-    }
-    interface HHSearchResponse {
-        items: HHVacancy[];
-        found: number;
-        pages: number;
-        page: number;
-        per_page: number;
-    }
-    export class $bog_bhelper_app_vaka extends $.$bog_bhelper_app_vaka {
-        query(next?: string): string;
-        area_name(next?: string): string;
-        area_id(): string;
-        loading_status(next?: any): any;
-        update_trigger(next?: number): number;
-        search(next?: any): any;
-        vacancies_data(): HHSearchResponse | null;
-        vacancy_ids(): string[];
-        vacancy(id: string): HHVacancy | null;
-        vacancy_rows(): readonly any[];
-        Row(id: string): $bog_bhelper_app_vaka_item;
-        empty_message(): string;
-        stats_message(): string;
-    }
-    export {};
-}
-
-declare namespace $.$$ {
-}
-
-declare namespace $ {
-
-	type $gd_bot__Space_bog_bhelper_app_1 = $mol_type_enforce<
+	type $gd_bot__Space_bog_bhelper_app_2 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $gd_bot['Space'] >
 	>
-	type $gd_bot__Sources_bog_bhelper_app_2 = $mol_type_enforce<
+	type $gd_bot__Sources_bog_bhelper_app_3 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $gd_bot['Sources'] >
 	>
-	type $gd_bot__Donate_bog_bhelper_app_3 = $mol_type_enforce<
+	type $gd_bot__Donate_bog_bhelper_app_4 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $gd_bot['Donate'] >
 	>
-	type $gd_bot__Support_bog_bhelper_app_4 = $mol_type_enforce<
+	type $gd_bot__Support_bog_bhelper_app_5 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $gd_bot['Support'] >
 	>
-	type $gd_bot__Lights_bog_bhelper_app_5 = $mol_type_enforce<
+	type $gd_bot__Lights_bog_bhelper_app_6 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $gd_bot['Lights'] >
 	>
-	type $mol_image__uri_bog_bhelper_app_6 = $mol_type_enforce<
+	type $mol_image__uri_bog_bhelper_app_7 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_image['uri'] >
 	>
 	export class $bog_bhelper_app extends $mol_book2_catalog {
-		Lights( ): $mol_lights_toggle
-		Theme( ): $bog_bhelper_theme_auto
+		Lights( ): $bog_theme_toggle
+		Theme( ): $bog_theme_auto
 		Bot( ): $gd_bot
-		Prof( ): $bog_bhelper_app_prof
+		Prof( ): $bog_bhelper_app_helpers
 		Settings( ): $bog_bhelper_app_settings
-		Vaka( ): $bog_bhelper_app_vaka
 		Placeholder( ): any
 		Menu_logo( ): $mol_image
 		menu_title( ): string
@@ -6733,7 +6694,6 @@ declare namespace $ {
 			'	': ReturnType< $bog_bhelper_app['Bot'] >,
 			'prof': ReturnType< $bog_bhelper_app['Prof'] >,
 			'settings': ReturnType< $bog_bhelper_app['Settings'] >,
-			'vaka': ReturnType< $bog_bhelper_app['Vaka'] >,
 		}) 
 	}
 	
