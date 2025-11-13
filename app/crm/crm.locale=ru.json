@@ -1,0 +1,20 @@
+{
+  "bog_bhelper_app_crm_title": "CRM",
+  "bog_bhelper_app_crm_title_label": "Клиенты",
+  "bog_bhelper_app_crm_subtitle_label": "База клиентов малого бизнеса",
+  "bog_bhelper_app_crm_add_label": "Новый клиент",
+  "bog_bhelper_app_crm_search_hint": "Поиск по имени, компании или тегам",
+  "bog_bhelper_app_crm_statusfilter_label": "Статус",
+  "bog_bhelper_app_crm_segmentfilter_label": "Сегмент",
+  "bog_bhelper_app_crm_managerfilter_label": "Менеджер",
+  "bog_bhelper_app_crm_reset_label": "Сбросить",
+  "bog_bhelper_app_crm_col_name": "Клиент",
+  "bog_bhelper_app_crm_col_status": "Статус",
+  "bog_bhelper_app_crm_col_segment": "Сегмент",
+  "bog_bhelper_app_crm_col_city": "Город",
+  "bog_bhelper_app_crm_col_last_contact": "Последний контакт",
+  "bog_bhelper_app_crm_col_next_action": "Следующий шаг",
+  "bog_bhelper_app_crm_col_manager": "Менеджер",
+  "bog_bhelper_app_crm_prev_label": "Назад",
+  "bog_bhelper_app_crm_next_label": "Вперёд"
+}

@@ -1,4 +1,5 @@
 $bog_bhelper_app $mol_book2_catalog
+	realm / <= Realm $hyoo_crus_realm
 	Placeholder null
 	Menu_logo $mol_image
 		uri \bog/bhelper/assets/favicon_dark.ico
@@ -9,7 +10,8 @@ $bog_bhelper_app $mol_book2_catalog
 	plugins /
 		<= Theme $bog_theme_auto
 	spreads *
-		\	
+		\
 			<= Bot $gd_bot
 		helpers <= Helpers $bog_bhelper_app_helpers
+		crm <= Crm $bog_bhelper_app_crm
 		settings <= Settings $bog_bhelper_app_settings
