@@ -6456,32 +6456,7 @@ declare namespace $ {
 		,
 		ReturnType< $bog_theme_toggle['theme_auto'] >
 	>
-	type $gd_bot__Space_bog_bhelper_app_2 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $gd_bot['Space'] >
-	>
-	type $gd_bot__Sources_bog_bhelper_app_3 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $gd_bot['Sources'] >
-	>
-	type $gd_bot__Donate_bog_bhelper_app_4 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $gd_bot['Donate'] >
-	>
-	type $gd_bot__Support_bog_bhelper_app_5 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $gd_bot['Support'] >
-	>
-	type $gd_bot__Lights_bog_bhelper_app_6 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $gd_bot['Lights'] >
-	>
-	type $mol_image__uri_bog_bhelper_app_7 = $mol_type_enforce<
+	type $mol_image__uri_bog_bhelper_app_2 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_image['uri'] >
@@ -6509,8 +6484,6 @@ declare namespace $ {
 //# sourceMappingURL=app.view.tree.d.ts.map
 declare namespace $.$$ {
     class $bog_bhelper_app extends $.$bog_bhelper_app {
-        Bot(): $.$gd_bot;
-        Bot_context(): string;
     }
 }
 

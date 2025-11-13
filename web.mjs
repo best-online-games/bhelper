@@ -13765,11 +13765,6 @@ var $;
 		}
 		Bot(){
 			const obj = new this.$.$gd_bot();
-			(obj.Space) = () => (null);
-			(obj.Sources) = () => (null);
-			(obj.Donate) = () => (null);
-			(obj.Support) = () => (null);
-			(obj.Lights) = () => (null);
 			return obj;
 		}
 		Helpers(){
@@ -13823,18 +13818,6 @@ var $;
     var $$;
     (function ($$) {
         class $bog_bhelper_app extends $.$bog_bhelper_app {
-            Bot() {
-                const obj = super.Bot();
-                obj.context = () => this.Bot_context();
-                return obj;
-            }
-            Bot_context() {
-                const base = this.Bot().rules();
-                const prof = this.$.$mol_state_session.value('gd_profession');
-                return prof
-                    ? `${base}\nТы сейчас отвечаешь как ${prof}. Если пользователь поздоровается и попросит рассказать о себе, ответь и распиши типичный день человека на этой професии : \"я ${prof}\ ".`
-                    : base;
-            }
         }
         $$.$bog_bhelper_app = $bog_bhelper_app;
     })($$ = $.$$ || ($.$$ = {}));
