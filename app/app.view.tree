@@ -10,6 +10,6 @@ $bog_bhelper_app $mol_book2_catalog
 		<= Theme $bog_theme_auto
 	spreads *
 		\	
-			<= Bot $bog_bot
+			<= Bot $gd_bot
 		helpers <= Helpers $bog_bhelper_app_helpers
 		settings <= Settings $bog_bhelper_app_settings
