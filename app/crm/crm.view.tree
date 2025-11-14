@@ -1,0 +1,76 @@
+$bog_bhelper_app_crm $mol_page
+	title @ \CRM
+	sub /
+		<= Header $mol_row
+			sub /
+				<= Title_block $mol_view
+					sub /
+						<= title_label @ \Клиенты
+						<= subtitle_label @ \База клиентов малого бизнеса
+				<= AddClient $mol_button_major
+					sub /
+						<= add_label @ \Новый клиент
+					click? <=> client_add? \
+		<= Filters $mol_row
+			sub /
+				<= Search $mol_string
+					hint @ \Поиск по имени, компании или тегам
+					value? <=> search? \
+				<= StatusFilter $mol_select
+					label @ \Статус
+					options? <= status_options? /
+					value? <=> status_filter? \
+				<= SegmentFilter $mol_select
+					label @ \Сегмент
+					options? <= segment_options? /
+					value? <=> segment_filter? \
+				<= ManagerFilter $mol_select
+					label @ \Менеджер
+					options? <= manager_options? /
+					value? <=> manager_filter? \
+				<= ResetFilters $mol_button_minor
+					sub / <= reset_label @ \Сбросить
+					click? <=> filters_reset? \
+		<= TableCard $mol_card
+			sub /
+				<= TableHeader $mol_row
+					sub /
+						<= Col_name @ \Клиент
+						<= Col_status @ \Статус
+						<= Col_segment @ \Сегмент
+						<= Col_city @ \Город
+						<= Col_last_contact @ \Последний контакт
+						<= Col_next_action @ \Следующий шаг
+						<= Col_manager @ \Менеджер
+				<= Table $mol_list
+					rows <= client_ids_page? /
+					Row <= ClientRow $bog_bhelper_app_crm_client_row
+						client_id <= row? \
+				<= Pagination $mol_row
+					sub /
+						<= PageInfo $mol_view
+							sub /
+								<= page_info_text \
+						<= PrevPage $mol_button_minor
+							enabled? <= page_has_prev? \
+							sub / <= prev_label @ \Назад
+							click? <=> page_prev? \
+						<= NextPage $mol_button_minor
+							enabled? <= page_has_next? \
+							sub / <= next_label @ \Вперёд
+							click? <=> page_next? \
+
+$bog_bhelper_app_crm_client_row $mol_row
+	attr *
+		mol_theme \bog_bhelper_row
+	sub /
+		<= NameBlock $mol_view
+			sub /
+				<= Name \
+				<= Company \
+		<= Status \
+		<= Segment \
+		<= City \
+		<= LastContact \
+		<= NextAction \
+		<= Manager \
