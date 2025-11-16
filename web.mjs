@@ -22336,6 +22336,8 @@ var $;
 		}
 		Lk(){
 			const obj = new this.$.$bog_lk();
+			(obj.Head) = () => (null);
+			(obj.plugins) = () => ([]);
 			return obj;
 		}
 		realm(){

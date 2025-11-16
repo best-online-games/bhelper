@@ -11061,7 +11061,17 @@ declare namespace $ {
 		,
 		ReturnType< $gd_bot['Lights'] >
 	>
-	type $mol_image__uri_bog_bhelper_app_9 = $mol_type_enforce<
+	type $bog_lk__Head_bog_bhelper_app_9 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $bog_lk['Head'] >
+	>
+	type $bog_lk__plugins_bog_bhelper_app_10 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $bog_lk['plugins'] >
+	>
+	type $mol_image__uri_bog_bhelper_app_11 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_image['uri'] >
