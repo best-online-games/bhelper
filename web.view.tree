@@ -145,6 +145,7 @@ $mol_button $mol_view
 	enabled true
 	click?event null
 	event_click?event null
+	status? /
 	event *
 		^
 		click?event <=> activate?event <=> event_activate?event null
@@ -335,6 +336,8 @@ $mol_icon_brightness_4 $mol_icon path \M12,18C11.11,18 10.26,17.8 9.5,17.45C11.5
 
 $bog_theme_auto $mol_plugin
 	themes <= themes_default /
+	theme_light \$mol_theme_light
+	theme_dark \$mol_theme_dark
 	theme_next? null
 	theme_prev? null
 	theme_set? null
@@ -1015,6 +1018,11 @@ $bog_bhelper_app_helpers $mol_page
 					<= descr_view* $mol_text
 						text <= helper_description* \
 
+$mol_button_major $mol_button_minor
+	theme \$mol_theme_base
+
+$mol_row $mol_view
+
 $mol_pick $mol_pop
 	event *
 		^
@@ -1066,6 +1074,83 @@ $mol_select $mol_pick
 		enabled <= enabled true
 	Trigger_icon $mol_icon_dots_vertical
 
+$bog_bhelper_app_crm $mol_page
+	page_has_prev false
+	page_has_next false
+	title @ \CRM
+	sub /
+		<= Header $mol_row
+			sub /
+				<= Title_block $mol_view
+					sub /
+						<= title_label @ \Клиенты
+						<= subtitle_label @ \База клиентов малого бизнеса
+				<= AddClient $mol_button_major
+					sub /
+						<= add_label @ \Новый клиент
+					click? <=> client_add? \
+		<= Filters $mol_row
+			sub /
+				<= Search $mol_string
+					hint @ \Поиск по имени, компании или тегам
+					value? <=> search? \
+				<= StatusFilter $mol_select
+					hint @ \Статус
+					options? <= status_options? /
+					value? <=> status_filter? \
+				<= SegmentFilter $mol_select
+					hint @ \Сегмент
+					options? <= segment_options? /
+					value? <=> segment_filter? \
+				<= ManagerFilter $mol_select
+					hint @ \Менеджер
+					options? <= manager_options? /
+					value? <=> manager_filter? \
+				<= ResetFilters $mol_button_minor
+					sub / <= reset_label @ \Сбросить
+					click? <=> filters_reset? \
+		<= TableCard $mol_card
+			sub /
+				<= TableHeader $mol_row
+					sub /
+						<= Col_name @ \Клиент
+						<= Col_status @ \Статус
+						<= Col_segment @ \Сегмент
+						<= Col_city @ \Город
+						<= Col_last_contact @ \Последний контакт
+						<= Col_next_action @ \Следующий шаг
+						<= Col_manager @ \Менеджер
+				<= Table $mol_list
+					rows <= client_rows /
+				<= Pagination $mol_row
+					sub /
+						<= PageInfo $mol_view
+							sub /
+								<= page_info_text \
+						<= PrevPage $mol_button_minor
+							enabled? <= page_has_prev
+							sub / <= prev_label @ \Назад
+							click? <=> page_prev? \
+						<= NextPage $mol_button_minor
+							enabled? <= page_has_next
+							sub / <= next_label @ \Вперёд
+							click? <=> page_next? \
+
+$bog_bhelper_app_crm_client_row $mol_row
+	attr *
+		mol_theme \bog_bhelper_row
+	sub /
+		<= NameBlock $mol_view
+			sub /
+				<= Name \
+				<= Company \
+		<= Status \
+		<= Segment \
+		<= City \
+		<= LastContact \
+		<= NextAction \
+		<= Manager \
+
 $mol_locale_select $mol_select
 
 $mol_labeler $mol_list
@@ -1077,9 +1162,6 @@ $mol_labeler $mol_list
 		<= Content $mol_view
 			minimal_height 24
 			sub <= content /
-
-$mol_button_major $mol_button_minor
-	theme \$mol_theme_base
 
 $bog_bhelper_app_settings $mol_page
 	title @ \Settings
@@ -1105,6 +1187,7 @@ $bog_bhelper_app_settings $mol_page
 	install_already_installed @ \The app is already installed or installation is not supported.
 
 $bog_bhelper_app $mol_book2_catalog
+	realm <= Realm $hyoo_crus_glob
 	Placeholder null
 	Menu_logo $mol_image
 		uri \bog/bhelper/assets/favicon_dark.ico
@@ -1115,7 +1198,8 @@ $bog_bhelper_app $mol_book2_catalog
 	plugins /
 		<= Theme $bog_theme_auto
 	spreads *
-		\	
+		\
 			<= Bot $gd_bot
 		helpers <= Helpers $bog_bhelper_app_helpers
+		crm <= Crm $bog_bhelper_app_crm
 		settings <= Settings $bog_bhelper_app_settings
