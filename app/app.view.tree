@@ -21,6 +21,7 @@ $bog_bhelper_app $mol_book2_catalog
 				Lights null
 		prof <= Prof $bog_bhelper_app_prof
 		crm <= Crm $bog_bhelper_app_crm
+		vaka <= Vaka $bog_bhelper_app_vaka
 		settings <= Settings $bog_bhelper_app_settings
 		lk <= Lk $bog_lk
 			Head null
