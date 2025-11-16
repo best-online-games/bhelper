@@ -60,7 +60,7 @@ namespace $.$$ {
 				this.$.$mol_state_session?.value('gd_profession', title)
 			} catch {}
 			this.$.$mol_state_arg.go({
-				'': '\t',
+				'': '',
 				prompt: 'привет',
 			})
 		}
