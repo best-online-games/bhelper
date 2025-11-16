@@ -1,7 +1,7 @@
 namespace $.$$ {
 
 	export class $bog_bhelper_crm_profile extends $hyoo_crus_dict.with({
-		Clients: $hyoo_crus_list_ref( () => $bog_bhelper_crm_client )
+		Clients: $hyoo_crus_list_ref_to( () => $bog_bhelper_crm_client ),
 	}) {}
 
 	export class $bog_bhelper_crm_client extends $hyoo_crus_dict.with({
@@ -19,6 +19,7 @@ namespace $.$$ {
 		Telegram: $hyoo_crus_atom_str,
 		WhatsApp: $hyoo_crus_atom_str,
 		PreferredChannel: $hyoo_crus_atom_str,  // phone/email/tg/wa
+		ManagerName: $hyoo_crus_atom_str,
 
 		// Бизнес-метрики
 		City: $hyoo_crus_atom_str,

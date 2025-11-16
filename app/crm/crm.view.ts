@@ -1,10 +1,9 @@
 namespace $.$$ {
-
     export class $bog_bhelper_app_crm extends $.$bog_bhelper_app_crm {
 
         @ $mol_mem
         realm() {
-            return $hyoo_crus_realm
+            return this.$.$hyoo_crus_glob
         }
 
         @ $mol_mem
@@ -41,6 +40,7 @@ namespace $.$$ {
             this.status_filter('')
             this.segment_filter('')
             this.manager_filter('')
+            return ''
         }
 
         @ $mol_mem
@@ -53,7 +53,7 @@ namespace $.$$ {
         segment_options() {
             const segments = new Set<string>()
             this.clients_all().forEach( c => {
-                const seg = c.Segment(null)?.str() ?? ''
+                const seg = c.Segment(null)?.val() ?? ''
                 if( seg ) segments.add(seg)
             })
             return [ '', ...segments ]
@@ -63,7 +63,7 @@ namespace $.$$ {
         manager_options() {
             const managers = new Set<string>()
             this.clients_all().forEach( c => {
-                const m = c.ManagerName(null)?.str() ?? ''
+                const m = c.ManagerName(null)?.val() ?? ''
                 if( m ) managers.add(m)
             })
             return [ '', ...managers ]
@@ -78,8 +78,8 @@ namespace $.$$ {
 
             return this.clients_all().filter( client => {
 
-                const name = client.Name(null)?.str() ?? ''
-                const company = client.Company(null)?.str() ?? ''
+                const name = client.Name(null)?.val() ?? ''
+                const company = client.Company(null)?.val() ?? ''
                 const tags = client.TagsCsv(null)?.text() ?? ''
 
                 if( q ) {
@@ -87,9 +87,9 @@ namespace $.$$ {
                     if( !hay.includes(q) ) return false
                 }
 
-                if( status && client.Status(null)?.str() !== status ) return false
-                if( segment && client.Segment(null)?.str() !== segment ) return false
-                if( manager && client.ManagerName(null)?.str() !== manager ) return false
+                if( status && client.Status(null)?.val() !== status ) return false
+                if( segment && client.Segment(null)?.val() !== segment ) return false
+                if( manager && client.ManagerName(null)?.val() !== manager ) return false
 
                 return true
             })
@@ -117,6 +117,19 @@ namespace $.$$ {
             return list.slice(from, to).map( c => c.ref().description! )
         }
 
+        @ $mol_mem_key
+        client_row( id: string ) {
+            const row = new this.$.$bog_bhelper_app_crm_client_row
+            ;( row as any ).$ = this.$
+            row.client_id( id )
+            return row
+        }
+
+        @ $mol_mem
+        client_rows() {
+            return this.client_ids_page().map( id => this.client_row( id ) )
+        }
+
         @ $mol_mem
         page_has_prev() {
             return this.page() > 0
@@ -130,11 +143,13 @@ namespace $.$$ {
         @ $mol_action
         page_prev() {
             if( this.page_has_prev() ) this.page( this.page() - 1 )
+            return ''
         }
 
         @ $mol_action
         page_next() {
             if( this.page_has_next() ) this.page( this.page() + 1 )
+            return ''
         }
 
         @ $mol_mem
@@ -145,7 +160,7 @@ namespace $.$$ {
             return `Показано ${total} клиентов • Стр. ${page} из ${count}`
         }
 
-        @ $mol_mems
+        @ $mol_mem_key
         client( id: string ) {
             const ref = $hyoo_crus_ref( id )
             return this.realm().Node( ref, $bog_bhelper_crm_client )
@@ -154,73 +169,78 @@ namespace $.$$ {
         @ $mol_action
         client_add() {
             const list = this.profile()?.Clients(null)
-            if( !list ) return
+            if( !list ) return ''
 
-            const client = list.remote_make({ '': $hyoo_crus_rank_get })! as $bog_bhelper_crm_client
+            const client = list.remote_make({ '': $hyoo_crus_rank_read })! as $bog_bhelper_crm_client
 
             client.Name(null)!.val('Новый клиент')
             client.Status(null)!.val('new')
             client.CreatedAt(null)!.val(new Date().toISOString())
             client.UpdatedAt(null)!.val(new Date().toISOString())
 
-            return client
+            return client.ref().description || ''
         }
     }
 
 
     export class $bog_bhelper_app_crm_client_row extends $.$bog_bhelper_app_crm_client_row {
 
-        client_id() { return '' }
+        private _client_id = ''
+
+        client_id(next?: string) {
+            if( next !== undefined ) this._client_id = next
+            return this._client_id
+        }
 
         @ $mol_mem
         client() {
             const id = this.client_id()
             const ref = $hyoo_crus_ref( id )
-            return this.$.$hyoo_crus_realm.Node( ref, $bog_bhelper_crm_client )
+            return this.$.$hyoo_crus_glob.Node( ref, $bog_bhelper_crm_client )
         }
 
         @ $mol_mem
         Name() {
-            return this.client().Name(null)?.str() ?? '—'
+            return this.client().Name(null)?.val() ?? '—'
         }
 
         @ $mol_mem
         Company() {
-            const v = this.client().Company(null)?.str() ?? ''
+            const v = this.client().Company(null)?.val() ?? ''
             return v || ''
         }
 
         @ $mol_mem
         Status() {
-            return this.client().Status(null)?.str() ?? '—'
+            return this.client().Status(null)?.val() ?? '—'
         }
 
         @ $mol_mem
         Segment() {
-            return this.client().Segment(null)?.str() ?? '—'
+            return this.client().Segment(null)?.val() ?? '—'
         }
 
         @ $mol_mem
         City() {
-            return this.client().City(null)?.str() ?? '—'
+            return this.client().City(null)?.val() ?? '—'
         }
 
         @ $mol_mem
         LastContact() {
-            const dt = this.client().LastContactAt(null)?.str()
+            const dt = this.client().LastContactAt(null)?.val()
             return dt ? dt.slice(0, 10) : '—'
         }
 
         @ $mol_mem
         NextAction() {
             const txt = this.client().AiNextStep(null)?.text()
-                || this.client().NextActionAt(null)?.str()
+                || this.client().NextActionAt(null)?.val()
             return txt || '—'
         }
 
         @ $mol_mem
         Manager() {
-            return this.client().ManagerName(null)?.str() ?? '—'
+            return this.client().ManagerName(null)?.val() ?? '—'
         }
 
     }

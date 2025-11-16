@@ -1,4 +1,6 @@
 $bog_bhelper_app_crm $mol_page
+	page_has_prev false
+	page_has_next false
 	title @ \CRM
 	sub /
 		<= Header $mol_row
@@ -17,15 +19,15 @@ $bog_bhelper_app_crm $mol_page
 					hint @ \Поиск по имени, компании или тегам
 					value? <=> search? \
 				<= StatusFilter $mol_select
-					label @ \Статус
+					hint @ \Статус
 					options? <= status_options? /
 					value? <=> status_filter? \
 				<= SegmentFilter $mol_select
-					label @ \Сегмент
+					hint @ \Сегмент
 					options? <= segment_options? /
 					value? <=> segment_filter? \
 				<= ManagerFilter $mol_select
-					label @ \Менеджер
+					hint @ \Менеджер
 					options? <= manager_options? /
 					value? <=> manager_filter? \
 				<= ResetFilters $mol_button_minor
@@ -43,20 +45,18 @@ $bog_bhelper_app_crm $mol_page
 						<= Col_next_action @ \Следующий шаг
 						<= Col_manager @ \Менеджер
 				<= Table $mol_list
-					rows <= client_ids_page? /
-					Row <= ClientRow $bog_bhelper_app_crm_client_row
-						client_id <= row? \
+					rows <= client_rows /
 				<= Pagination $mol_row
 					sub /
 						<= PageInfo $mol_view
 							sub /
 								<= page_info_text \
 						<= PrevPage $mol_button_minor
-							enabled? <= page_has_prev? \
+							enabled? <= page_has_prev
 							sub / <= prev_label @ \Назад
 							click? <=> page_prev? \
 						<= NextPage $mol_button_minor
-							enabled? <= page_has_next? \
+							enabled? <= page_has_next
 							sub / <= next_label @ \Вперёд
 							click? <=> page_next? \
 

@@ -1,5 +1,5 @@
 $bog_bhelper_app $mol_book2_catalog
-	realm / <= Realm $hyoo_crus_realm
+	realm <= Realm $hyoo_crus_glob
 	Placeholder null
 	Menu_logo $mol_image
 		uri \bog/bhelper/assets/favicon_dark.ico
