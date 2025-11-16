@@ -8874,15 +8874,33 @@ declare namespace $ {
 
 //# sourceMappingURL=prof.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $bog_bhelper_app_prof extends $.$bog_bhelper_app_prof {
+    interface HHProfRole {
+        id: string;
+        name: string;
+    }
+    interface HHProfCategory {
+        id: string;
+        name: string;
+        roles: HHProfRole[];
+    }
+    type HHProfFlat = {
+        id: string;
+        name: string;
+        category: string;
+    };
+    export class $bog_bhelper_app_prof extends $.$bog_bhelper_app_prof {
+        private fallback_helpers;
+        roles_data(): HHProfCategory[];
+        roles(): HHProfFlat[];
         query(next?: string): string;
-        helper_titles(): readonly string[];
+        filtered_roles(): HHProfFlat[];
         helper_title(id: number): string;
-        helper_descriptions(): readonly string[];
         helper_description(id: number): string;
+        Helper_item_uri(index: number): string;
         Helpers_gallery_items(): $.$mol_card[];
         Helper_item_open(index: number, event?: Event): void;
     }
+    export {};
 }
 
 declare namespace $.$$ {
@@ -9586,6 +9604,271 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_icon_magnify extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=magnify.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_bar extends $mol_view {
+	}
+	
+}
+
+//# sourceMappingURL=bar.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_information extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=information.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_information_outline extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=outline.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_link__title_bog_bhelper_app_vaka_item_1 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_vaka_item['title'] >
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__uri_bog_bhelper_app_vaka_item_2 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_vaka_item['url'] >
+		,
+		ReturnType< $mol_link['uri'] >
+	>
+	type $mol_text__text_bog_bhelper_app_vaka_item_3 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_vaka_item['meta'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_text__text_bog_bhelper_app_vaka_item_4 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_vaka_item['salary'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_text__text_bog_bhelper_app_vaka_item_5 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_vaka_item['snippet'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	export class $bog_bhelper_app_vaka_item extends $mol_card {
+		title( next?: string ): string
+		url( next?: string ): string
+		Title( ): $mol_link
+		meta( next?: string ): string
+		Meta( ): $mol_text
+		salary( next?: string ): string
+		Salary( ): $mol_text
+		snippet( next?: string ): string
+		Snippet( ): $mol_text
+		vacancy( ): any
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=item.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_bhelper_app_vaka_item extends $.$bog_bhelper_app_vaka_item {
+        vacancy(next?: any): any;
+        title(): string;
+        url(): string;
+        meta(): string;
+        salary(): string;
+        currency_symbol(code: string): string;
+        snippet(): string;
+        clean_html(text: string): string;
+    }
+}
+
+declare namespace $ {
+
+	type $mol_string__hint_bog_bhelper_app_vaka_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_string__value_bog_bhelper_app_vaka_2 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_vaka['query'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_select__options_bog_bhelper_app_vaka_3 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_select['options'] >
+	>
+	type $mol_select__value_bog_bhelper_app_vaka_4 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_vaka['area_name'] >
+		,
+		ReturnType< $mol_select['value'] >
+	>
+	type $mol_button_minor__hint_bog_bhelper_app_vaka_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['hint'] >
+	>
+	type $mol_button_minor__click_bog_bhelper_app_vaka_6 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_vaka['search'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__sub_bog_bhelper_app_vaka_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_bar__sub_bog_bhelper_app_vaka_8 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_bar['sub'] >
+	>
+	type $mol_status__status_bog_bhelper_app_vaka_9 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_vaka['loading_status'] >
+		,
+		ReturnType< $mol_status['status'] >
+	>
+	type $mol_text__text_bog_bhelper_app_vaka_10 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_vaka['stats_message'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_bar__sub_bog_bhelper_app_vaka_11 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_bar['sub'] >
+	>
+	type $mol_list__rows_bog_bhelper_app_vaka_12 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_vaka['vacancy_rows'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_text__text_bog_bhelper_app_vaka_13 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_vaka['empty_message'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_view__sub_bog_bhelper_app_vaka_14 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_link__uri_bog_bhelper_app_vaka_15 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['uri'] >
+	>
+	type $mol_link__title_bog_bhelper_app_vaka_16 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	export class $bog_bhelper_app_vaka extends $mol_page {
+		query( next?: string ): string
+		Query( ): $mol_string
+		area_name( next?: string ): string
+		Area( ): $mol_select
+		Search_icon( ): $mol_icon_magnify
+		Search( ): $mol_button_minor
+		Tools( ): $mol_bar
+		loading_status( ): any
+		Status( ): $mol_status
+		stats_message( ): string
+		Stats_text( ): $mol_text
+		Stats_bar( ): $mol_bar
+		vacancy_rows( ): readonly(any)[]
+		Results( ): $mol_list
+		Empty_icon( ): $mol_icon_information_outline
+		empty_message( ): string
+		Empty_message( ): $mol_text
+		Empty( ): $mol_view
+		Credits( ): $mol_link
+		search( next?: any ): any
+		title( ): string
+		tools( ): readonly(any)[]
+		body( ): readonly(any)[]
+		foot( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=vaka.view.tree.d.ts.map
+declare namespace $.$$ {
+    interface HHVacancy {
+        id: string;
+        name: string;
+        alternate_url: string;
+        salary: {
+            from: number | null;
+            to: number | null;
+            currency: string;
+            gross?: boolean;
+        } | null;
+        employer: {
+            name: string;
+            alternate_url?: string;
+        };
+        area: {
+            name: string;
+        };
+        snippet: {
+            requirement: string | null;
+            responsibility: string | null;
+        } | null;
+        published_at: string;
+        schedule?: {
+            name: string;
+        };
+        experience?: {
+            name: string;
+        };
+    }
+    interface HHSearchResponse {
+        items: HHVacancy[];
+        found: number;
+        pages: number;
+        page: number;
+        per_page: number;
+    }
+    export class $bog_bhelper_app_vaka extends $.$bog_bhelper_app_vaka {
+        query(next?: string): string;
+        area_name(next?: string): string;
+        area_id(): string;
+        loading_status(next?: any): any;
+        update_trigger(next?: number): number;
+        search(next?: any): any;
+        vacancies_data(): HHSearchResponse | null;
+        vacancy_ids(): string[];
+        vacancy(id: string): HHVacancy | null;
+        vacancy_rows(): readonly any[];
+        Row(id: string): $bog_bhelper_app_vaka_item;
+        empty_message(): string;
+        stats_message(): string;
+    }
+    export {};
+}
+
+declare namespace $.$$ {
 }
 
 declare namespace $ {
@@ -11099,6 +11382,7 @@ declare namespace $ {
 		Bot( ): $gd_bot
 		Prof( ): $bog_bhelper_app_prof
 		Crm( ): $bog_bhelper_app_crm
+		Vaka( ): $bog_bhelper_app_vaka
 		Settings( ): $bog_bhelper_app_settings
 		Lk( ): $bog_lk
 		realm( ): ReturnType< $bog_bhelper_app['Realm'] >
@@ -11111,6 +11395,7 @@ declare namespace $ {
 			'': ReturnType< $bog_bhelper_app['Bot'] >,
 			'prof': ReturnType< $bog_bhelper_app['Prof'] >,
 			'crm': ReturnType< $bog_bhelper_app['Crm'] >,
+			'vaka': ReturnType< $bog_bhelper_app['Vaka'] >,
 			'settings': ReturnType< $bog_bhelper_app['Settings'] >,
 			'lk': ReturnType< $bog_bhelper_app['Lk'] >,
 		}) 

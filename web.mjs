@@ -19049,34 +19049,57 @@ var $;
     var $$;
     (function ($$) {
         class $bog_bhelper_app_prof extends $.$bog_bhelper_app_prof {
+            fallback_helpers() {
+                return [
+                    { id: 'lawyer', name: 'Личный юрист', category: 'Юридические услуги' },
+                    { id: 'accountant', name: 'Личный бухгалтер', category: 'Финансы' },
+                    { id: 'finance', name: 'Финансовый консультант', category: 'Финансы' },
+                    { id: 'career', name: 'Карьерный коуч', category: 'Карьерное развитие' },
+                ];
+            }
+            roles_data() {
+                const url = 'https://api.hh.ru/professional_roles';
+                try {
+                    const data = this.$.$mol_fetch.json(url, { cache: 'force-cache' });
+                    return data?.categories ?? [];
+                }
+                catch (error) {
+                    console.warn('[prof] Не удалось загрузить роли HH.ru', error);
+                    return [];
+                }
+            }
+            roles() {
+                const categories = this.roles_data();
+                if (!categories.length)
+                    return this.fallback_helpers();
+                return categories.flatMap(cat => (cat.roles ?? []).map(role => ({
+                    id: role.id,
+                    name: role.name,
+                    category: cat.name,
+                })));
+            }
             query(next) {
                 return next ?? '';
             }
-            helper_titles() {
-                return ['Личный юрист', 'Личный бухгалтер', 'Финансовый консультант', 'Карьерный коуч'];
+            filtered_roles() {
+                const q = this.query().toLowerCase().trim();
+                const roles = this.roles();
+                if (!q)
+                    return roles;
+                return roles.filter(role => role.name.toLowerCase().includes(q) || role.category.toLowerCase().includes(q));
             }
             helper_title(id) {
-                return this.helper_titles()[id] ?? '';
-            }
-            helper_descriptions() {
-                return [
-                    'Поможет с договорами, спорами и правами.',
-                    'Разберётся с налогами, отчётами и бюджетом.',
-                    'Поддержит в вопросах инвестиций и планирования.',
-                    'Поможет спланировать карьеру и рост в профессии.',
-                ];
+                return this.filtered_roles()[id]?.name ?? '';
             }
             helper_description(id) {
-                return this.helper_descriptions()[id] ?? '';
+                const role = this.filtered_roles()[id];
+                return role ? `Категория: ${role.category}` : '';
+            }
+            Helper_item_uri(index) {
+                return '#';
             }
             Helpers_gallery_items() {
-                const query = this.query().toLowerCase().trim();
-                const titles = this.helper_titles();
-                const indices = titles
-                    .map((title, index) => ({ title, index }))
-                    .filter(item => !query || item.title.toLowerCase().includes(query))
-                    .map(item => item.index);
-                return indices.map(i => this.Helper_item(i));
+                return this.filtered_roles().map((_, i) => this.Helper_item(i));
             }
             Helper_item_open(index, event) {
                 event?.preventDefault();
@@ -19105,13 +19128,16 @@ var $;
         }
         __decorate([
             $mol_mem
+        ], $bog_bhelper_app_prof.prototype, "roles_data", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_prof.prototype, "roles", null);
+        __decorate([
+            $mol_mem
         ], $bog_bhelper_app_prof.prototype, "query", null);
         __decorate([
             $mol_mem
-        ], $bog_bhelper_app_prof.prototype, "helper_titles", null);
-        __decorate([
-            $mol_mem
-        ], $bog_bhelper_app_prof.prototype, "helper_descriptions", null);
+        ], $bog_bhelper_app_prof.prototype, "filtered_roles", null);
         __decorate([
             $mol_mem
         ], $bog_bhelper_app_prof.prototype, "Helpers_gallery_items", null);
@@ -19131,6 +19157,7 @@ var $;
         $mol_style_define($bog_bhelper_app_prof, {
             Helper_item: {
                 padding: $mol_gap.block,
+                overflow: 'hidden',
                 flex: {
                     grow: 1,
                     shrink: 1,
@@ -19154,15 +19181,22 @@ var $;
             Helper_title_view: {
                 whiteSpace: 'normal',
                 wordBreak: 'break-word',
+                overflowWrap: 'anywhere',
+                maxWidth: '100%',
+                fontWeight: '700',
+                fontSize: '1.05rem',
             },
             Helper_descr_view: {
                 whiteSpace: 'normal',
                 wordBreak: 'break-word',
+                overflowWrap: 'anywhere',
+                maxWidth: '100%',
             },
             Helper_link: {
-                display: "flex",
-                flexWrap: "wrap"
-            }
+                display: 'flex',
+                flexWrap: 'wrap',
+                width: '100%',
+            },
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -20404,6 +20438,671 @@ var $;
             gap: $mol_gap.block,
         },
     });
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_magnify) = class $mol_icon_magnify extends ($.$mol_icon) {
+		path(){
+			return "M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_bar) = class $mol_bar extends ($.$mol_view) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/bar/bar.view.css", "[mol_bar] {\n\tdisplay: flex;\n\t/* box-shadow: inset 0 0 0 1px var(--mol_theme_line); */\n\tborder-radius: var(--mol_gap_round);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_icon_information) = class $mol_icon_information extends ($.$mol_icon) {
+		path(){
+			return "M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_information_outline) = class $mol_icon_information_outline extends ($.$mol_icon) {
+		path(){
+			return "M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$bog_bhelper_app_vaka) = class $bog_bhelper_app_vaka extends ($.$mol_page) {
+		query(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Query(){
+			const obj = new this.$.$mol_string();
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_bhelper_app_vaka_Query_hint")));
+			(obj.value) = (next) => ((this.query(next)));
+			return obj;
+		}
+		area_name(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Area(){
+			const obj = new this.$.$mol_select();
+			(obj.options) = () => ([
+				"Россия", 
+				"Москва", 
+				"Санкт-Петербург"
+			]);
+			(obj.value) = (next) => ((this.area_name(next)));
+			return obj;
+		}
+		Search_icon(){
+			const obj = new this.$.$mol_icon_magnify();
+			return obj;
+		}
+		Search(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_bhelper_app_vaka_Search_hint")));
+			(obj.click) = (next) => ((this.search(next)));
+			(obj.sub) = () => ([(this.Search_icon())]);
+			return obj;
+		}
+		Tools(){
+			const obj = new this.$.$mol_bar();
+			(obj.sub) = () => ([
+				(this.Query()), 
+				(this.Area()), 
+				(this.Search())
+			]);
+			return obj;
+		}
+		loading_status(){
+			return null;
+		}
+		Status(){
+			const obj = new this.$.$mol_status();
+			(obj.status) = () => ((this.loading_status()));
+			return obj;
+		}
+		stats_message(){
+			return "";
+		}
+		Stats_text(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.stats_message()));
+			return obj;
+		}
+		Stats_bar(){
+			const obj = new this.$.$mol_bar();
+			(obj.sub) = () => ([(this.Stats_text())]);
+			return obj;
+		}
+		vacancy_rows(){
+			return [];
+		}
+		Results(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ((this.vacancy_rows()));
+			return obj;
+		}
+		Empty_icon(){
+			const obj = new this.$.$mol_icon_information_outline();
+			return obj;
+		}
+		empty_message(){
+			return "";
+		}
+		Empty_message(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.empty_message()));
+			return obj;
+		}
+		Empty(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Empty_icon()), (this.Empty_message())]);
+			return obj;
+		}
+		Credits(){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ("https://api.hh.ru");
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_bhelper_app_vaka_Credits_title")));
+			return obj;
+		}
+		search(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		title(){
+			return (this.$.$mol_locale.text("$bog_bhelper_app_vaka_title"));
+		}
+		tools(){
+			return [(this.Tools())];
+		}
+		body(){
+			return [
+				(this.Status()), 
+				(this.Stats_bar()), 
+				(this.Results()), 
+				(this.Empty())
+			];
+		}
+		foot(){
+			return [(this.Credits())];
+		}
+	};
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "query"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "Query"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "area_name"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "Area"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "Search_icon"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "Search"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "Tools"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "Status"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "Stats_text"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "Stats_bar"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "Results"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "Empty_icon"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "Empty_message"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "Empty"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "Credits"));
+	($mol_mem(($.$bog_bhelper_app_vaka.prototype), "search"));
+
+
+;
+	($.$bog_bhelper_app_vaka_item) = class $bog_bhelper_app_vaka_item extends ($.$mol_card) {
+		title(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		url(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Title(){
+			const obj = new this.$.$mol_link();
+			(obj.title) = () => ((this.title()));
+			(obj.uri) = () => ((this.url()));
+			return obj;
+		}
+		meta(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Meta(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.meta()));
+			return obj;
+		}
+		salary(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Salary(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.salary()));
+			return obj;
+		}
+		snippet(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Snippet(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.snippet()));
+			return obj;
+		}
+		vacancy(){
+			return null;
+		}
+		sub(){
+			return [
+				(this.Title()), 
+				(this.Meta()), 
+				(this.Salary()), 
+				(this.Snippet())
+			];
+		}
+	};
+	($mol_mem(($.$bog_bhelper_app_vaka_item.prototype), "title"));
+	($mol_mem(($.$bog_bhelper_app_vaka_item.prototype), "url"));
+	($mol_mem(($.$bog_bhelper_app_vaka_item.prototype), "Title"));
+	($mol_mem(($.$bog_bhelper_app_vaka_item.prototype), "meta"));
+	($mol_mem(($.$bog_bhelper_app_vaka_item.prototype), "Meta"));
+	($mol_mem(($.$bog_bhelper_app_vaka_item.prototype), "salary"));
+	($mol_mem(($.$bog_bhelper_app_vaka_item.prototype), "Salary"));
+	($mol_mem(($.$bog_bhelper_app_vaka_item.prototype), "snippet"));
+	($mol_mem(($.$bog_bhelper_app_vaka_item.prototype), "Snippet"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $bog_bhelper_app_vaka_item extends $.$bog_bhelper_app_vaka_item {
+            vacancy(next) {
+                return next ?? null;
+            }
+            title() {
+                const vacancy = this.vacancy();
+                return vacancy?.name ?? 'Без названия';
+            }
+            url() {
+                const vacancy = this.vacancy();
+                return vacancy?.alternate_url ?? '#';
+            }
+            meta() {
+                const vacancy = this.vacancy();
+                if (!vacancy)
+                    return '';
+                const parts = [];
+                if (vacancy.employer?.name) {
+                    parts.push(`🏢 ${vacancy.employer.name}`);
+                }
+                if (vacancy.area?.name) {
+                    parts.push(`📍 ${vacancy.area.name}`);
+                }
+                if (vacancy.experience?.name) {
+                    parts.push(`💼 ${vacancy.experience.name}`);
+                }
+                if (vacancy.schedule?.name) {
+                    parts.push(`⏰ ${vacancy.schedule.name}`);
+                }
+                return parts.join(' • ');
+            }
+            salary() {
+                const vacancy = this.vacancy();
+                if (!vacancy?.salary)
+                    return '💰 Зарплата не указана';
+                const { from, to, currency, gross } = vacancy.salary;
+                const curr = this.currency_symbol(currency);
+                const taxInfo = gross ? ' (до вычета налогов)' : '';
+                if (from && to) {
+                    return `💰 ${from.toLocaleString('ru-RU')} - ${to.toLocaleString('ru-RU')} ${curr}${taxInfo}`;
+                }
+                else if (from) {
+                    return `💰 от ${from.toLocaleString('ru-RU')} ${curr}${taxInfo}`;
+                }
+                else if (to) {
+                    return `💰 до ${to.toLocaleString('ru-RU')} ${curr}${taxInfo}`;
+                }
+                return '💰 Зарплата не указана';
+            }
+            currency_symbol(code) {
+                const symbols = {
+                    RUR: '₽',
+                    RUB: '₽',
+                    USD: '$',
+                    EUR: '€',
+                    KZT: '₸',
+                    UAH: '₴',
+                    BYR: 'Br',
+                    BYN: 'Br',
+                    AZN: '₼',
+                    UZS: 'сўм',
+                    GEL: '₾',
+                };
+                return symbols[code] ?? code;
+            }
+            snippet() {
+                const vacancy = this.vacancy();
+                if (!vacancy?.snippet)
+                    return '';
+                const parts = [];
+                if (vacancy.snippet.requirement) {
+                    const req = this.clean_html(vacancy.snippet.requirement);
+                    if (req) {
+                        parts.push(`📋 Требования:\n${req}`);
+                    }
+                }
+                if (vacancy.snippet.responsibility) {
+                    const resp = this.clean_html(vacancy.snippet.responsibility);
+                    if (resp) {
+                        parts.push(`✅ Обязанности:\n${resp}`);
+                    }
+                }
+                return parts.join('\n\n');
+            }
+            clean_html(text) {
+                if (!text)
+                    return '';
+                return (text
+                    .replace(/<highlighttext>/gi, '**')
+                    .replace(/<\/highlighttext>/gi, '**')
+                    .replace(/<[^>]+>/g, '')
+                    .replace(/&nbsp;/g, ' ')
+                    .replace(/&quot;/g, '"')
+                    .replace(/&amp;/g, '&')
+                    .replace(/&lt;/g, '<')
+                    .replace(/&gt;/g, '>')
+                    .replace(/\s+/g, ' ')
+                    .trim());
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka_item.prototype, "title", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka_item.prototype, "url", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka_item.prototype, "meta", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka_item.prototype, "salary", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka_item.prototype, "snippet", null);
+        $$.$bog_bhelper_app_vaka_item = $bog_bhelper_app_vaka_item;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const AREA_MAP = {
+            Россия: '113',
+            Москва: '1',
+            'Санкт-Петербург': '2',
+        };
+        class $bog_bhelper_app_vaka extends $.$bog_bhelper_app_vaka {
+            query(next) {
+                return next ?? 'программист';
+            }
+            area_name(next) {
+                return next ?? 'Россия';
+            }
+            area_id() {
+                return AREA_MAP[this.area_name()] ?? '113';
+            }
+            loading_status(next) {
+                return next ?? null;
+            }
+            update_trigger(next) {
+                return next ?? 0;
+            }
+            search(next) {
+                if (next !== undefined) {
+                    this.update_trigger(this.update_trigger() + 1);
+                }
+                return next;
+            }
+            vacancies_data() {
+                this.update_trigger();
+                const query = this.query();
+                const area = this.area_id();
+                if (!query || !query.trim()) {
+                    return { items: [], found: 0, pages: 0, page: 0, per_page: 0 };
+                }
+                const params = new URLSearchParams({
+                    text: query.trim(),
+                    area: area,
+                    per_page: '50',
+                    page: '0',
+                });
+                const url = `https://api.hh.ru/vacancies?${params.toString()}`;
+                try {
+                    this.loading_status('⏳ Загрузка...');
+                    console.log('🔍 [FETCH] Запрос вакансий:', {
+                        url,
+                        query: query.trim(),
+                        area: this.area_name(),
+                        cache: 'force-cache',
+                        timestamp: new Date().toISOString(),
+                    });
+                    const startTime = performance.now();
+                    const response = this.$.$mol_fetch.json(url, {
+                        cache: 'force-cache',
+                    });
+                    const endTime = performance.now();
+                    const duration = Math.round(endTime - startTime);
+                    console.log('✅ [CACHE] Получен ответ:', {
+                        items: response.items.length,
+                        found: response.found,
+                        duration: `${duration}ms`,
+                        source: duration < 50 ? '💾 from cache' : '🌐 from network',
+                        timestamp: new Date().toISOString(),
+                    });
+                    this.loading_status(null);
+                    return response;
+                }
+                catch (error) {
+                    if (error && typeof error === 'object' && 'message' in error) {
+                        const errMsg = error.message || '';
+                        if (!errMsg.includes('aborted')) {
+                            console.error('❌ [FETCH] Ошибка загрузки с API:', {
+                                url,
+                                query: query.trim(),
+                                error: errMsg,
+                                timestamp: new Date().toISOString(),
+                            });
+                        }
+                    }
+                    this.loading_status(null);
+                    return { items: [], found: 0, pages: 0, page: 0, per_page: 0 };
+                }
+            }
+            vacancy_ids() {
+                try {
+                    const data = this.vacancies_data();
+                    if (!data || !data.items)
+                        return [];
+                    return data.items.map(v => v.id);
+                }
+                catch (error) {
+                    console.error('❌ Ошибка при загрузке вакансий:', error);
+                    return [];
+                }
+            }
+            vacancy(id) {
+                try {
+                    const data = this.vacancies_data();
+                    if (!data || !data.items)
+                        return null;
+                    return data.items.find(v => v.id === id) ?? null;
+                }
+                catch (error) {
+                    console.error('❌ Ошибка при получении вакансии:', error);
+                    return null;
+                }
+            }
+            vacancy_rows() {
+                const ids = this.vacancy_ids();
+                return ids.map(id => this.Row(id));
+            }
+            Row(id) {
+                const row = new this.$.$bog_bhelper_app_vaka_item();
+                row.vacancy = () => this.vacancy(id);
+                return row;
+            }
+            empty_message() {
+                const data = this.vacancies_data();
+                const query = this.query();
+                if (!query || !query.trim()) {
+                    return '👋 Введите поисковый запрос и нажмите "Найти" для поиска вакансий';
+                }
+                if (!data || data.items.length === 0) {
+                    return `😔 По запросу "${query}" ничего не найдено. Попробуйте изменить запрос или выбрать другой регион.`;
+                }
+                return '';
+            }
+            stats_message() {
+                const data = this.vacancies_data();
+                if (!data || data.items.length === 0)
+                    return '';
+                return `📊 Найдено: ${data.found.toLocaleString('ru-RU')} • Показано: ${data.items.length}`;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka.prototype, "query", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka.prototype, "area_name", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka.prototype, "area_id", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka.prototype, "loading_status", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka.prototype, "update_trigger", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka.prototype, "vacancies_data", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka.prototype, "vacancy_ids", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_bhelper_app_vaka.prototype, "vacancy", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka.prototype, "vacancy_rows", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_bhelper_app_vaka.prototype, "Row", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka.prototype, "empty_message", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_vaka.prototype, "stats_message", null);
+        $$.$bog_bhelper_app_vaka = $bog_bhelper_app_vaka;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_bhelper_app_vaka, {
+            flex: {
+                grow: 1,
+            },
+            Tools: {
+                padding: $mol_gap.block,
+                flex: {
+                    wrap: 'wrap',
+                },
+                gap: $mol_gap.text,
+            },
+            Query: {
+                flex: {
+                    grow: 1,
+                },
+                minWidth: '200px',
+            },
+            Area: {
+                minWidth: '150px',
+            },
+            Results: {
+                gap: $mol_gap.block,
+                padding: $mol_gap.block,
+            },
+            Credits: {
+                padding: $mol_gap.text,
+                textAlign: 'center',
+                opacity: 0.7,
+            },
+            Empty: {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: $mol_gap.block,
+                minHeight: '300px',
+                gap: $mol_gap.block,
+            },
+            Empty_icon: {
+                fontSize: '4rem',
+                color: $mol_theme.shade,
+                opacity: 0.5,
+            },
+            Empty_message: {
+                textAlign: 'center',
+                color: $mol_theme.shade,
+                fontSize: '1.1rem',
+                maxWidth: '500px',
+                lineHeight: '1.6',
+            },
+        });
+        $mol_style_define($bog_bhelper_app_vaka_item, {
+            display: 'flex',
+            flexDirection: 'column',
+            padding: $mol_gap.block,
+            gap: $mol_gap.text,
+            background: {
+                color: $mol_theme.card,
+            },
+            border: {
+                radius: '8px',
+            },
+            boxShadow: `0 2px 12px rgba(0, 0, 0, 0.08)`,
+            transition: 'all 0.2s ease',
+            ':hover': {
+                boxShadow: `0 4px 16px rgba(0, 0, 0, 0.12)`,
+                transform: 'translateY(-2px)',
+            },
+            Title: {
+                fontSize: '1.25rem',
+                fontWeight: '600',
+                textDecoration: 'none',
+                lineHeight: '1.4',
+                ':hover': {
+                    textDecoration: 'underline',
+                },
+            },
+            Meta: {
+                fontSize: '0.9rem',
+                lineHeight: '1.5',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '0.5rem',
+            },
+            Salary: {
+                fontWeight: '600',
+                fontSize: '1.1rem',
+                padding: [$mol_gap.text, 0],
+            },
+            Snippet: {
+                fontSize: '0.95rem',
+                lineHeight: '1.6',
+                whiteSpace: 'pre-wrap',
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
 ;
@@ -22330,6 +23029,10 @@ var $;
 			const obj = new this.$.$bog_bhelper_app_crm();
 			return obj;
 		}
+		Vaka(){
+			const obj = new this.$.$bog_bhelper_app_vaka();
+			return obj;
+		}
 		Settings(){
 			const obj = new this.$.$bog_bhelper_app_settings();
 			return obj;
@@ -22365,6 +23068,7 @@ var $;
 				"": (this.Bot()), 
 				"prof": (this.Prof()), 
 				"crm": (this.Crm()), 
+				"vaka": (this.Vaka()), 
 				"settings": (this.Settings()), 
 				"lk": (this.Lk())
 			};
@@ -22376,6 +23080,7 @@ var $;
 	($mol_mem(($.$bog_bhelper_app.prototype), "Bot"));
 	($mol_mem(($.$bog_bhelper_app.prototype), "Prof"));
 	($mol_mem(($.$bog_bhelper_app.prototype), "Crm"));
+	($mol_mem(($.$bog_bhelper_app.prototype), "Vaka"));
 	($mol_mem(($.$bog_bhelper_app.prototype), "Settings"));
 	($mol_mem(($.$bog_bhelper_app.prototype), "Lk"));
 	($mol_mem(($.$bog_bhelper_app.prototype), "Menu_logo"));
