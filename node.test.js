@@ -19066,63 +19066,36 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$bog_bhelper_app_helpers) = class $bog_bhelper_app_helpers extends ($.$mol_page) {
-		hero_title(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ((this.$.$mol_locale.text("$bog_bhelper_app_helpers_hero_title_text")));
-			return obj;
-		}
-		hero_descr(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ((this.$.$mol_locale.text("$bog_bhelper_app_helpers_hero_descr_text")));
-			return obj;
-		}
+	($.$bog_bhelper_app_prof) = class $bog_bhelper_app_prof extends ($.$mol_page) {
 		query(next){
 			if(next !== undefined) return next;
 			return "";
 		}
-		search(){
+		Search(){
 			const obj = new this.$.$mol_string();
-			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_bhelper_app_helpers_search_hint")));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_bhelper_app_prof_Search_hint")));
 			(obj.value) = (next) => ((this.query(next)));
 			return obj;
 		}
-		hero(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([
-				(this.hero_title()), 
-				(this.hero_descr()), 
-				(this.search())
-			]);
-			return obj;
-		}
-		helper_cards(){
+		Helpers_gallery_items(){
 			return [];
 		}
-		gallery(){
+		Helpers_gallery(){
 			const obj = new this.$.$mol_gallery();
-			(obj.items) = () => ((this.helper_cards()));
+			(obj.items) = () => ((this.Helpers_gallery_items()));
 			return obj;
 		}
-		item_uri(id){
+		Helper_item_uri(id){
 			return "";
 		}
-		item_open(id, next){
+		Helper_item_open(id, next){
 			if(next !== undefined) return next;
 			return null;
-		}
-		icon_path(id){
-			return "";
-		}
-		icon(id){
-			const obj = new this.$.$mol_icon();
-			(obj.path) = () => ((this.icon_path(id)));
-			return obj;
 		}
 		helper_title(id){
 			return "";
 		}
-		title_view(id){
+		Helper_title_view(id){
 			const obj = new this.$.$mol_view();
 			(obj.sub) = () => ([(this.helper_title(id))]);
 			return obj;
@@ -19130,47 +19103,39 @@ var $;
 		helper_description(id){
 			return "";
 		}
-		descr_view(id){
+		Helper_descr_view(id){
 			const obj = new this.$.$mol_text();
 			(obj.text) = () => ((this.helper_description(id)));
 			return obj;
 		}
-		link(id){
+		Helper_link(id){
 			const obj = new this.$.$mol_link();
-			(obj.uri) = () => ((this.item_uri(id)));
-			(obj.click) = (next) => ((this.item_open(id, next)));
+			(obj.uri) = () => ((this.Helper_item_uri(id)));
+			(obj.click) = (next) => ((this.Helper_item_open(id, next)));
 			(obj.title) = () => (null);
-			(obj.sub) = () => ([
-				(this.icon(id)), 
-				(this.title_view(id)), 
-				(this.descr_view(id))
-			]);
+			(obj.sub) = () => ([(this.Helper_title_view(id)), (this.Helper_descr_view(id))]);
 			return obj;
 		}
 		title(){
-			return (this.$.$mol_locale.text("$bog_bhelper_app_helpers_title"));
+			return (this.$.$mol_locale.text("$bog_bhelper_app_prof_title"));
 		}
 		body(){
-			return [(this.hero()), (this.gallery())];
+			return [(this.Search()), (this.Helpers_gallery())];
 		}
-		item(id){
+		Helper_item(id){
 			const obj = new this.$.$mol_card();
-			(obj.sub) = () => ([(this.link(id))]);
+			(obj.sub) = () => ([(this.Helper_link(id))]);
 			return obj;
 		}
 	};
-	($mol_mem(($.$bog_bhelper_app_helpers.prototype), "hero_title"));
-	($mol_mem(($.$bog_bhelper_app_helpers.prototype), "hero_descr"));
-	($mol_mem(($.$bog_bhelper_app_helpers.prototype), "query"));
-	($mol_mem(($.$bog_bhelper_app_helpers.prototype), "search"));
-	($mol_mem(($.$bog_bhelper_app_helpers.prototype), "hero"));
-	($mol_mem(($.$bog_bhelper_app_helpers.prototype), "gallery"));
-	($mol_mem_key(($.$bog_bhelper_app_helpers.prototype), "item_open"));
-	($mol_mem_key(($.$bog_bhelper_app_helpers.prototype), "icon"));
-	($mol_mem_key(($.$bog_bhelper_app_helpers.prototype), "title_view"));
-	($mol_mem_key(($.$bog_bhelper_app_helpers.prototype), "descr_view"));
-	($mol_mem_key(($.$bog_bhelper_app_helpers.prototype), "link"));
-	($mol_mem_key(($.$bog_bhelper_app_helpers.prototype), "item"));
+	($mol_mem(($.$bog_bhelper_app_prof.prototype), "query"));
+	($mol_mem(($.$bog_bhelper_app_prof.prototype), "Search"));
+	($mol_mem(($.$bog_bhelper_app_prof.prototype), "Helpers_gallery"));
+	($mol_mem_key(($.$bog_bhelper_app_prof.prototype), "Helper_item_open"));
+	($mol_mem_key(($.$bog_bhelper_app_prof.prototype), "Helper_title_view"));
+	($mol_mem_key(($.$bog_bhelper_app_prof.prototype), "Helper_descr_view"));
+	($mol_mem_key(($.$bog_bhelper_app_prof.prototype), "Helper_link"));
+	($mol_mem_key(($.$bog_bhelper_app_prof.prototype), "Helper_item"));
 
 
 ;
@@ -19182,88 +19147,77 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        $$.$mol_github_model_polyglots = ['xai/grok-3'];
-        class $bog_bhelper_app_helpers extends $.$bog_bhelper_app_helpers {
-            helper_catalog_data = [
-                {
-                    title: 'Юрист',
-                    description: 'Документы, договоры, правовые заключения, сопровождение сделок.',
-                    icon: 'briefcase',
-                    default_promt: `Ты корпоративный юрист. Разбери ввод пользователя, объясни, какие договоры или документы нужны, предложи структуру и шаблон.`,
-                },
-                {
-                    title: 'Адвокат',
-                    description: 'Судебные стратегии, консультации по спорам, анализ доказательств.',
-                    icon: 'scales',
-                    default_promt: `Ты адвокат по гражданским делам. Сформируй стратегию защиты, составь план аргументов и список необходимых доказательств.`,
-                },
-            ];
+        class $bog_bhelper_app_prof extends $.$bog_bhelper_app_prof {
             query(next) {
                 return next ?? '';
             }
-            items() {
-                const query = this.query().trim().toLowerCase();
-                const catalog = this.helper_catalog_data;
-                if (!query)
-                    return catalog;
-                return catalog.filter(helper => {
-                    const haystack = `${helper.title} ${helper.description}`.toLowerCase();
-                    return haystack.includes(query);
-                });
+            helper_titles() {
+                return ['Личный юрист', 'Личный бухгалтер', 'Финансовый консультант', 'Карьерный коуч'];
             }
-            helper_cards() {
-                return this.items().map((_, index) => this.item(index));
+            helper_title(id) {
+                return this.helper_titles()[id] ?? '';
             }
-            helper_title(index) {
-                return this.items()[index]?.title ?? '';
+            helper_descriptions() {
+                return [
+                    'Поможет с договорами, спорами и правами.',
+                    'Разберётся с налогами, отчётами и бюджетом.',
+                    'Поддержит в вопросах инвестиций и планирования.',
+                    'Поможет спланировать карьеру и рост в профессии.',
+                ];
             }
-            helper_description(index) {
-                return this.items()[index]?.description ?? '';
+            helper_description(id) {
+                return this.helper_descriptions()[id] ?? '';
             }
-            icon_path(index) {
-                return this.items()[index]?.icon ?? '';
+            Helpers_gallery_items() {
+                const query = this.query().toLowerCase().trim();
+                const titles = this.helper_titles();
+                const indices = titles
+                    .map((title, index) => ({ title, index }))
+                    .filter(item => !query || item.title.toLowerCase().includes(query))
+                    .map(item => item.index);
+                return indices.map(i => this.Helper_item(i));
             }
-            item_uri(index) {
-                const helper = this.items()[index] ?? this.items()[0];
-                return this.$.$mol_state_arg.link({ '': '\t', prompt: helper?.default_promt ?? '' });
-            }
-            item_open(index, event) {
+            Helper_item_open(index, event) {
                 event?.preventDefault();
-                const helper = this.items()[index] ?? this.items()[0];
-                const title = helper?.title ?? '';
-                const prompt = helper?.default_promt ?? '';
+                const title = this.helper_title(index);
                 try {
                     this.$.$mol_state_session?.value('history', null);
                 }
-                catch (error) { }
+                catch { }
                 try {
                     this.$.$mol_state_session?.value('title', null);
                 }
-                catch (error) { }
+                catch { }
                 try {
                     this.$.$mol_state_session?.value('digest', '');
                 }
-                catch (error) { }
+                catch { }
                 try {
                     this.$.$mol_state_session?.value('gd_profession', title);
                 }
-                catch (error) { }
-                this.$.$mol_state_arg.go({ '': '\t', prompt });
+                catch { }
+                this.$.$mol_state_arg.go({
+                    '': '',
+                    prompt: 'привет',
+                });
             }
         }
         __decorate([
             $mol_mem
-        ], $bog_bhelper_app_helpers.prototype, "query", null);
+        ], $bog_bhelper_app_prof.prototype, "query", null);
         __decorate([
             $mol_mem
-        ], $bog_bhelper_app_helpers.prototype, "items", null);
+        ], $bog_bhelper_app_prof.prototype, "helper_titles", null);
         __decorate([
             $mol_mem
-        ], $bog_bhelper_app_helpers.prototype, "helper_cards", null);
+        ], $bog_bhelper_app_prof.prototype, "helper_descriptions", null);
+        __decorate([
+            $mol_mem
+        ], $bog_bhelper_app_prof.prototype, "Helpers_gallery_items", null);
         __decorate([
             $mol_action
-        ], $bog_bhelper_app_helpers.prototype, "item_open", null);
-        $$.$bog_bhelper_app_helpers = $bog_bhelper_app_helpers;
+        ], $bog_bhelper_app_prof.prototype, "Helper_item_open", null);
+        $$.$bog_bhelper_app_prof = $bog_bhelper_app_prof;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -19271,10 +19225,45 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    const { rem } = $mol_style_unit;
-    $mol_style_define($bog_bhelper_app_helpers, {
-        width: rem(100),
-    });
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_bhelper_app_prof, {
+            Helper_item: {
+                padding: $mol_gap.block,
+                flex: {
+                    grow: 1,
+                    shrink: 1,
+                    basis: '18rem',
+                },
+                border: {
+                    radius: $mol_gap.round,
+                },
+                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+                background: {
+                    color: $mol_theme.card,
+                },
+                gap: $mol_gap.space,
+                cursor: 'pointer',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                ':hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
+                },
+            },
+            Helper_title_view: {
+                whiteSpace: 'normal',
+                wordBreak: 'break-word',
+            },
+            Helper_descr_view: {
+                whiteSpace: 'normal',
+                wordBreak: 'break-word',
+            },
+            Helper_link: {
+                display: "flex",
+                flexWrap: "wrap"
+            }
+        });
+    })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
 ;
@@ -20920,9 +20909,635 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$bog_bhelper_app) = class $bog_bhelper_app extends ($.$mol_book2_catalog) {
-		Realm(){
-			const obj = new this.$.$hyoo_crus_glob();
+	($.$mol_icon_upload) = class $mol_icon_upload extends ($.$mol_icon) {
+		path(){
+			return "M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_button_open) = class $mol_button_open extends ($.$mol_button_minor) {
+		Icon(){
+			const obj = new this.$.$mol_icon_upload();
+			return obj;
+		}
+		files(next){
+			if(next !== undefined) return next;
+			return [];
+		}
+		files_handled(next){
+			return (this.files(next));
+		}
+		accept(){
+			return "";
+		}
+		multiple(){
+			return true;
+		}
+		Native(){
+			const obj = new this.$.$mol_button_open_native();
+			(obj.files) = (next) => ((this.files_handled(next)));
+			(obj.accept) = () => ((this.accept()));
+			(obj.multiple) = () => ((this.multiple()));
+			return obj;
+		}
+		sub(){
+			return [(this.Icon()), (this.Native())];
+		}
+	};
+	($mol_mem(($.$mol_button_open.prototype), "Icon"));
+	($mol_mem(($.$mol_button_open.prototype), "files"));
+	($mol_mem(($.$mol_button_open.prototype), "Native"));
+	($.$mol_button_open_native) = class $mol_button_open_native extends ($.$mol_view) {
+		accept(){
+			return "";
+		}
+		multiple(){
+			return true;
+		}
+		picked(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		dom_name(){
+			return "input";
+		}
+		files(next){
+			if(next !== undefined) return next;
+			return [];
+		}
+		attr(){
+			return {
+				"type": "file", 
+				"accept": (this.accept()), 
+				"multiple": (this.multiple())
+			};
+		}
+		event(){
+			return {"change": (next) => (this.picked(next))};
+		}
+	};
+	($mol_mem(($.$mol_button_open_native.prototype), "picked"));
+	($mol_mem(($.$mol_button_open_native.prototype), "files"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_button_open extends $.$mol_button_open {
+            files_handled(next) {
+                try {
+                    const files = this.files(next);
+                    this.status([null]);
+                    return files;
+                }
+                catch (error) {
+                    Promise.resolve().then(() => this.status([error]));
+                    $mol_fail_hidden(error);
+                }
+            }
+        }
+        $$.$mol_button_open = $mol_button_open;
+        class $mol_button_open_native extends $.$mol_button_open_native {
+            dom_node() {
+                return super.dom_node();
+            }
+            picked() {
+                const files = this.dom_node().files;
+                if (!files || !files.length)
+                    return;
+                this.files([...files]);
+            }
+        }
+        $$.$mol_button_open_native = $mol_button_open_native;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/button/open/open.view.css", "[mol_button_open_native] {\n\tposition: absolute;\n\tleft: 0;\n\ttop: -100%;\n\twidth: 100%;\n\theight: 200%;\n\tcursor: pointer;\n\topacity: 0;\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$bog_lk_avatar) = class $bog_lk_avatar extends ($.$mol_button_open) {
+		entity(){
+			return null;
+		}
+	};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $.$bog_lk_profile_preset = {
+        '': $hyoo_crus_rank_read,
+    };
+    class $bog_lk_profile extends $hyoo_crus_entity.with({
+        FullName: $hyoo_crus_text,
+        Nickname: $hyoo_crus_text,
+        Bio: $hyoo_crus_text,
+        City: $hyoo_crus_text,
+        Country: $hyoo_crus_text,
+        Website: $hyoo_crus_text,
+        Email: $hyoo_crus_text,
+        Telegram: $hyoo_crus_text,
+        Github: $hyoo_crus_text,
+        Twitter: $hyoo_crus_text,
+        Photos: $hyoo_crus_list_ref_to(() => $hyoo_crus_atom_bin),
+        PhotosBase64: $hyoo_crus_list_ref_to(() => $hyoo_crus_atom_str),
+    }) {
+    }
+    $.$bog_lk_profile = $bog_lk_profile;
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($_1) {
+    var $$;
+    (function ($$) {
+        class $bog_lk_avatar extends $.$bog_lk_avatar {
+            avatar_log(event, detail = {}) {
+                const payload = JSON.stringify(detail, null, 2);
+                this.$.$mol_dom_context.console?.info?.(`[LK Avatar] ${event}`, payload);
+            }
+            entity(next) {
+                if (next !== undefined) {
+                    this.avatar_log('Entity override', {
+                        ref: next?.ref().description ?? null,
+                    });
+                    return next;
+                }
+                const fallback = this.$.$hyoo_crus_glob.home().hall_by($bog_lk_profile, $bog_lk_profile_preset);
+                this.avatar_log('Entity fallback', {
+                    ref: fallback?.ref().description ?? null,
+                });
+                return fallback;
+            }
+            accept() {
+                return 'image/*';
+            }
+            multiple() {
+                return false;
+            }
+            private_photo_base64() {
+                const entity = this.entity();
+                if (!entity)
+                    return null;
+                const photos = entity.PhotosBase64()?.remote_list() ?? [];
+                if (photos.length) {
+                    this.avatar_log('Photos fetched (base64)', {
+                        profile: entity.ref().description,
+                        count: photos.length,
+                    });
+                }
+                return photos[0] ?? null;
+            }
+            private_photo_binary() {
+                const entity = this.entity();
+                if (!entity) {
+                    this.avatar_log('No entity for avatar');
+                    return null;
+                }
+                const photos = entity.Photos()?.remote_list() ?? [];
+                if (photos.length) {
+                    this.avatar_log('Photos fetched (legacy)', {
+                        profile: entity.ref().description,
+                        count: photos.length,
+                    });
+                }
+                return photos[0] ?? null;
+            }
+            encode_base64(buffer) {
+                const chunk = 0x8000;
+                let binary = '';
+                for (let i = 0; i < buffer.length; i += chunk) {
+                    const slice = buffer.subarray(i, i + chunk);
+                    binary += String.fromCharCode(...slice);
+                }
+                return this.$.$mol_dom_context.btoa(binary);
+            }
+            image_data() {
+                const base64 = this.private_photo_base64();
+                if (base64) {
+                    const data = base64.val() ?? '';
+                    this.avatar_log('Photo data (base64) loaded', {
+                        ref: base64.ref().description,
+                        bytes: data.length * 3 / 4,
+                        has_data: Boolean(data),
+                    });
+                    return data || null;
+                }
+                const legacy = this.private_photo_binary();
+                if (!legacy) {
+                    this.avatar_log('Photo record missing');
+                    return null;
+                }
+                try {
+                    const bytes = legacy.val();
+                    const data = bytes ? this.encode_base64(bytes) : '';
+                    this.avatar_log('Photo data converted from legacy', {
+                        ref: legacy.ref().description,
+                        bytes: bytes?.byteLength ?? 0,
+                        has_data: Boolean(data),
+                    });
+                    return data || null;
+                }
+                catch (error) {
+                    this.avatar_log('Photo data failed', {
+                        ref: legacy.ref().description,
+                        error: error?.message ?? String(error),
+                    });
+                    return null;
+                }
+            }
+            image_uri() {
+                const data = this.image_data();
+                if (!data) {
+                    this.avatar_log('No binary data to render');
+                    return '';
+                }
+                this.avatar_log('Image URI rendered', {
+                    bytes: data.length * 3 / 4,
+                });
+                return `data:image/*;base64,${data}`;
+            }
+            sub() {
+                const has_photo = !!this.image_data();
+                const view = has_photo ? this.Image() : this.Placeholder();
+                return [view, this.Native()];
+            }
+            Image() {
+                const $ = this.$;
+                return $.$mol_image.make({
+                    title: $mol_const(''),
+                    uri: () => this.image_uri(),
+                });
+            }
+            Placeholder() {
+                const $ = this.$;
+                return $.$mol_icon_upload.make({});
+            }
+            clear() {
+                if (!this.enabled())
+                    return;
+                const profile = this.entity();
+                if (!profile)
+                    return;
+                const base64 = this.private_photo_base64();
+                if (base64)
+                    profile.PhotosBase64(null).has(base64.ref(), false);
+                const legacy = this.private_photo_binary();
+                if (legacy)
+                    profile.Photos(null).has(legacy.ref(), false);
+            }
+            files(next) {
+                if (!this.enabled())
+                    return [];
+                if (!next?.length)
+                    return [];
+                const profile = this.entity();
+                const base64_list = profile.PhotosBase64(null);
+                const base64_current = profile.PhotosBase64()?.remote_list() ?? [];
+                for (const photo of base64_current)
+                    base64_list.has(photo.ref(), false);
+                const legacy_current = profile.Photos()?.remote_list() ?? [];
+                for (const photo of legacy_current)
+                    profile.Photos(null).has(photo.ref(), false);
+                const file = next[0];
+                const buffer = new Uint8Array(this.$.$mol_wire_sync(file).arrayBuffer());
+                const node = base64_list.local_make();
+                node.val(this.encode_base64(buffer));
+                return [];
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $bog_lk_avatar.prototype, "entity", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk_avatar.prototype, "private_photo_base64", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk_avatar.prototype, "private_photo_binary", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk_avatar.prototype, "image_data", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk_avatar.prototype, "image_uri", null);
+        __decorate([
+            $mol_action
+        ], $bog_lk_avatar.prototype, "clear", null);
+        __decorate([
+            $mol_action
+        ], $bog_lk_avatar.prototype, "files", null);
+        $$.$bog_lk_avatar = $bog_lk_avatar;
+    })($$ = $_1.$$ || ($_1.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_lk_avatar, {
+            width: '8rem',
+            height: '8rem',
+            background: { color: $mol_theme.card },
+            border: { radius: '50%' },
+            padding: 0,
+            alignItems: 'center',
+            justifyContent: 'center',
+            overflow: 'hidden',
+            position: 'relative',
+            boxShadow: `0 0 0 1px ${$mol_theme.line}`,
+            $mol_image: {
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+            },
+            Native: {
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                opacity: 0,
+                cursor: 'pointer',
+            },
+            Placeholder: {
+                fontSize: '2rem',
+                color: $mol_theme.shade,
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_form_field) = class $mol_form_field extends ($.$mol_labeler) {
+		name(){
+			return "";
+		}
+		bid(){
+			return "";
+		}
+		Bid(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.bid())]);
+			return obj;
+		}
+		control(){
+			return null;
+		}
+		bids(){
+			return [];
+		}
+		label(){
+			return [(this.name()), (this.Bid())];
+		}
+		content(){
+			return [(this.control())];
+		}
+	};
+	($mol_mem(($.$mol_form_field.prototype), "Bid"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_form_field extends $.$mol_form_field {
+            bid() {
+                return this.bids().filter(Boolean)[0] ?? '';
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_form_field.prototype, "bid", null);
+        $$.$mol_form_field = $mol_form_field;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/form/field/field.view.css", "[mol_form_field] {\n\talign-items: stretch;\n}\n\n[mol_form_field_bid] {\n\tcolor: var(--mol_theme_focus);\n\tdisplay: inline-block;\n\ttext-shadow: 0 0;\n}\n\n[mol_form_field_content] {\n\tborder-radius: var(--mol_gap_round);\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$mol_form) = class $mol_form extends ($.$mol_list) {
+		keydown(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		form_invalid(){
+			return (this.$.$mol_locale.text("$mol_form_form_invalid"));
+		}
+		form_fields(){
+			return [];
+		}
+		body(){
+			return (this.form_fields());
+		}
+		Body(){
+			const obj = new this.$.$mol_list();
+			(obj.sub) = () => ((this.body()));
+			return obj;
+		}
+		submit_title(){
+			return (this.$.$mol_locale.text("$mol_form_submit_title"));
+		}
+		submit_hint(){
+			return "";
+		}
+		submit_activate(next){
+			return (this.Submit().activate(next));
+		}
+		submit(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Submit(){
+			const obj = new this.$.$mol_button_major();
+			(obj.title) = () => ((this.submit_title()));
+			(obj.hint) = () => ((this.submit_hint()));
+			(obj.click) = (next) => ((this.submit(next)));
+			return obj;
+		}
+		result(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Result(){
+			const obj = new this.$.$mol_status();
+			(obj.message) = () => ((this.result()));
+			return obj;
+		}
+		buttons(){
+			return [(this.Submit()), (this.Result())];
+		}
+		foot(){
+			return (this.buttons());
+		}
+		Foot(){
+			const obj = new this.$.$mol_row();
+			(obj.sub) = () => ((this.foot()));
+			return obj;
+		}
+		submit_allowed(){
+			return true;
+		}
+		submit_blocked(){
+			return false;
+		}
+		event(){
+			return {...(super.event()), "keydown": (next) => (this.keydown(next))};
+		}
+		save(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		message_done(){
+			return (this.$.$mol_locale.text("$mol_form_message_done"));
+		}
+		errors(){
+			return {"Form invalid": (this.form_invalid())};
+		}
+		rows(){
+			return [(this.Body()), (this.Foot())];
+		}
+	};
+	($mol_mem(($.$mol_form.prototype), "keydown"));
+	($mol_mem(($.$mol_form.prototype), "Body"));
+	($mol_mem(($.$mol_form.prototype), "submit"));
+	($mol_mem(($.$mol_form.prototype), "Submit"));
+	($mol_mem(($.$mol_form.prototype), "result"));
+	($mol_mem(($.$mol_form.prototype), "Result"));
+	($mol_mem(($.$mol_form.prototype), "Foot"));
+	($mol_mem(($.$mol_form.prototype), "save"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/form/form.view.css", "[mol_form] {\r\n\tgap: var(--mol_gap_block);\r\n}\r\n\r\n[mol_form_body] {\r\n\tgap: var(--mol_gap_block);\r\n}");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_form extends $.$mol_form {
+            form_fields() {
+                return [...this.view_find(view => view instanceof $mol_form_field)]
+                    .map(path => path[path.length - 1]);
+            }
+            submit_allowed() {
+                return this.form_fields().every(field => !field.bid());
+            }
+            submit_blocked() {
+                return !this.submit_allowed();
+            }
+            keydown(next) {
+                if (next.ctrlKey && next.keyCode === $mol_keyboard_code.enter && !this.submit_blocked())
+                    this.submit(next);
+            }
+            result(next) {
+                if (next instanceof Error)
+                    next = this.errors()[next.message] || next.message || this.form_invalid();
+                return next ?? '';
+            }
+            buttons() {
+                return [
+                    this.Submit(),
+                    ...this.result() ? [this.Result()] : [],
+                ];
+            }
+            submit(next) {
+                try {
+                    if (!this.submit_allowed()) {
+                        throw new Error('Form invalid');
+                    }
+                    this.save(next);
+                }
+                catch (e) {
+                    if ($mol_promise_like(e))
+                        $mol_fail_hidden(e);
+                    $mol_fail_log(e);
+                    this.result(e);
+                    return false;
+                }
+                this.result(this.message_done());
+                return true;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_form.prototype, "form_fields", null);
+        __decorate([
+            $mol_mem
+        ], $mol_form.prototype, "submit_allowed", null);
+        __decorate([
+            $mol_mem
+        ], $mol_form.prototype, "result", null);
+        __decorate([
+            $mol_mem
+        ], $mol_form.prototype, "buttons", null);
+        __decorate([
+            $mol_action
+        ], $mol_form.prototype, "submit", null);
+        $$.$mol_form = $mol_form;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_form_group) = class $mol_form_group extends ($.$mol_view) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/form/group/group.view.css", "[mol_form_group] {\n\tflex-wrap: wrap;\n\tgap: var(--mol_gap_block);\n}\n\n[mol_form_group] > * {\n\tflex: 1 1 18rem;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$bog_lk) = class $bog_lk extends ($.$mol_page) {
+		Theme(){
+			const obj = new this.$.$bog_theme_auto();
 			return obj;
 		}
 		Lights(){
@@ -20930,16 +21545,884 @@ var $;
 			(obj.theme_auto) = () => ((this.Theme()));
 			return obj;
 		}
+		Avatar(){
+			const obj = new this.$.$bog_lk_avatar();
+			(obj.entity) = () => ((this.profile()));
+			(obj.enabled) = () => ((this.can_edit()));
+			return obj;
+		}
+		display_name_text(){
+			return "";
+		}
+		Display_name(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.display_name_text()));
+			return obj;
+		}
+		username_preview_text(){
+			return "";
+		}
+		Username_preview(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.username_preview_text()));
+			return obj;
+		}
+		Peer_label(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.$.$mol_locale.text("$bog_lk_Peer_label_text")));
+			return obj;
+		}
+		peer_id(){
+			return "";
+		}
+		Peer_value(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.peer_id()));
+			return obj;
+		}
+		Peer_id(){
+			const obj = new this.$.$mol_labeler();
+			(obj.Label) = () => ((this.Peer_label()));
+			(obj.Content) = () => ((this.Peer_value()));
+			return obj;
+		}
+		bio_preview_text(){
+			return "";
+		}
+		Bio_preview(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.bio_preview_text()));
+			return obj;
+		}
+		Hero_info(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ([
+				(this.Display_name()), 
+				(this.Username_preview()), 
+				(this.Peer_id()), 
+				(this.Bio_preview())
+			]);
+			return obj;
+		}
+		Share_title(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.$.$mol_locale.text("$bog_lk_Share_title_text")));
+			return obj;
+		}
+		share_link(){
+			return "";
+		}
+		Share_field(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = () => ((this.share_link()));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_lk_Share_field_hint")));
+			return obj;
+		}
+		share_copy_click(next){
+			return (this.Share_copy().click(next));
+		}
+		Share_copy_text(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.$.$mol_locale.text("$bog_lk_Share_copy_text_text")));
+			return obj;
+		}
+		Share_copy(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_lk_Share_copy_title")));
+			(obj.sub) = () => ([(this.Share_copy_text())]);
+			return obj;
+		}
+		Share_row(){
+			const obj = new this.$.$mol_row();
+			(obj.sub) = () => ([(this.Share_field()), (this.Share_copy())]);
+			return obj;
+		}
+		share_feedback_text(){
+			return "";
+		}
+		Share_feedback(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.share_feedback_text()));
+			return obj;
+		}
+		Share_panel(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ([
+				(this.Share_title()), 
+				(this.Share_row()), 
+				(this.Share_feedback())
+			]);
+			return obj;
+		}
+		Hero_meta(){
+			const obj = new this.$.$mol_row();
+			(obj.sub) = () => ([(this.Hero_info()), (this.Share_panel())]);
+			return obj;
+		}
+		Hero(){
+			const obj = new this.$.$mol_row();
+			(obj.sub) = () => ([(this.Avatar()), (this.Hero_meta())]);
+			return obj;
+		}
+		Form_title(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.$.$mol_locale.text("$bog_lk_Form_title_text")));
+			return obj;
+		}
+		Basics_heading(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.$.$mol_locale.text("$bog_lk_Basics_heading_text")));
+			return obj;
+		}
+		full_name(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Full_name_input(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = (next) => ((this.full_name(next)));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_lk_Full_name_input_hint")));
+			return obj;
+		}
+		Full_name_field(){
+			const obj = new this.$.$mol_form_field();
+			(obj.name) = () => ((this.$.$mol_locale.text("$bog_lk_Full_name_field_name")));
+			(obj.Content) = () => ((this.Full_name_input()));
+			return obj;
+		}
+		nickname(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Nickname_input(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = (next) => ((this.nickname(next)));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_lk_Nickname_input_hint")));
+			return obj;
+		}
+		Nickname_field(){
+			const obj = new this.$.$mol_form_field();
+			(obj.name) = () => ((this.$.$mol_locale.text("$bog_lk_Nickname_field_name")));
+			(obj.Content) = () => ((this.Nickname_input()));
+			return obj;
+		}
+		bio(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Bio_input(){
+			const obj = new this.$.$mol_textarea();
+			(obj.value) = (next) => ((this.bio(next)));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_lk_Bio_input_hint")));
+			return obj;
+		}
+		Bio_field(){
+			const obj = new this.$.$mol_form_field();
+			(obj.name) = () => ((this.$.$mol_locale.text("$bog_lk_Bio_field_name")));
+			(obj.Content) = () => ((this.Bio_input()));
+			return obj;
+		}
+		Basics_group(){
+			const obj = new this.$.$mol_form_group();
+			(obj.sub) = () => ([
+				(this.Full_name_field()), 
+				(this.Nickname_field()), 
+				(this.Bio_field())
+			]);
+			return obj;
+		}
+		Location_heading(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.$.$mol_locale.text("$bog_lk_Location_heading_text")));
+			return obj;
+		}
+		city(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		City_input(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = (next) => ((this.city(next)));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_lk_City_input_hint")));
+			return obj;
+		}
+		City_field(){
+			const obj = new this.$.$mol_form_field();
+			(obj.name) = () => ((this.$.$mol_locale.text("$bog_lk_City_field_name")));
+			(obj.Content) = () => ((this.City_input()));
+			return obj;
+		}
+		country(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Country_input(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = (next) => ((this.country(next)));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_lk_Country_input_hint")));
+			return obj;
+		}
+		Country_field(){
+			const obj = new this.$.$mol_form_field();
+			(obj.name) = () => ((this.$.$mol_locale.text("$bog_lk_Country_field_name")));
+			(obj.Content) = () => ((this.Country_input()));
+			return obj;
+		}
+		Location_group(){
+			const obj = new this.$.$mol_form_group();
+			(obj.sub) = () => ([(this.City_field()), (this.Country_field())]);
+			return obj;
+		}
+		Contacts_heading(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.$.$mol_locale.text("$bog_lk_Contacts_heading_text")));
+			return obj;
+		}
+		email(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Email_input(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = (next) => ((this.email(next)));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_lk_Email_input_hint")));
+			return obj;
+		}
+		Email_field(){
+			const obj = new this.$.$mol_form_field();
+			(obj.name) = () => ((this.$.$mol_locale.text("$bog_lk_Email_field_name")));
+			(obj.Content) = () => ((this.Email_input()));
+			return obj;
+		}
+		website(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Website_input(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = (next) => ((this.website(next)));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_lk_Website_input_hint")));
+			return obj;
+		}
+		Website_field(){
+			const obj = new this.$.$mol_form_field();
+			(obj.name) = () => ((this.$.$mol_locale.text("$bog_lk_Website_field_name")));
+			(obj.Content) = () => ((this.Website_input()));
+			return obj;
+		}
+		telegram(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Telegram_input(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = (next) => ((this.telegram(next)));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_lk_Telegram_input_hint")));
+			return obj;
+		}
+		Telegram_field(){
+			const obj = new this.$.$mol_form_field();
+			(obj.name) = () => ((this.$.$mol_locale.text("$bog_lk_Telegram_field_name")));
+			(obj.Content) = () => ((this.Telegram_input()));
+			return obj;
+		}
+		github(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Github_input(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = (next) => ((this.github(next)));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_lk_Github_input_hint")));
+			return obj;
+		}
+		Github_field(){
+			const obj = new this.$.$mol_form_field();
+			(obj.name) = () => ((this.$.$mol_locale.text("$bog_lk_Github_field_name")));
+			(obj.Content) = () => ((this.Github_input()));
+			return obj;
+		}
+		twitter(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Twitter_input(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = (next) => ((this.twitter(next)));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_lk_Twitter_input_hint")));
+			return obj;
+		}
+		Twitter_field(){
+			const obj = new this.$.$mol_form_field();
+			(obj.name) = () => ((this.$.$mol_locale.text("$bog_lk_Twitter_field_name")));
+			(obj.Content) = () => ((this.Twitter_input()));
+			return obj;
+		}
+		Contacts_group(){
+			const obj = new this.$.$mol_form_group();
+			(obj.sub) = () => ([
+				(this.Email_field()), 
+				(this.Website_field()), 
+				(this.Telegram_field()), 
+				(this.Github_field()), 
+				(this.Twitter_field())
+			]);
+			return obj;
+		}
+		Profile_form(){
+			const obj = new this.$.$mol_form();
+			(obj.body) = () => ([
+				(this.Basics_heading()), 
+				(this.Basics_group()), 
+				(this.Location_heading()), 
+				(this.Location_group()), 
+				(this.Contacts_heading()), 
+				(this.Contacts_group())
+			]);
+			return obj;
+		}
+		title(){
+			return (this.$.$mol_locale.text("$bog_lk_title"));
+		}
+		plugins(){
+			return [(this.Theme())];
+		}
+		head(){
+			return [(this.Lights())];
+		}
+		profile(){
+			return null;
+		}
+		can_edit(next){
+			if(next !== undefined) return next;
+			return true;
+		}
+		body(){
+			return [
+				(this.Hero()), 
+				(this.Form_title()), 
+				(this.Profile_form())
+			];
+		}
+	};
+	($mol_mem(($.$bog_lk.prototype), "Theme"));
+	($mol_mem(($.$bog_lk.prototype), "Lights"));
+	($mol_mem(($.$bog_lk.prototype), "Avatar"));
+	($mol_mem(($.$bog_lk.prototype), "Display_name"));
+	($mol_mem(($.$bog_lk.prototype), "Username_preview"));
+	($mol_mem(($.$bog_lk.prototype), "Peer_label"));
+	($mol_mem(($.$bog_lk.prototype), "Peer_value"));
+	($mol_mem(($.$bog_lk.prototype), "Peer_id"));
+	($mol_mem(($.$bog_lk.prototype), "Bio_preview"));
+	($mol_mem(($.$bog_lk.prototype), "Hero_info"));
+	($mol_mem(($.$bog_lk.prototype), "Share_title"));
+	($mol_mem(($.$bog_lk.prototype), "Share_field"));
+	($mol_mem(($.$bog_lk.prototype), "Share_copy_text"));
+	($mol_mem(($.$bog_lk.prototype), "Share_copy"));
+	($mol_mem(($.$bog_lk.prototype), "Share_row"));
+	($mol_mem(($.$bog_lk.prototype), "Share_feedback"));
+	($mol_mem(($.$bog_lk.prototype), "Share_panel"));
+	($mol_mem(($.$bog_lk.prototype), "Hero_meta"));
+	($mol_mem(($.$bog_lk.prototype), "Hero"));
+	($mol_mem(($.$bog_lk.prototype), "Form_title"));
+	($mol_mem(($.$bog_lk.prototype), "Basics_heading"));
+	($mol_mem(($.$bog_lk.prototype), "full_name"));
+	($mol_mem(($.$bog_lk.prototype), "Full_name_input"));
+	($mol_mem(($.$bog_lk.prototype), "Full_name_field"));
+	($mol_mem(($.$bog_lk.prototype), "nickname"));
+	($mol_mem(($.$bog_lk.prototype), "Nickname_input"));
+	($mol_mem(($.$bog_lk.prototype), "Nickname_field"));
+	($mol_mem(($.$bog_lk.prototype), "bio"));
+	($mol_mem(($.$bog_lk.prototype), "Bio_input"));
+	($mol_mem(($.$bog_lk.prototype), "Bio_field"));
+	($mol_mem(($.$bog_lk.prototype), "Basics_group"));
+	($mol_mem(($.$bog_lk.prototype), "Location_heading"));
+	($mol_mem(($.$bog_lk.prototype), "city"));
+	($mol_mem(($.$bog_lk.prototype), "City_input"));
+	($mol_mem(($.$bog_lk.prototype), "City_field"));
+	($mol_mem(($.$bog_lk.prototype), "country"));
+	($mol_mem(($.$bog_lk.prototype), "Country_input"));
+	($mol_mem(($.$bog_lk.prototype), "Country_field"));
+	($mol_mem(($.$bog_lk.prototype), "Location_group"));
+	($mol_mem(($.$bog_lk.prototype), "Contacts_heading"));
+	($mol_mem(($.$bog_lk.prototype), "email"));
+	($mol_mem(($.$bog_lk.prototype), "Email_input"));
+	($mol_mem(($.$bog_lk.prototype), "Email_field"));
+	($mol_mem(($.$bog_lk.prototype), "website"));
+	($mol_mem(($.$bog_lk.prototype), "Website_input"));
+	($mol_mem(($.$bog_lk.prototype), "Website_field"));
+	($mol_mem(($.$bog_lk.prototype), "telegram"));
+	($mol_mem(($.$bog_lk.prototype), "Telegram_input"));
+	($mol_mem(($.$bog_lk.prototype), "Telegram_field"));
+	($mol_mem(($.$bog_lk.prototype), "github"));
+	($mol_mem(($.$bog_lk.prototype), "Github_input"));
+	($mol_mem(($.$bog_lk.prototype), "Github_field"));
+	($mol_mem(($.$bog_lk.prototype), "twitter"));
+	($mol_mem(($.$bog_lk.prototype), "Twitter_input"));
+	($mol_mem(($.$bog_lk.prototype), "Twitter_field"));
+	($mol_mem(($.$bog_lk.prototype), "Contacts_group"));
+	($mol_mem(($.$bog_lk.prototype), "Profile_form"));
+	($mol_mem(($.$bog_lk.prototype), "can_edit"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        new $mol_after_frame(() => {
+            $hyoo_crus_yard.masters = ['https://crus.hd4.ru/'];
+            $hyoo_crus_glob.yard().sync();
+        });
+        class $bog_lk extends $.$bog_lk {
+            share_feedback_timer = null;
+            share_ref() {
+                return this.$.$mol_state_arg.value('profile');
+            }
+            can_edit() {
+                return !this.share_ref();
+            }
+            own_profile() {
+                return this.available_profile();
+            }
+            profile() {
+                const ref = this.share_ref();
+                if (ref) {
+                    return this.$.$hyoo_crus_glob.Node($hyoo_crus_ref(ref), $bog_lk_profile);
+                }
+                return this.own_profile();
+            }
+            profile_text(ensure, next) {
+                const profile = this.profile();
+                const atom = profile ? ensure(profile) : null;
+                if (!atom)
+                    return '';
+                if (next !== undefined) {
+                    if (!this.can_edit())
+                        return atom.text();
+                    return atom.text(next);
+                }
+                return atom.text();
+            }
+            full_name(next) {
+                return this.profile_text(profile => profile.FullName(null), next);
+            }
+            nickname(next) {
+                return this.profile_text(profile => profile.Nickname(null), next);
+            }
+            bio(next) {
+                return this.profile_text(profile => profile.Bio(null), next);
+            }
+            city(next) {
+                return this.profile_text(profile => profile.City(null), next);
+            }
+            country(next) {
+                return this.profile_text(profile => profile.Country(null), next);
+            }
+            website(next) {
+                return this.profile_text(profile => profile.Website(null), next);
+            }
+            email(next) {
+                return this.profile_text(profile => profile.Email(null), next);
+            }
+            telegram(next) {
+                return this.profile_text(profile => profile.Telegram(null), next);
+            }
+            github(next) {
+                return this.profile_text(profile => profile.Github(null), next);
+            }
+            twitter(next) {
+                return this.profile_text(profile => profile.Twitter(null), next);
+            }
+            peer_id() {
+                return this.profile()?.ref().description ?? this.$.$hyoo_crus_glob.home().land().auth().peer();
+            }
+            display_name_text() {
+                return this.full_name().trim() || this.nickname().trim() || '—';
+            }
+            username_preview_text() {
+                const nick = this.nickname().trim().replace(/^@+/, '');
+                return nick ? `@${nick}` : '';
+            }
+            bio_preview_text() {
+                const bio = this.bio().trim();
+                if (bio.length <= 180)
+                    return bio;
+                return `${bio.slice(0, 177)}...`;
+            }
+            share_profile() {
+                if (!this.can_edit())
+                    return null;
+                const profile = this.available_profile();
+                this.$.$mol_dom_context.console?.info?.('[LK Share]', 'share_profile', {
+                    ref: profile?.ref().description ?? null,
+                });
+                return profile;
+            }
+            available_profile() {
+                const profile = this.$.$hyoo_crus_glob.home().hall_by($bog_lk_profile, $bog_lk_profile_preset);
+                if (!profile)
+                    return null;
+                if (!this.can_edit())
+                    return profile;
+                return this.ensure_public_profile(profile);
+            }
+            share_link() {
+                if (!this.can_edit())
+                    return '';
+                const ref = this.share_profile()?.ref().description;
+                if (!ref)
+                    return '';
+                this.$.$mol_dom_context.console?.info?.('[LK Share]', 'share_link', { ref });
+                return this.$.$mol_state_arg.make_link({ profile: ref });
+            }
+            share_feedback_text(next) {
+                return next ?? '';
+            }
+            ensure_public_profile(profile) {
+                const land = profile.land();
+                if (!land.encrypted()) {
+                    this.$.$mol_dom_context.console?.info?.('[LK Share]', 'profile not encrypted', {
+                        ref: profile.ref().description,
+                    });
+                    return profile;
+                }
+                const hall = this.$.$hyoo_crus_glob.home().Hall(null);
+                if (!hall)
+                    return profile;
+                const public_land = this.$.$hyoo_crus_glob.land_grab($bog_lk_profile_preset);
+                const public_profile = public_land.Data($bog_lk_profile);
+                this.$.$mol_dom_context.console?.info?.('[LK Share]', 'migrate profile', {
+                    from: profile.ref().description,
+                    to: public_profile.ref().description,
+                });
+                this.copy_profile_data(profile, public_profile);
+                hall.remote(public_profile);
+                return public_profile;
+            }
+            copy_profile_data(source, target) {
+                this.copy_profile_texts(source, target);
+                this.copy_profile_photos(source, target);
+            }
+            copy_profile_texts(source, target) {
+                target.FullName(null)?.text(source.FullName(null)?.text() ?? '');
+                target.Nickname(null)?.text(source.Nickname(null)?.text() ?? '');
+                target.Bio(null)?.text(source.Bio(null)?.text() ?? '');
+                target.City(null)?.text(source.City(null)?.text() ?? '');
+                target.Country(null)?.text(source.Country(null)?.text() ?? '');
+                target.Website(null)?.text(source.Website(null)?.text() ?? '');
+                target.Email(null)?.text(source.Email(null)?.text() ?? '');
+                target.Telegram(null)?.text(source.Telegram(null)?.text() ?? '');
+                target.Github(null)?.text(source.Github(null)?.text() ?? '');
+                target.Twitter(null)?.text(source.Twitter(null)?.text() ?? '');
+            }
+            copy_profile_photos(source, target) {
+                const base64_dest = target.PhotosBase64(null);
+                for (const existing of target.PhotosBase64()?.remote_list() ?? []) {
+                    base64_dest.has(existing.ref(), false);
+                }
+                const legacy_dest = target.Photos(null);
+                for (const legacy of target.Photos()?.remote_list() ?? []) {
+                    legacy_dest?.has(legacy.ref(), false);
+                }
+                const logger = this.$.$mol_dom_context.console;
+                const base64_sources = source.PhotosBase64()?.remote_list() ?? [];
+                const legacy_sources = source.Photos()?.remote_list() ?? [];
+                if (base64_sources.length) {
+                    for (const photo of base64_sources) {
+                        const text = photo.val() ?? '';
+                        if (!text)
+                            continue;
+                        logger?.info?.('[LK Share]', 'Copy profile photo (base64)', {
+                            source: photo.ref().description,
+                            length: text.length,
+                        });
+                        const node = base64_dest.local_make();
+                        node.val(text);
+                    }
+                    return;
+                }
+                for (const photo of legacy_sources) {
+                    const data = photo.val();
+                    if (!data) {
+                        logger?.info?.('[LK Share]', 'Empty photo payload', {
+                            source: photo.ref().description,
+                        });
+                        continue;
+                    }
+                    const base64 = this.bytes_to_base64(data);
+                    logger?.info?.('[LK Share]', 'Copy profile photo (legacy)', {
+                        source: photo.ref().description,
+                        bytes: data.byteLength,
+                    });
+                    const node = base64_dest.local_make();
+                    node.val(base64);
+                }
+            }
+            share_grant() {
+                const profile = this.own_profile();
+                if (!profile)
+                    return null;
+                profile.land().give(null, $hyoo_crus_rank_read);
+                return profile;
+            }
+            Profile_form() {
+                const form = super.Profile_form();
+                form.foot = () => [];
+                return form;
+            }
+            Share_panel() {
+                if (!this.can_edit())
+                    return null;
+                return super.Share_panel();
+            }
+            Share_copy() {
+                const button = super.Share_copy();
+                button.event_click = event => this.share_copy_click(event);
+                return button;
+            }
+            share_copy_click(event) {
+                event?.preventDefault();
+                void this.share_copy_flow();
+            }
+            async share_copy_flow() {
+                if (!this.can_edit())
+                    return;
+                const link = this.share_link();
+                if (!link)
+                    return;
+                const copied = await this.share_copy_to_clipboard(link);
+                this.share_notify(copied ? 'Ссылка скопирована' : 'Скопируйте ссылку вручную');
+            }
+            async share_copy_to_clipboard(link) {
+                const clipboard = this.$.$mol_dom_context.navigator?.clipboard;
+                if (clipboard?.writeText) {
+                    try {
+                        await clipboard.writeText(link);
+                        return true;
+                    }
+                    catch (error) {
+                        this.$.$mol_dom_context.console?.warn?.('[LK Share]', 'Clipboard write failed', error);
+                    }
+                }
+                this.$.$mol_dom_context.prompt?.('Скопируйте ссылку', link);
+                return false;
+            }
+            share_notify(message) {
+                this.share_feedback_text(message);
+                this.share_feedback_timer?.destructor();
+                this.share_feedback_timer = new this.$.$mol_after_timeout(3000, () => {
+                    this.share_feedback_text('');
+                    this.share_feedback_timer = null;
+                });
+            }
+            bytes_to_base64(buffer) {
+                const chunk = 0x8000;
+                let binary = '';
+                for (let i = 0; i < buffer.length; i += chunk) {
+                    const slice = buffer.subarray(i, i + chunk);
+                    binary += String.fromCharCode(...slice);
+                }
+                return this.$.$mol_dom_context.btoa(binary);
+            }
+            Avatar() {
+                const avatar = super.Avatar();
+                avatar.entity = () => {
+                    const shared = this.share_profile();
+                    const entity = shared ?? this.profile();
+                    this.$.$mol_dom_context.console?.info?.('[LK Avatar]', 'Avatar entity selected', {
+                        can_edit: this.can_edit(),
+                        shared: shared?.ref().description ?? null,
+                        entity: entity?.ref().description ?? null,
+                    });
+                    return entity;
+                };
+                return avatar;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "share_ref", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "can_edit", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "own_profile", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "profile", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "full_name", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "nickname", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "bio", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "city", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "country", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "website", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "email", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "telegram", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "github", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "twitter", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "peer_id", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "display_name_text", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "username_preview_text", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "bio_preview_text", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "share_profile", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "available_profile", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "share_link", null);
+        __decorate([
+            $mol_mem
+        ], $bog_lk.prototype, "share_feedback_text", null);
+        __decorate([
+            $mol_action
+        ], $bog_lk.prototype, "ensure_public_profile", null);
+        __decorate([
+            $mol_action
+        ], $bog_lk.prototype, "share_grant", null);
+        $$.$bog_lk = $bog_lk;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_lk, {
+            maxWidth: '50rem',
+            margin: {
+                left: 'auto',
+                right: 'auto',
+            },
+            padding: $mol_gap.block,
+            gap: $mol_gap.block,
+            Hero: {
+                gap: $mol_gap.block,
+                alignItems: 'center',
+            },
+            Hero_meta: {
+                gap: $mol_gap.block,
+                alignItems: 'flex-start',
+                justifyContent: 'space-between',
+                flex: {
+                    grow: 1,
+                },
+            },
+            Hero_info: {
+                gap: $mol_gap.text,
+            },
+            Display_name: {
+                font: {
+                    size: '1.75rem',
+                    weight: 600,
+                },
+            },
+            Username_preview: {
+                color: $mol_theme.shade,
+            },
+            Bio_preview: {
+                color: $mol_theme.text,
+                whiteSpace: 'pre-wrap',
+            },
+            Form_title: {
+                margin: { bottom: $mol_gap.block },
+                color: $mol_theme.text,
+                font: {
+                    size: '1.1rem',
+                    weight: 600,
+                },
+            },
+            Profile_form: {
+                gap: $mol_gap.block,
+                background: { color: $mol_theme.card },
+                padding: $mol_gap.block,
+                border: { radius: $mol_gap.round },
+                boxShadow: `0 0 0 1px ${$mol_theme.line}`,
+            },
+            Basics_heading: {
+                font: { weight: 600 },
+            },
+            Location_heading: {
+                font: { weight: 600 },
+                margin: { top: $mol_gap.block },
+            },
+            Contacts_heading: {
+                font: { weight: 600 },
+                margin: { top: $mol_gap.block },
+            },
+            Share_field: {
+                width: '33rem'
+            }
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$bog_bhelper_app) = class $bog_bhelper_app extends ($.$mol_book2_catalog) {
+		Realm(){
+			const obj = new this.$.$hyoo_crus_glob();
+			return obj;
+		}
+		Theme_toggle(){
+			const obj = new this.$.$bog_theme_toggle();
+			(obj.theme_auto) = () => ((this.Theme()));
+			return obj;
+		}
 		Theme(){
 			const obj = new this.$.$bog_theme_auto();
+			(obj.theme_light) = () => ("$mol_theme_light");
+			(obj.theme_dark) = () => ("$mol_theme_dark");
 			return obj;
 		}
 		Bot(){
 			const obj = new this.$.$gd_bot();
+			(obj.Space) = () => (null);
+			(obj.Sources) = () => (null);
+			(obj.Donate) = () => (null);
+			(obj.Support) = () => (null);
+			(obj.Lights) = () => (null);
 			return obj;
 		}
-		Helpers(){
-			const obj = new this.$.$bog_bhelper_app_helpers();
+		Prof(){
+			const obj = new this.$.$bog_bhelper_app_prof();
 			return obj;
 		}
 		Crm(){
@@ -20948,6 +22431,10 @@ var $;
 		}
 		Settings(){
 			const obj = new this.$.$bog_bhelper_app_settings();
+			return obj;
+		}
+		Lk(){
+			const obj = new this.$.$bog_lk();
 			return obj;
 		}
 		realm(){
@@ -20965,7 +22452,7 @@ var $;
 			return (this.$.$mol_locale.text("$bog_bhelper_app_menu_title"));
 		}
 		menu_tools(){
-			return [(this.Lights())];
+			return [(this.Theme_toggle())];
 		}
 		plugins(){
 			return [(this.Theme())];
@@ -20973,19 +22460,21 @@ var $;
 		spreads(){
 			return {
 				"": (this.Bot()), 
-				"helpers": (this.Helpers()), 
+				"prof": (this.Prof()), 
 				"crm": (this.Crm()), 
-				"settings": (this.Settings())
+				"settings": (this.Settings()), 
+				"lk": (this.Lk())
 			};
 		}
 	};
 	($mol_mem(($.$bog_bhelper_app.prototype), "Realm"));
-	($mol_mem(($.$bog_bhelper_app.prototype), "Lights"));
+	($mol_mem(($.$bog_bhelper_app.prototype), "Theme_toggle"));
 	($mol_mem(($.$bog_bhelper_app.prototype), "Theme"));
 	($mol_mem(($.$bog_bhelper_app.prototype), "Bot"));
-	($mol_mem(($.$bog_bhelper_app.prototype), "Helpers"));
+	($mol_mem(($.$bog_bhelper_app.prototype), "Prof"));
 	($mol_mem(($.$bog_bhelper_app.prototype), "Crm"));
 	($mol_mem(($.$bog_bhelper_app.prototype), "Settings"));
+	($mol_mem(($.$bog_bhelper_app.prototype), "Lk"));
 	($mol_mem(($.$bog_bhelper_app.prototype), "Menu_logo"));
 
 
@@ -21001,6 +22490,18 @@ var $;
         class $bog_bhelper_app extends $.$bog_bhelper_app {
             realm() {
                 return this.Realm();
+            }
+            Bot() {
+                const obj = super.Bot();
+                obj.context = () => this.Bot_context();
+                return obj;
+            }
+            Bot_context() {
+                const base = this.Bot().rules();
+                const prof = this.$.$mol_state_session.value('gd_profession');
+                return prof
+                    ? `${base}\nТы сейчас отвечаешь как ${prof}. Если пользователь поздоровается и попросит рассказать о себе, опиши, чем ты можешь помочь людям в этой роли, и приведи три типичных вопроса, которые тебе обычно задают.`
+                    : base;
             }
         }
         __decorate([

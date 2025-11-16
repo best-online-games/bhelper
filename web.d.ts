@@ -5996,18 +5996,6 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=4.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $bog_theme_auto extends $.$bog_theme_auto {
-        themes_default(): readonly $.$bog_theme_name[];
-        theme_index(next?: number): number;
-        system_theme_index(): number;
-        theme(): any;
-        theme_next(): void;
-        theme_prev(): void;
-        theme_set(index: number): void;
-    }
-}
-
 declare namespace $ {
 
 	export class $bog_theme_auto extends $mol_plugin {
@@ -6028,8 +6016,14 @@ declare namespace $ {
 
 //# sourceMappingURL=auto.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $bog_theme_picker_row extends $.$bog_theme_picker_row {
-        focused_str(): "" | "true";
+    class $bog_theme_auto extends $.$bog_theme_auto {
+        themes_default(): readonly $.$bog_theme_name[];
+        theme_index(next?: number): number;
+        system_theme_index(): number;
+        theme(): any;
+        theme_next(): void;
+        theme_prev(): void;
+        theme_set(index: number): void;
     }
 }
 
@@ -6052,20 +6046,12 @@ declare namespace $ {
 
 //# sourceMappingURL=row.view.tree.d.ts.map
 declare namespace $.$$ {
+    class $bog_theme_picker_row extends $.$bog_theme_picker_row {
+        focused_str(): "" | "true";
+    }
 }
 
 declare namespace $.$$ {
-    class $bog_theme_picker extends $.$bog_theme_picker {
-        theme_rows(): $.$bog_theme_picker_row[];
-        filtered_themes(): ("$mol_theme_light" | "$mol_theme_dark" | "$mol_theme_upwork" | "$mol_theme_ainews_light" | "$mol_theme_ainews_dark")[];
-        theme_name(index: number): "$mol_theme_light" | "$mol_theme_dark" | "$mol_theme_upwork" | "$mol_theme_ainews_light" | "$mol_theme_ainews_dark";
-        theme_focused(index: number): boolean;
-        theme_select(index: number, event?: MouseEvent): null;
-        theme_hover(index: number, event?: PointerEvent): null;
-        key_down(event?: KeyboardEvent): null;
-        private select_theme;
-        private preview_theme;
-    }
 }
 
 declare namespace $ {
@@ -6135,27 +6121,20 @@ declare namespace $ {
 
 //# sourceMappingURL=picker.view.tree.d.ts.map
 declare namespace $.$$ {
+    class $bog_theme_picker extends $.$bog_theme_picker {
+        theme_rows(): $.$bog_theme_picker_row[];
+        filtered_themes(): ("$mol_theme_light" | "$mol_theme_dark" | "$mol_theme_upwork" | "$mol_theme_ainews_light" | "$mol_theme_ainews_dark")[];
+        theme_name(index: number): "$mol_theme_light" | "$mol_theme_dark" | "$mol_theme_upwork" | "$mol_theme_ainews_light" | "$mol_theme_ainews_dark";
+        theme_focused(index: number): boolean;
+        theme_select(index: number, event?: MouseEvent): null;
+        theme_hover(index: number, event?: PointerEvent): null;
+        key_down(event?: KeyboardEvent): null;
+        private select_theme;
+        private preview_theme;
+    }
 }
 
 declare namespace $.$$ {
-    class $bog_theme_toggle extends $.$bog_theme_toggle {
-        long_press_delay: number;
-        move_threshold: number;
-        private press_timer;
-        private press_start_x;
-        private press_start_y;
-        private is_long_press;
-        clicked(event?: MouseEvent): null;
-        press_start(event?: PointerEvent): null;
-        press_move(event?: PointerEvent): null;
-        press_end(event?: PointerEvent): null;
-        press_cancel(event?: PointerEvent): null;
-        press_lost(event?: Event): null;
-        private clear_press_timer;
-        private on_long_press;
-        picker_close(): void;
-        backdrop_click(event?: MouseEvent): null;
-    }
 }
 
 declare namespace $ {
@@ -6225,6 +6204,27 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=toggle.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_theme_toggle extends $.$bog_theme_toggle {
+        long_press_delay: number;
+        move_threshold: number;
+        private press_timer;
+        private press_start_x;
+        private press_start_y;
+        private is_long_press;
+        clicked(event?: MouseEvent): null;
+        press_start(event?: PointerEvent): null;
+        press_move(event?: PointerEvent): null;
+        press_end(event?: PointerEvent): null;
+        press_cancel(event?: PointerEvent): null;
+        press_lost(event?: Event): null;
+        private clear_press_timer;
+        private on_long_press;
+        picker_close(): void;
+        backdrop_click(event?: MouseEvent): null;
+    }
+}
+
 declare namespace $.$$ {
 }
 
@@ -8803,122 +8803,89 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_text__text_bog_bhelper_app_helpers_1 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_text__text_bog_bhelper_app_helpers_2 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_string__hint_bog_bhelper_app_helpers_3 = $mol_type_enforce<
+	type $mol_string__hint_bog_bhelper_app_prof_1 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_string['hint'] >
 	>
-	type $mol_string__value_bog_bhelper_app_helpers_4 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_helpers['query'] >
+	type $mol_string__value_bog_bhelper_app_prof_2 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_prof['query'] >
 		,
 		ReturnType< $mol_string['value'] >
 	>
-	type $mol_view__sub_bog_bhelper_app_helpers_5 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_gallery__items_bog_bhelper_app_helpers_6 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_helpers['helper_cards'] >
+	type $mol_gallery__items_bog_bhelper_app_prof_3 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_prof['Helpers_gallery_items'] >
 		,
 		ReturnType< $mol_gallery['items'] >
 	>
-	type $mol_icon__path_bog_bhelper_app_helpers_7 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_helpers['icon_path'] >
-		,
-		ReturnType< $mol_icon['path'] >
-	>
-	type $mol_view__sub_bog_bhelper_app_helpers_8 = $mol_type_enforce<
+	type $mol_view__sub_bog_bhelper_app_prof_4 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_text__text_bog_bhelper_app_helpers_9 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_helpers['helper_description'] >
+	type $mol_text__text_bog_bhelper_app_prof_5 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_prof['helper_description'] >
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_link__uri_bog_bhelper_app_helpers_10 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_helpers['item_uri'] >
+	type $mol_link__uri_bog_bhelper_app_prof_6 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_prof['Helper_item_uri'] >
 		,
 		ReturnType< $mol_link['uri'] >
 	>
-	type $mol_link__click_bog_bhelper_app_helpers_11 = $mol_type_enforce<
-		ReturnType< $bog_bhelper_app_helpers['item_open'] >
+	type $mol_link__click_bog_bhelper_app_prof_7 = $mol_type_enforce<
+		ReturnType< $bog_bhelper_app_prof['Helper_item_open'] >
 		,
 		ReturnType< $mol_link['click'] >
 	>
-	type $mol_link__title_bog_bhelper_app_helpers_12 = $mol_type_enforce<
+	type $mol_link__title_bog_bhelper_app_prof_8 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $mol_link['title'] >
 	>
-	type $mol_link__sub_bog_bhelper_app_helpers_13 = $mol_type_enforce<
+	type $mol_link__sub_bog_bhelper_app_prof_9 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_card__sub_bog_bhelper_app_helpers_14 = $mol_type_enforce<
+	type $mol_card__sub_bog_bhelper_app_prof_10 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_card['sub'] >
 	>
-	export class $bog_bhelper_app_helpers extends $mol_page {
-		hero_title( ): $mol_text
-		hero_descr( ): $mol_text
+	export class $bog_bhelper_app_prof extends $mol_page {
 		query( next?: string ): string
-		search( ): $mol_string
-		hero( ): $mol_view
-		helper_cards( ): readonly($mol_view)[]
-		gallery( ): $mol_gallery
-		item_uri( id: any): string
-		item_open( id: any, next?: any ): any
-		icon_path( id: any): string
-		icon( id: any): $mol_icon
+		Search( ): $mol_string
+		Helpers_gallery_items( ): readonly($mol_view)[]
+		Helpers_gallery( ): $mol_gallery
+		Helper_item_uri( id: any): string
+		Helper_item_open( id: any, next?: any ): any
 		helper_title( id: any): string
-		title_view( id: any): $mol_view
+		Helper_title_view( id: any): $mol_view
 		helper_description( id: any): string
-		descr_view( id: any): $mol_text
-		link( id: any): $mol_link
+		Helper_descr_view( id: any): $mol_text
+		Helper_link( id: any): $mol_link
 		title( ): string
 		body( ): readonly(any)[]
-		item( id: any): $mol_card
+		Helper_item( id: any): $mol_card
 	}
 	
 }
 
-//# sourceMappingURL=helpers.view.tree.d.ts.map
+//# sourceMappingURL=prof.view.tree.d.ts.map
 declare namespace $.$$ {
-    const $mol_github_model_polyglots: string[];
-    class $bog_bhelper_app_helpers extends $.$bog_bhelper_app_helpers {
-        private readonly helper_catalog_data;
+    class $bog_bhelper_app_prof extends $.$bog_bhelper_app_prof {
         query(next?: string): string;
-        items(): readonly {
-            default_promt: string;
-            title: string;
-            description: string;
-            icon: string;
-        }[];
-        helper_cards(): readonly $mol_view[];
-        helper_title(index: number): string;
-        helper_description(index: number): string;
-        icon_path(index: number): string;
-        item_uri(index: number): string;
-        item_open(index: number, event?: Event): void;
+        helper_titles(): readonly string[];
+        helper_title(id: number): string;
+        helper_descriptions(): readonly string[];
+        helper_description(id: number): string;
+        Helpers_gallery_items(): $.$mol_card[];
+        Helper_item_open(index: number, event?: Event): void;
     }
 }
 
-declare namespace $ {
+declare namespace $.$$ {
 }
 
 declare namespace $ {
@@ -10116,24 +10083,1014 @@ declare namespace $ {
 
 declare namespace $ {
 
+	export class $mol_icon_upload extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=upload.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_button_open_native__files_mol_button_open_1 = $mol_type_enforce<
+		ReturnType< $mol_button_open['files_handled'] >
+		,
+		ReturnType< $mol_button_open_native['files'] >
+	>
+	type $mol_button_open_native__accept_mol_button_open_2 = $mol_type_enforce<
+		ReturnType< $mol_button_open['accept'] >
+		,
+		ReturnType< $mol_button_open_native['accept'] >
+	>
+	type $mol_button_open_native__multiple_mol_button_open_3 = $mol_type_enforce<
+		ReturnType< $mol_button_open['multiple'] >
+		,
+		ReturnType< $mol_button_open_native['multiple'] >
+	>
+	export class $mol_button_open extends $mol_button_minor {
+		Icon( ): $mol_icon_upload
+		files( next?: readonly(File)[] ): readonly(File)[]
+		files_handled( next?: ReturnType< $mol_button_open['files'] > ): ReturnType< $mol_button_open['files'] >
+		accept( ): string
+		multiple( ): boolean
+		Native( ): $mol_button_open_native
+		sub( ): readonly(any)[]
+	}
+	
+	export class $mol_button_open_native extends $mol_view {
+		accept( ): string
+		multiple( ): boolean
+		picked( next?: any ): any
+		dom_name( ): string
+		files( next?: readonly(File)[] ): readonly(File)[]
+		attr( ): ({ 
+			'type': string,
+			'accept': ReturnType< $mol_button_open_native['accept'] >,
+			'multiple': ReturnType< $mol_button_open_native['multiple'] >,
+		}) 
+		event( ): ({ 
+			change( next?: ReturnType< $mol_button_open_native['picked'] > ): ReturnType< $mol_button_open_native['picked'] >,
+		}) 
+	}
+	
+}
+
+//# sourceMappingURL=open.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_button_open extends $.$mol_button_open {
+        files_handled(next?: readonly File[]): readonly File[];
+    }
+    class $mol_button_open_native extends $.$mol_button_open_native {
+        dom_node(): HTMLInputElement;
+        picked(): void;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    export const $bog_lk_profile_preset: {
+        readonly '': number & {
+            $hyoo_crus_rank: number;
+        };
+    };
+    const $bog_lk_profile_base: Omit<typeof $hyoo_crus_entity, "prototype"> & (new (...args: any[]) => $mol_type_override<$hyoo_crus_entity, {
+        readonly FullName: (auto?: any) => $hyoo_crus_text | null;
+        readonly Nickname: (auto?: any) => $hyoo_crus_text | null;
+        readonly Bio: (auto?: any) => $hyoo_crus_text | null;
+        readonly City: (auto?: any) => $hyoo_crus_text | null;
+        readonly Country: (auto?: any) => $hyoo_crus_text | null;
+        readonly Website: (auto?: any) => $hyoo_crus_text | null;
+        readonly Email: (auto?: any) => $hyoo_crus_text | null;
+        readonly Telegram: (auto?: any) => $hyoo_crus_text | null;
+        readonly Github: (auto?: any) => $hyoo_crus_text | null;
+        readonly Twitter: (auto?: any) => $hyoo_crus_text | null;
+        readonly Photos: (auto?: any) => {
+            remote_list(next?: readonly $hyoo_crus_atom_bin[] | undefined): readonly $hyoo_crus_atom_bin[];
+            remote_add(item: $hyoo_crus_atom_bin): void;
+            make(config: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $hyoo_crus_atom_bin;
+            remote_make(config: $hyoo_crus_rank_preset): $hyoo_crus_atom_bin;
+            local_make(idea?: number): $hyoo_crus_atom_bin;
+            items(next?: readonly ((symbol & {
+                $hyoo_crus_ref: symbol;
+            }) | null)[] | undefined): readonly ((symbol & {
+                $hyoo_crus_ref: symbol;
+            }) | null)[];
+            items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
+            splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+            find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
+            has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
+            add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+            cut(vary: $hyoo_crus_vary_type): void;
+            move(from: number, to: number): void;
+            wipe(seat: number): void;
+            node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
+            [$mol_dev_format_head](): any[];
+            land(): $hyoo_crus_land;
+            head(): string;
+            land_ref(): symbol & {
+                $hyoo_crus_ref: symbol;
+            };
+            ref(): symbol & {
+                $hyoo_crus_ref: symbol;
+            };
+            toJSON(): string | undefined;
+            cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
+            nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
+            units(): $hyoo_crus_sand[];
+            units_of(peer: string | null): $hyoo_crus_sand[];
+            filled(): boolean;
+            can_change(): boolean;
+            last_change(): $mol_time_moment | null;
+            author_peers(): string[];
+            author_lords(): (symbol & {
+                $hyoo_crus_ref: symbol;
+            })[];
+            get $(): $;
+            set $(next: $);
+            destructor(): void;
+            toString(): string;
+            [Symbol.toStringTag]: string;
+            [$mol_ambient_ref]: $;
+        } | null;
+        readonly PhotosBase64: (auto?: any) => {
+            remote_list(next?: readonly $hyoo_crus_atom_str[] | undefined): readonly $hyoo_crus_atom_str[];
+            remote_add(item: $hyoo_crus_atom_str): void;
+            make(config: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $hyoo_crus_atom_str;
+            remote_make(config: $hyoo_crus_rank_preset): $hyoo_crus_atom_str;
+            local_make(idea?: number): $hyoo_crus_atom_str;
+            items(next?: readonly ((symbol & {
+                $hyoo_crus_ref: symbol;
+            }) | null)[] | undefined): readonly ((symbol & {
+                $hyoo_crus_ref: symbol;
+            }) | null)[];
+            items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
+            splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+            find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
+            has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
+            add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+            cut(vary: $hyoo_crus_vary_type): void;
+            move(from: number, to: number): void;
+            wipe(seat: number): void;
+            node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
+            [$mol_dev_format_head](): any[];
+            land(): $hyoo_crus_land;
+            head(): string;
+            land_ref(): symbol & {
+                $hyoo_crus_ref: symbol;
+            };
+            ref(): symbol & {
+                $hyoo_crus_ref: symbol;
+            };
+            toJSON(): string | undefined;
+            cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
+            nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
+            units(): $hyoo_crus_sand[];
+            units_of(peer: string | null): $hyoo_crus_sand[];
+            filled(): boolean;
+            can_change(): boolean;
+            last_change(): $mol_time_moment | null;
+            author_peers(): string[];
+            author_lords(): (symbol & {
+                $hyoo_crus_ref: symbol;
+            })[];
+            get $(): $;
+            set $(next: $);
+            destructor(): void;
+            toString(): string;
+            [Symbol.toStringTag]: string;
+            [$mol_ambient_ref]: $;
+        } | null;
+    }>) & {
+        schema: {
+            [x: string]: typeof $hyoo_crus_node;
+        } & {
+            readonly FullName: typeof $hyoo_crus_text;
+            readonly Nickname: typeof $hyoo_crus_text;
+            readonly Bio: typeof $hyoo_crus_text;
+            readonly City: typeof $hyoo_crus_text;
+            readonly Country: typeof $hyoo_crus_text;
+            readonly Website: typeof $hyoo_crus_text;
+            readonly Email: typeof $hyoo_crus_text;
+            readonly Telegram: typeof $hyoo_crus_text;
+            readonly Github: typeof $hyoo_crus_text;
+            readonly Twitter: typeof $hyoo_crus_text;
+            readonly Photos: {
+                new (): {
+                    remote_list(next?: readonly $hyoo_crus_atom_bin[] | undefined): readonly $hyoo_crus_atom_bin[];
+                    remote_add(item: $hyoo_crus_atom_bin): void;
+                    make(config: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $hyoo_crus_atom_bin;
+                    remote_make(config: $hyoo_crus_rank_preset): $hyoo_crus_atom_bin;
+                    local_make(idea?: number): $hyoo_crus_atom_bin;
+                    items(next?: readonly ((symbol & {
+                        $hyoo_crus_ref: symbol;
+                    }) | null)[] | undefined): readonly ((symbol & {
+                        $hyoo_crus_ref: symbol;
+                    }) | null)[];
+                    items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
+                    splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+                    find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
+                    has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
+                    add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+                    cut(vary: $hyoo_crus_vary_type): void;
+                    move(from: number, to: number): void;
+                    wipe(seat: number): void;
+                    node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
+                    [$mol_dev_format_head](): any[];
+                    land(): $hyoo_crus_land;
+                    head(): string;
+                    land_ref(): symbol & {
+                        $hyoo_crus_ref: symbol;
+                    };
+                    ref(): symbol & {
+                        $hyoo_crus_ref: symbol;
+                    };
+                    toJSON(): string | undefined;
+                    cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
+                    nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
+                    units(): $hyoo_crus_sand[];
+                    units_of(peer: string | null): $hyoo_crus_sand[];
+                    filled(): boolean;
+                    can_change(): boolean;
+                    last_change(): $mol_time_moment | null;
+                    author_peers(): string[];
+                    author_lords(): (symbol & {
+                        $hyoo_crus_ref: symbol;
+                    })[];
+                    get $(): $;
+                    set $(next: $);
+                    destructor(): void;
+                    toString(): string;
+                    [Symbol.toStringTag]: string;
+                    [$mol_ambient_ref]: $;
+                };
+                Value: Value;
+                toString(): any;
+                parse: typeof $hyoo_crus_vary_cast_ref;
+                tag: keyof typeof $hyoo_crus_sand_tag;
+                make<This extends typeof $mol_object>(this: This, config: Partial<InstanceType<This>>): InstanceType<This>;
+                $: $;
+                create<Instance>(this: new (init?: (instance: any) => void) => Instance, init?: (instance: $mol_type_writable<Instance>) => void): Instance;
+                toJSON(): any;
+                destructor(): void;
+                [Symbol.toPrimitive](): any;
+            };
+            readonly PhotosBase64: {
+                new (): {
+                    remote_list(next?: readonly $hyoo_crus_atom_str[] | undefined): readonly $hyoo_crus_atom_str[];
+                    remote_add(item: $hyoo_crus_atom_str): void;
+                    make(config: null | number | $hyoo_crus_rank_preset | $hyoo_crus_land): $hyoo_crus_atom_str;
+                    remote_make(config: $hyoo_crus_rank_preset): $hyoo_crus_atom_str;
+                    local_make(idea?: number): $hyoo_crus_atom_str;
+                    items(next?: readonly ((symbol & {
+                        $hyoo_crus_ref: symbol;
+                    }) | null)[] | undefined): readonly ((symbol & {
+                        $hyoo_crus_ref: symbol;
+                    }) | null)[];
+                    items_vary(next?: readonly $hyoo_crus_vary_type[], tag?: keyof typeof $hyoo_crus_sand_tag): readonly $hyoo_crus_vary_type[];
+                    splice(next: readonly $hyoo_crus_vary_type[], from?: number, to?: number, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+                    find(vary: $hyoo_crus_vary_type): $hyoo_crus_sand | null;
+                    has(vary: $hyoo_crus_vary_type, next?: boolean, tag?: keyof typeof $hyoo_crus_sand_tag): boolean;
+                    add(vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): void;
+                    cut(vary: $hyoo_crus_vary_type): void;
+                    move(from: number, to: number): void;
+                    wipe(seat: number): void;
+                    node_make<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1, vary: $hyoo_crus_vary_type, tag?: keyof typeof $hyoo_crus_sand_tag): InstanceType<Node_1>;
+                    [$mol_dev_format_head](): any[];
+                    land(): $hyoo_crus_land;
+                    head(): string;
+                    land_ref(): symbol & {
+                        $hyoo_crus_ref: symbol;
+                    };
+                    ref(): symbol & {
+                        $hyoo_crus_ref: symbol;
+                    };
+                    toJSON(): string | undefined;
+                    cast<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1): InstanceType<Node_1>;
+                    nodes<Node_1 extends typeof $hyoo_crus_node>(Node: Node_1 | null): readonly InstanceType<Node_1>[];
+                    units(): $hyoo_crus_sand[];
+                    units_of(peer: string | null): $hyoo_crus_sand[];
+                    filled(): boolean;
+                    can_change(): boolean;
+                    last_change(): $mol_time_moment | null;
+                    author_peers(): string[];
+                    author_lords(): (symbol & {
+                        $hyoo_crus_ref: symbol;
+                    })[];
+                    get $(): $;
+                    set $(next: $);
+                    destructor(): void;
+                    toString(): string;
+                    [Symbol.toStringTag]: string;
+                    [$mol_ambient_ref]: $;
+                };
+                Value: Value;
+                toString(): any;
+                parse: typeof $hyoo_crus_vary_cast_ref;
+                tag: keyof typeof $hyoo_crus_sand_tag;
+                make<This extends typeof $mol_object>(this: This, config: Partial<InstanceType<This>>): InstanceType<This>;
+                $: $;
+                create<Instance>(this: new (init?: (instance: any) => void) => Instance, init?: (instance: $mol_type_writable<Instance>) => void): Instance;
+                toJSON(): any;
+                destructor(): void;
+                [Symbol.toPrimitive](): any;
+            };
+        };
+    };
+    export class $bog_lk_profile extends $bog_lk_profile_base {
+    }
+    export {};
+}
+
+declare namespace $.$$ {
+    class $bog_lk_avatar extends $.$bog_lk_avatar {
+        protected avatar_log(event: string, detail?: Record<string, unknown>): void;
+        entity(next?: $bog_lk_profile | null): $bog_lk_profile | null;
+        accept(): string;
+        multiple(): boolean;
+        private_photo_base64(): $hyoo_crus_atom_str | null;
+        private_photo_binary(): $hyoo_crus_atom_bin | null;
+        protected encode_base64(buffer: Uint8Array): string;
+        image_data(): string | null;
+        image_uri(): string;
+        sub(): ($mol_image | $.$mol_button_open_native | $mol_icon_upload)[];
+        Image(): $mol_image;
+        Placeholder(): $mol_icon_upload;
+        clear(): void;
+        files(next?: readonly File[]): never[];
+    }
+}
+
+declare namespace $ {
+
+	export class $bog_lk_avatar extends $mol_button_open {
+		entity( ): any
+	}
+	
+}
+
+//# sourceMappingURL=avatar.view.tree.d.ts.map
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $mol_view__sub_mol_form_field_1 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $mol_form_field extends $mol_labeler {
+		name( ): string
+		bid( ): string
+		Bid( ): $mol_view
+		control( ): any
+		bids( ): readonly(string)[]
+		label( ): readonly(any)[]
+		content( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=field.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_form_field extends $.$mol_form_field {
+        bid(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_list__sub_mol_form_1 = $mol_type_enforce<
+		ReturnType< $mol_form['body'] >
+		,
+		ReturnType< $mol_list['sub'] >
+	>
+	type __mol_form_2 = $mol_type_enforce<
+		Parameters< $mol_form['submit_activate'] >[0]
+		,
+		Parameters< ReturnType< $mol_form['Submit'] >['activate'] >[0]
+	>
+	type $mol_button_major__title_mol_form_3 = $mol_type_enforce<
+		ReturnType< $mol_form['submit_title'] >
+		,
+		ReturnType< $mol_button_major['title'] >
+	>
+	type $mol_button_major__hint_mol_form_4 = $mol_type_enforce<
+		ReturnType< $mol_form['submit_hint'] >
+		,
+		ReturnType< $mol_button_major['hint'] >
+	>
+	type $mol_button_major__click_mol_form_5 = $mol_type_enforce<
+		ReturnType< $mol_form['submit'] >
+		,
+		ReturnType< $mol_button_major['click'] >
+	>
+	type $mol_status__message_mol_form_6 = $mol_type_enforce<
+		ReturnType< $mol_form['result'] >
+		,
+		ReturnType< $mol_status['message'] >
+	>
+	type $mol_row__sub_mol_form_7 = $mol_type_enforce<
+		ReturnType< $mol_form['foot'] >
+		,
+		ReturnType< $mol_row['sub'] >
+	>
+	export class $mol_form extends $mol_list {
+		keydown( next?: any ): any
+		form_invalid( ): string
+		form_fields( ): readonly($mol_form_field)[]
+		body( ): ReturnType< $mol_form['form_fields'] >
+		Body( ): $mol_list
+		submit_title( ): string
+		submit_hint( ): string
+		submit_activate( next?: ReturnType< ReturnType< $mol_form['Submit'] >['activate'] > ): ReturnType< ReturnType< $mol_form['Submit'] >['activate'] >
+		submit( next?: any ): any
+		Submit( ): $mol_button_major
+		result( next?: any ): any
+		Result( ): $mol_status
+		buttons( ): readonly($mol_view)[]
+		foot( ): ReturnType< $mol_form['buttons'] >
+		Foot( ): $mol_row
+		submit_allowed( ): boolean
+		submit_blocked( ): boolean
+		event( ): ({ 
+			keydown( next?: ReturnType< $mol_form['keydown'] > ): ReturnType< $mol_form['keydown'] >,
+		})  & ReturnType< $mol_list['event'] >
+		save( next?: any ): any
+		message_done( ): string
+		errors( ): Record<string, string>
+		rows( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=form.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_form extends $.$mol_form {
+        form_fields(): readonly $mol_form_field[];
+        submit_allowed(): boolean;
+        submit_blocked(): boolean;
+        keydown(next: KeyboardEvent): void;
+        result(next?: string | Error): string;
+        buttons(): ($.$mol_status | $mol_button_major)[];
+        submit(next?: Event): boolean;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_form_group extends $mol_view {
+	}
+	
+}
+
+//# sourceMappingURL=group.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_lk extends $.$bog_lk {
+        private share_feedback_timer;
+        share_ref(): string | null;
+        can_edit(): boolean;
+        own_profile(): $bog_lk_profile | null;
+        profile(): $bog_lk_profile | null;
+        protected profile_text(ensure: (profile: $bog_lk_profile) => $hyoo_crus_text | null, next?: string): string;
+        full_name(next?: string): string;
+        nickname(next?: string): string;
+        bio(next?: string): string;
+        city(next?: string): string;
+        country(next?: string): string;
+        website(next?: string): string;
+        email(next?: string): string;
+        telegram(next?: string): string;
+        github(next?: string): string;
+        twitter(next?: string): string;
+        peer_id(): string;
+        display_name_text(): string;
+        username_preview_text(): string;
+        bio_preview_text(): string;
+        share_profile(): $bog_lk_profile | null;
+        available_profile(): $bog_lk_profile | null;
+        share_link(): string;
+        share_feedback_text(next?: string): string;
+        ensure_public_profile(profile: $bog_lk_profile): $bog_lk_profile;
+        protected copy_profile_data(source: $bog_lk_profile, target: $bog_lk_profile): void;
+        protected copy_profile_texts(source: $bog_lk_profile, target: $bog_lk_profile): void;
+        protected copy_profile_photos(source: $bog_lk_profile, target: $bog_lk_profile): void;
+        share_grant(): $bog_lk_profile | null;
+        Profile_form(): $.$mol_form;
+        Share_panel(): any;
+        Share_copy(): $mol_button_minor;
+        share_copy_click(event?: Event): void;
+        protected share_copy_flow(): Promise<void>;
+        protected share_copy_to_clipboard(link: string): Promise<boolean>;
+        protected share_notify(message: string): void;
+        protected bytes_to_base64(buffer: Uint8Array): string;
+        Avatar(): $.$bog_lk_avatar;
+    }
+}
+
+declare namespace $ {
+
+	type $bog_theme_toggle__theme_auto_bog_lk_1 = $mol_type_enforce<
+		ReturnType< $bog_lk['Theme'] >
+		,
+		ReturnType< $bog_theme_toggle['theme_auto'] >
+	>
+	type $bog_lk_avatar__entity_bog_lk_2 = $mol_type_enforce<
+		ReturnType< $bog_lk['profile'] >
+		,
+		ReturnType< $bog_lk_avatar['entity'] >
+	>
+	type $bog_lk_avatar__enabled_bog_lk_3 = $mol_type_enforce<
+		ReturnType< $bog_lk['can_edit'] >
+		,
+		ReturnType< $bog_lk_avatar['enabled'] >
+	>
+	type $mol_text__text_bog_lk_4 = $mol_type_enforce<
+		ReturnType< $bog_lk['display_name_text'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_text__text_bog_lk_5 = $mol_type_enforce<
+		ReturnType< $bog_lk['username_preview_text'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_text__text_bog_lk_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_text__text_bog_lk_7 = $mol_type_enforce<
+		ReturnType< $bog_lk['peer_id'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_labeler__Label_bog_lk_8 = $mol_type_enforce<
+		ReturnType< $bog_lk['Peer_label'] >
+		,
+		ReturnType< $mol_labeler['Label'] >
+	>
+	type $mol_labeler__Content_bog_lk_9 = $mol_type_enforce<
+		ReturnType< $bog_lk['Peer_value'] >
+		,
+		ReturnType< $mol_labeler['Content'] >
+	>
+	type $mol_text__text_bog_lk_10 = $mol_type_enforce<
+		ReturnType< $bog_lk['bio_preview_text'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_list__rows_bog_lk_11 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_text__text_bog_lk_12 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_string__value_bog_lk_13 = $mol_type_enforce<
+		ReturnType< $bog_lk['share_link'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_lk_14 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type __bog_lk_15 = $mol_type_enforce<
+		Parameters< $bog_lk['share_copy_click'] >[0]
+		,
+		Parameters< ReturnType< $bog_lk['Share_copy'] >['click'] >[0]
+	>
+	type $mol_text__text_bog_lk_16 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_button_minor__title_bog_lk_17 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['title'] >
+	>
+	type $mol_button_minor__sub_bog_lk_18 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_row__sub_bog_lk_19 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_row['sub'] >
+	>
+	type $mol_text__text_bog_lk_20 = $mol_type_enforce<
+		ReturnType< $bog_lk['share_feedback_text'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_list__rows_bog_lk_21 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_row__sub_bog_lk_22 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_row['sub'] >
+	>
+	type $mol_row__sub_bog_lk_23 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_row['sub'] >
+	>
+	type $mol_text__text_bog_lk_24 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_text__text_bog_lk_25 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_string__value_bog_lk_26 = $mol_type_enforce<
+		ReturnType< $bog_lk['full_name'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_lk_27 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_form_field__name_bog_lk_28 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_bog_lk_29 = $mol_type_enforce<
+		ReturnType< $bog_lk['Full_name_input'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_string__value_bog_lk_30 = $mol_type_enforce<
+		ReturnType< $bog_lk['nickname'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_lk_31 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_form_field__name_bog_lk_32 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_bog_lk_33 = $mol_type_enforce<
+		ReturnType< $bog_lk['Nickname_input'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_textarea__value_bog_lk_34 = $mol_type_enforce<
+		ReturnType< $bog_lk['bio'] >
+		,
+		ReturnType< $mol_textarea['value'] >
+	>
+	type $mol_textarea__hint_bog_lk_35 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_textarea['hint'] >
+	>
+	type $mol_form_field__name_bog_lk_36 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_bog_lk_37 = $mol_type_enforce<
+		ReturnType< $bog_lk['Bio_input'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_form_group__sub_bog_lk_38 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_form_group['sub'] >
+	>
+	type $mol_text__text_bog_lk_39 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_string__value_bog_lk_40 = $mol_type_enforce<
+		ReturnType< $bog_lk['city'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_lk_41 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_form_field__name_bog_lk_42 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_bog_lk_43 = $mol_type_enforce<
+		ReturnType< $bog_lk['City_input'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_string__value_bog_lk_44 = $mol_type_enforce<
+		ReturnType< $bog_lk['country'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_lk_45 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_form_field__name_bog_lk_46 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_bog_lk_47 = $mol_type_enforce<
+		ReturnType< $bog_lk['Country_input'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_form_group__sub_bog_lk_48 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_form_group['sub'] >
+	>
+	type $mol_text__text_bog_lk_49 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_string__value_bog_lk_50 = $mol_type_enforce<
+		ReturnType< $bog_lk['email'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_lk_51 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_form_field__name_bog_lk_52 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_bog_lk_53 = $mol_type_enforce<
+		ReturnType< $bog_lk['Email_input'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_string__value_bog_lk_54 = $mol_type_enforce<
+		ReturnType< $bog_lk['website'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_lk_55 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_form_field__name_bog_lk_56 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_bog_lk_57 = $mol_type_enforce<
+		ReturnType< $bog_lk['Website_input'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_string__value_bog_lk_58 = $mol_type_enforce<
+		ReturnType< $bog_lk['telegram'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_lk_59 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_form_field__name_bog_lk_60 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_bog_lk_61 = $mol_type_enforce<
+		ReturnType< $bog_lk['Telegram_input'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_string__value_bog_lk_62 = $mol_type_enforce<
+		ReturnType< $bog_lk['github'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_lk_63 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_form_field__name_bog_lk_64 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_bog_lk_65 = $mol_type_enforce<
+		ReturnType< $bog_lk['Github_input'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_string__value_bog_lk_66 = $mol_type_enforce<
+		ReturnType< $bog_lk['twitter'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_lk_67 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_form_field__name_bog_lk_68 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_form_field['name'] >
+	>
+	type $mol_form_field__Content_bog_lk_69 = $mol_type_enforce<
+		ReturnType< $bog_lk['Twitter_input'] >
+		,
+		ReturnType< $mol_form_field['Content'] >
+	>
+	type $mol_form_group__sub_bog_lk_70 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_form_group['sub'] >
+	>
+	type $mol_form__body_bog_lk_71 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_form['body'] >
+	>
+	export class $bog_lk extends $mol_page {
+		Theme( ): $bog_theme_auto
+		Lights( ): $bog_theme_toggle
+		Avatar( ): $bog_lk_avatar
+		display_name_text( ): string
+		Display_name( ): $mol_text
+		username_preview_text( ): string
+		Username_preview( ): $mol_text
+		Peer_label( ): $mol_text
+		peer_id( ): string
+		Peer_value( ): $mol_text
+		Peer_id( ): $mol_labeler
+		bio_preview_text( ): string
+		Bio_preview( ): $mol_text
+		Hero_info( ): $mol_list
+		Share_title( ): $mol_text
+		share_link( ): string
+		Share_field( ): $mol_string
+		share_copy_click( next?: ReturnType< ReturnType< $bog_lk['Share_copy'] >['click'] > ): ReturnType< ReturnType< $bog_lk['Share_copy'] >['click'] >
+		Share_copy_text( ): $mol_text
+		Share_copy( ): $mol_button_minor
+		Share_row( ): $mol_row
+		share_feedback_text( ): string
+		Share_feedback( ): $mol_text
+		Share_panel( ): $mol_list
+		Hero_meta( ): $mol_row
+		Hero( ): $mol_row
+		Form_title( ): $mol_text
+		Basics_heading( ): $mol_text
+		full_name( next?: string ): string
+		Full_name_input( ): $mol_string
+		Full_name_field( ): $mol_form_field
+		nickname( next?: string ): string
+		Nickname_input( ): $mol_string
+		Nickname_field( ): $mol_form_field
+		bio( next?: string ): string
+		Bio_input( ): $mol_textarea
+		Bio_field( ): $mol_form_field
+		Basics_group( ): $mol_form_group
+		Location_heading( ): $mol_text
+		city( next?: string ): string
+		City_input( ): $mol_string
+		City_field( ): $mol_form_field
+		country( next?: string ): string
+		Country_input( ): $mol_string
+		Country_field( ): $mol_form_field
+		Location_group( ): $mol_form_group
+		Contacts_heading( ): $mol_text
+		email( next?: string ): string
+		Email_input( ): $mol_string
+		Email_field( ): $mol_form_field
+		website( next?: string ): string
+		Website_input( ): $mol_string
+		Website_field( ): $mol_form_field
+		telegram( next?: string ): string
+		Telegram_input( ): $mol_string
+		Telegram_field( ): $mol_form_field
+		github( next?: string ): string
+		Github_input( ): $mol_string
+		Github_field( ): $mol_form_field
+		twitter( next?: string ): string
+		Twitter_input( ): $mol_string
+		Twitter_field( ): $mol_form_field
+		Contacts_group( ): $mol_form_group
+		Profile_form( ): $mol_form
+		title( ): string
+		plugins( ): readonly(any)[]
+		head( ): readonly(any)[]
+		profile( ): any
+		can_edit( next?: boolean ): boolean
+		body( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=lk.view.tree.d.ts.map
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
 	type $bog_theme_toggle__theme_auto_bog_bhelper_app_1 = $mol_type_enforce<
 		ReturnType< $bog_bhelper_app['Theme'] >
 		,
 		ReturnType< $bog_theme_toggle['theme_auto'] >
 	>
-	type $mol_image__uri_bog_bhelper_app_2 = $mol_type_enforce<
+	type $bog_theme_auto__theme_light_bog_bhelper_app_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_theme_auto['theme_light'] >
+	>
+	type $bog_theme_auto__theme_dark_bog_bhelper_app_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_theme_auto['theme_dark'] >
+	>
+	type $gd_bot__Space_bog_bhelper_app_4 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $gd_bot['Space'] >
+	>
+	type $gd_bot__Sources_bog_bhelper_app_5 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $gd_bot['Sources'] >
+	>
+	type $gd_bot__Donate_bog_bhelper_app_6 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $gd_bot['Donate'] >
+	>
+	type $gd_bot__Support_bog_bhelper_app_7 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $gd_bot['Support'] >
+	>
+	type $gd_bot__Lights_bog_bhelper_app_8 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $gd_bot['Lights'] >
+	>
+	type $mol_image__uri_bog_bhelper_app_9 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_image['uri'] >
 	>
 	export class $bog_bhelper_app extends $mol_book2_catalog {
 		Realm( ): $hyoo_crus_glob
-		Lights( ): $bog_theme_toggle
+		Theme_toggle( ): $bog_theme_toggle
 		Theme( ): $bog_theme_auto
 		Bot( ): $gd_bot
-		Helpers( ): $bog_bhelper_app_helpers
+		Prof( ): $bog_bhelper_app_prof
 		Crm( ): $bog_bhelper_app_crm
 		Settings( ): $bog_bhelper_app_settings
+		Lk( ): $bog_lk
 		realm( ): ReturnType< $bog_bhelper_app['Realm'] >
 		Placeholder( ): any
 		Menu_logo( ): $mol_image
@@ -10142,9 +11099,10 @@ declare namespace $ {
 		plugins( ): readonly(any)[]
 		spreads( ): ({ 
 			'': ReturnType< $bog_bhelper_app['Bot'] >,
-			'helpers': ReturnType< $bog_bhelper_app['Helpers'] >,
+			'prof': ReturnType< $bog_bhelper_app['Prof'] >,
 			'crm': ReturnType< $bog_bhelper_app['Crm'] >,
 			'settings': ReturnType< $bog_bhelper_app['Settings'] >,
+			'lk': ReturnType< $bog_bhelper_app['Lk'] >,
 		}) 
 	}
 	
@@ -10154,6 +11112,8 @@ declare namespace $ {
 declare namespace $.$$ {
     class $bog_bhelper_app extends $.$bog_bhelper_app {
         realm(): $hyoo_crus_glob;
+        Bot(): $.$gd_bot;
+        Bot_context(): string;
     }
 }
 

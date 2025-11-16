@@ -989,33 +989,25 @@ $mol_card $mol_list
 			sub /
 				<= status_text <= status \
 
-$bog_bhelper_app_helpers $mol_page
+$bog_bhelper_app_prof $mol_page
 	title @ \Helpers
 	body /
-		<= hero $mol_view
-			sub /
-				<= hero_title $mol_text
-					text @ \Helpers Hub
-				<= hero_descr $mol_text
-					text @ \Pick helper or type a task, AI will orchestrate the right modules.
-				<= search $mol_string
-					hint @ \Find module or task
-					value? <=> query? \
-		<= gallery $mol_gallery
-			items <= helper_cards /$mol_view
-	item* $mol_card
+		<= Search $mol_string
+			hint @ \Find a helper
+			value? <=> query? \
+		<= Helpers_gallery $mol_gallery
+			items <= Helpers_gallery_items /$mol_view
+	Helper_item* $mol_card
 		sub /
-			<= link* $mol_link
-				uri <= item_uri* \
-				click?event <=> item_open*?event null
+			<= Helper_link* $mol_link
+				uri <= Helper_item_uri* \
+				click?event <=> Helper_item_open*?event null
 				title null
 				sub /
-					<= icon* $mol_icon
-						path <= icon_path* \
-					<= title_view* $mol_view
+					<= Helper_title_view* $mol_view
 						sub /
 							<= helper_title* \
-					<= descr_view* $mol_text
+					<= Helper_descr_view* $mol_text
 						text <= helper_description* \
 
 $mol_button_major $mol_button_minor
@@ -1186,6 +1178,174 @@ $bog_bhelper_app_settings $mol_page
 	install_unsupported_browser @ \Add to Home Screen is not supported in this browser.
 	install_already_installed @ \The app is already installed or installation is not supported.
 
+$mol_icon_upload $mol_icon path \M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z
+
+$mol_button_open $mol_button_minor
+	sub /
+		<= Icon $mol_icon_upload
+		<= Native $mol_button_open_native
+			files? <=> files_handled? <=> files? /File
+			accept <= accept \
+			multiple <= multiple true
+
+$mol_button_open_native $mol_view
+	dom_name \input
+	files? /File
+	attr *
+		type \file
+		accept <= accept \
+		multiple <= multiple true
+	event *
+		change?next <=> picked?next null
+
+$bog_lk_avatar $mol_button_open
+	entity null
+
+$mol_form_field $mol_labeler
+	bids /string
+	label /
+		<= name \
+		<= Bid $mol_view
+			sub / <= bid \
+	content / <= control null
+
+$mol_form $mol_list
+	submit_allowed true
+	submit_blocked false
+	event *
+		^
+		keydown?event <=> keydown?event null
+	save?event null
+	message_done @ \Saved
+	errors *string
+		\Form invalid
+			<= form_invalid @ \Form is not valid
+	rows /
+		<= Body $mol_list
+			sub <= body <= form_fields /$mol_form_field
+		<= Foot $mol_row
+			sub <= foot <= buttons /$mol_view
+				<= Submit $mol_button_major
+					title <= submit_title @ \Save
+					hint <= submit_hint \
+					activate? => submit_activate?
+					click? <=> submit? null
+				<= Result $mol_status
+					message <= result? null
+
+$mol_form_group $mol_view
+
+$bog_lk $mol_page
+	title @ \Personal Page
+	plugins /
+		<= Theme $bog_theme_auto
+	head /
+		<= Lights $bog_theme_toggle
+			theme_auto <= Theme
+	profile null
+	can_edit? true
+	body /
+		<= Hero $mol_row
+			sub /
+				<= Avatar $bog_lk_avatar
+					entity <= profile
+					enabled <= can_edit
+				<= Hero_meta $mol_row
+					sub /
+						<= Hero_info $mol_list
+							rows /
+								<= Display_name $mol_text
+									text <= display_name_text \
+								<= Username_preview $mol_text
+									text <= username_preview_text \
+								<= Peer_id $mol_labeler
+									Label <= Peer_label $mol_text
+										text @ \User ID
+									Content <= Peer_value $mol_text
+										text <= peer_id \
+								<= Bio_preview $mol_text
+									text <= bio_preview_text \
+						<= Share_panel $mol_list
+							rows /
+								<= Share_title $mol_text
+									text @ \Поделиться:
+								<= Share_row $mol_row
+									sub /
+										<= Share_field $mol_string
+											value <= share_link \
+											hint @ \Ссылка на профиль
+										<= Share_copy $mol_button_minor
+											title @ \Скопировать ссылку
+											click? => share_copy_click? \
+											sub /
+												<= Share_copy_text $mol_text
+													text @ \Скопировать
+								<= Share_feedback $mol_text
+									text <= share_feedback_text \
+		<= Form_title $mol_text
+			text @ \Tell people about yourself
+		<= Profile_form $mol_form
+			body /
+				<= Basics_heading $mol_text
+					text @ \Basic information
+				<= Basics_group $mol_form_group sub /
+					<= Full_name_field $mol_form_field
+						name @ \Full name
+						Content <= Full_name_input $mol_string
+							value? <=> full_name? \
+							hint @ \Full name placeholder
+					<= Nickname_field $mol_form_field
+						name @ \Username
+						Content <= Nickname_input $mol_string
+							value? <=> nickname? \
+							hint @ \Username placeholder
+					<= Bio_field $mol_form_field
+						name @ \Bio
+						Content <= Bio_input $mol_textarea
+							value? <=> bio? \
+							hint @ \Bio placeholder
+				<= Location_heading $mol_text
+					text @ \Location
+				<= Location_group $mol_form_group sub /
+					<= City_field $mol_form_field
+						name @ \City
+						Content <= City_input $mol_string
+							value? <=> city? \
+							hint @ \City placeholder
+					<= Country_field $mol_form_field
+						name @ \Country
+						Content <= Country_input $mol_string
+							value? <=> country? \
+							hint @ \Country placeholder
+				<= Contacts_heading $mol_text
+					text @ \Contacts
+				<= Contacts_group $mol_form_group sub /
+					<= Email_field $mol_form_field
+						name @ \Email
+						Content <= Email_input $mol_string
+							value? <=> email? \
+							hint @ \Email placeholder
+					<= Website_field $mol_form_field
+						name @ \Website
+						Content <= Website_input $mol_string
+							value? <=> website? \
+							hint @ \Website placeholder
+					<= Telegram_field $mol_form_field
+						name @ \Telegram
+						Content <= Telegram_input $mol_string
+							value? <=> telegram? \
+							hint @ \Telegram placeholder
+					<= Github_field $mol_form_field
+						name @ \GitHub
+						Content <= Github_input $mol_string
+							value? <=> github? \
+							hint @ \GitHub placeholder
+					<= Twitter_field $mol_form_field
+						name @ \Twitter
+						Content <= Twitter_input $mol_string
+							value? <=> twitter? \
+							hint @ \Twitter placeholder
+
 $bog_bhelper_app $mol_book2_catalog
 	realm <= Realm $hyoo_crus_glob
 	Placeholder null
@@ -1193,13 +1353,21 @@ $bog_bhelper_app $mol_book2_catalog
 		uri \bog/bhelper/assets/favicon_dark.ico
 	menu_title @ \VibeHelpers 
 	menu_tools /
-		<= Lights $bog_theme_toggle
+		<= Theme_toggle $bog_theme_toggle
 			theme_auto <= Theme
 	plugins /
 		<= Theme $bog_theme_auto
+			theme_light \$mol_theme_light
+			theme_dark \$mol_theme_dark
 	spreads *
 		\
 			<= Bot $gd_bot
-		helpers <= Helpers $bog_bhelper_app_helpers
+				Space null
+				Sources null
+				Donate null
+				Support null
+				Lights null
+		prof <= Prof $bog_bhelper_app_prof
 		crm <= Crm $bog_bhelper_app_crm
 		settings <= Settings $bog_bhelper_app_settings
+		lk <= Lk $bog_lk

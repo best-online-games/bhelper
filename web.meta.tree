@@ -112,7 +112,8 @@
 \/gd/bot
 	deploy \/gd/bot/logo
 	include \/mol/offline/install
+\/bog/lk
+	include \/mol/offline/install
 \/bog/bhelper/app
 	include \/mol/offline/install
-	include \/mol/test
 	deploy \/bog/bhelper/assets

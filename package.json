@@ -343,7 +343,7 @@
     "$mol_array",
     "$mol_offline_install",
     "$mol_offline",
-    "$bog_bhelper_app_helpers",
+    "$bog_bhelper_app_prof",
     "$mol_gallery",
     "$mol_card",
     "$bog_bhelper_app_crm",
@@ -360,7 +360,14 @@
     "$mol_lang_iso639",
     "$mol_lang",
     "$mol_labeler",
-    "$mol_test"
+    "$bog_lk",
+    "$bog_lk_avatar",
+    "$mol_button_open",
+    "$mol_icon_upload",
+    "$bog_lk_profile",
+    "$mol_form_field",
+    "$mol_form",
+    "$mol_form_group"
   ],
   "dependencies": {
     "jsdom": "*",
