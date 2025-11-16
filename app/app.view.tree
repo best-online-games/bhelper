@@ -5,13 +5,21 @@ $bog_bhelper_app $mol_book2_catalog
 		uri \bog/bhelper/assets/favicon_dark.ico
 	menu_title @ \VibeHelpers 
 	menu_tools /
-		<= Lights $bog_theme_toggle
+		<= Theme_toggle $bog_theme_toggle
 			theme_auto <= Theme
 	plugins /
 		<= Theme $bog_theme_auto
+			theme_light \$mol_theme_light
+			theme_dark \$mol_theme_dark
 	spreads *
 		\
 			<= Bot $gd_bot
-		helpers <= Helpers $bog_bhelper_app_helpers
+				Space null
+				Sources null
+				Donate null
+				Support null
+				Lights null
+		prof <= Prof $bog_bhelper_app_prof
 		crm <= Crm $bog_bhelper_app_crm
 		settings <= Settings $bog_bhelper_app_settings
+		lk <= Lk $bog_lk

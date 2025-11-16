@@ -1,0 +1,20 @@
+$bog_bhelper_app_prof $mol_page
+	title @ \Helpers
+	body /
+		<= Search $mol_string
+			hint @ \Find a helper
+			value? <=> query? \
+		<= Helpers_gallery $mol_gallery
+			items <= Helpers_gallery_items /$mol_view
+	Helper_item* $mol_card
+		sub /
+			<= Helper_link* $mol_link
+				uri <= Helper_item_uri* \
+				click?event <=> Helper_item_open*?event null
+				title null
+				sub /
+					<= Helper_title_view* $mol_view
+						sub /
+							<= helper_title* \
+					<= Helper_descr_view* $mol_text
+						text <= helper_description* \
