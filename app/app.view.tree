@@ -23,3 +23,5 @@ $bog_bhelper_app $mol_book2_catalog
 		crm <= Crm $bog_bhelper_app_crm
 		settings <= Settings $bog_bhelper_app_settings
 		lk <= Lk $bog_lk
+			Head null
+			plugins /
