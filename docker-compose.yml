@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  bhelper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9080:9080"
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    command: "npm start"
+    
+    # http://localhost:9080/bog/bhelper/app/-/test.html
+    # 
+    # https://best-online-games.github.io/bhelper/
