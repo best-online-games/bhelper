@@ -22255,6 +22255,20 @@ var $;
 			(obj.theme_auto) = () => ((this.Theme()));
 			return obj;
 		}
+		back_click(next){
+			return (this.Back().click(next));
+		}
+		Back_text(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.$.$mol_locale.text("$bog_lk_Back_text_text")));
+			return obj;
+		}
+		Back(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_lk_Back_title")));
+			(obj.sub) = () => ([(this.Back_text())]);
+			return obj;
+		}
 		Avatar(){
 			const obj = new this.$.$bog_lk_avatar();
 			(obj.entity) = () => ((this.profile()));
@@ -22609,6 +22623,7 @@ var $;
 		}
 		body(){
 			return [
+				(this.Back()), 
 				(this.Hero()), 
 				(this.Form_title()), 
 				(this.Profile_form())
@@ -22617,6 +22632,8 @@ var $;
 	};
 	($mol_mem(($.$bog_lk.prototype), "Theme"));
 	($mol_mem(($.$bog_lk.prototype), "Lights"));
+	($mol_mem(($.$bog_lk.prototype), "Back_text"));
+	($mol_mem(($.$bog_lk.prototype), "Back"));
 	($mol_mem(($.$bog_lk.prototype), "Avatar"));
 	($mol_mem(($.$bog_lk.prototype), "Display_name"));
 	($mol_mem(($.$bog_lk.prototype), "Username_preview"));
@@ -22695,6 +22712,17 @@ var $;
             }
             can_edit() {
                 return !this.share_ref();
+            }
+            Back() {
+                if (!this.share_ref())
+                    return null;
+                const back = super.Back();
+                back.event_click = event => this.back_click(event);
+                return back;
+            }
+            back_click(event) {
+                event?.preventDefault();
+                this.$.$mol_state_arg.value('profile', null);
             }
             own_profile() {
                 return this.available_profile();
@@ -22788,7 +22816,10 @@ var $;
                 if (!ref)
                     return '';
                 this.$.$mol_dom_context.console?.info?.('[LK Share]', 'share_link', { ref });
-                return this.$.$mol_state_arg.make_link({ profile: ref });
+                return this.$.$mol_state_arg.make_link({
+                    profile: ref,
+                    '': 'lk',
+                });
             }
             share_feedback_text(next) {
                 return next ?? '';
@@ -22960,6 +22991,9 @@ var $;
         __decorate([
             $mol_mem
         ], $bog_lk.prototype, "can_edit", null);
+        __decorate([
+            $mol_action
+        ], $bog_lk.prototype, "back_click", null);
         __decorate([
             $mol_mem
         ], $bog_lk.prototype, "own_profile", null);
