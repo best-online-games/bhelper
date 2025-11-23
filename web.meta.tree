@@ -1,6 +1,6 @@
 \/
 	pack bun git \https://github.com/spleekz/mam_bun.git
-	pack gd git \https://github.com/giper-dev/gd.git
+	pack giper git \https://github.com/giper-dev/gd.git
 	pack hyoo git \https://github.com/hyoo-ru/mam_hyoo.git
 	pack iva git \https://github.com/thenesterov/mam_iva.git
 	pack jin git \https://github.com/nin-jin/mam_jin.git
@@ -99,7 +99,7 @@
 	pack home git \https://github.com/hyoo-ru/hyoo.ru.git
 	pack idea git \https://github.com/hyoo-ru/idea.hyoo.ru.git
 	pack intern git \https://github.com/hyoo-ru/intern.hyoo.ru.git
-\/gd
+\/giper
 	pack balls git \https://github.com/giper-dev/balls.git
 	pack bot git \https://github.com/giper-dev/bot.git
 	pack canary git \https://github.com/giper-dev/canary.git
@@ -109,8 +109,8 @@
 	pack player git \https://github.com/giper-dev/player.git
 	pack search git \https://github.com/giper-dev/search.git
 	pack web git \https://github.com/giper-dev/web.git
-\/gd/bot
-	deploy \/gd/bot/logo
+\/giper/bot
+	deploy \/giper/bot/logo
 	include \/mol/offline/install
 \/bog/lk
 	include \/mol/offline/install
