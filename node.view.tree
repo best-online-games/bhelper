@@ -519,7 +519,6 @@ $mol_button_copy $mol_button_minor
 		<= Icon $mol_icon_clipboard_outline
 		<= title \
 
-
 $mol_text_code $mol_stack
 	attr *
 		^
@@ -1090,6 +1089,7 @@ $mol_select $mol_pick
 		submit?event <=> submit?event null
 		enabled <= enabled true
 	Trigger_icon $mol_icon_dots_vertical
+	trigger_enabled <= enabled
 
 $bog_bhelper_app_crm $mol_page
 	page_has_prev false
