@@ -807,6 +807,39 @@ $mol_text_span $mol_paragraph
 		^
 		mol_text_type <= type \
 
+$mol_icon_upload $mol_icon path \M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z
+
+$mol_button_open $mol_button_minor
+	sub /
+		<= Icon $mol_icon_upload
+		<= Native $mol_button_open_native
+			files? <=> files_handled? <=> files? /File
+			accept <= accept \
+			multiple <= multiple true
+
+$mol_button_open_native $mol_view
+	dom_name \input
+	files? /File
+	attr *
+		type \file
+		accept <= accept \
+		multiple <= multiple true
+	event *
+		change?next <=> picked?next null
+
+$mol_attach $mol_view
+	items? /string
+	sub <= content /$mol_view
+		<= Item*0 $mol_button_minor
+			click?event <=> item_drop*?event null
+			sub /
+				<= Image* $mol_image
+					title \
+					uri <= item_uri* \
+		<= Add $mol_button_open
+			title <= attach_title \
+			files? <=> attach_new? null
+
 $mol_textarea $mol_stack
 	attr *
 		^
@@ -956,9 +989,10 @@ $giper_bot $mol_book2
 						<= Message*0 $mol_view sub /
 							<= Message_text* $mol_text text <= message_text* \
 			foot /
-				<= Avatar $mol_view sub / \🙂
+				<= Attach $mol_attach
+					items? <=> attach? /string
 				<= Prompt_text $mol_textarea
-					hint @ \Ask something
+					hint @ \Ask Giper Bot...
 					value? <=> prompt_text? \
 					submit? <=> prompt_submit? null
 				<= Prompt_submit $mol_button_minor
@@ -1262,26 +1296,6 @@ $bog_bhelper_app_settings $mol_page
 	install_desktop_instruction @ \On desktop, use the install button in the address bar or the browser menu "Install app".
 	install_unsupported_browser @ \Add to Home Screen is not supported in this browser.
 	install_already_installed @ \The app is already installed or installation is not supported.
-
-$mol_icon_upload $mol_icon path \M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z
-
-$mol_button_open $mol_button_minor
-	sub /
-		<= Icon $mol_icon_upload
-		<= Native $mol_button_open_native
-			files? <=> files_handled? <=> files? /File
-			accept <= accept \
-			multiple <= multiple true
-
-$mol_button_open_native $mol_view
-	dom_name \input
-	files? /File
-	attr *
-		type \file
-		accept <= accept \
-		multiple <= multiple true
-	event *
-		change?next <=> picked?next null
 
 $bog_lk_avatar $mol_button_open
 	entity null
