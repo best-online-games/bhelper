@@ -19189,6 +19189,14 @@ var $;
 			(obj.items) = (next) => ((this.attach(next)));
 			return obj;
 		}
+		quote_start(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		quote_end(next){
+			if(next !== undefined) return next;
+			return null;
+		}
 		prompt_text(next){
 			if(next !== undefined) return next;
 			return "";
@@ -19199,6 +19207,11 @@ var $;
 		}
 		Prompt_text(){
 			const obj = new this.$.$mol_textarea();
+			(obj.event) = () => ({
+				...(this.$.$mol_textarea.prototype.event.call(obj)), 
+				"pointerdown": (next) => (this.quote_start(next)), 
+				"pointerup": (next) => (this.quote_end(next))
+			});
 			(obj.hint) = () => ((this.$.$mol_locale.text("$giper_bot_Prompt_text_hint")));
 			(obj.value) = (next) => ((this.prompt_text(next)));
 			(obj.submit) = (next) => ((this.prompt_submit(next)));
@@ -19292,6 +19305,10 @@ var $;
 		plugins(){
 			return [(this.Theme())];
 		}
+		quote(next){
+			if(next !== undefined) return next;
+			return "";
+		}
 		pages(){
 			return [(this.Space()), (this.Dialog())];
 		}
@@ -19308,6 +19325,8 @@ var $;
 	($mol_mem(($.$giper_bot.prototype), "Messages"));
 	($mol_mem(($.$giper_bot.prototype), "attach"));
 	($mol_mem(($.$giper_bot.prototype), "Attach"));
+	($mol_mem(($.$giper_bot.prototype), "quote_start"));
+	($mol_mem(($.$giper_bot.prototype), "quote_end"));
 	($mol_mem(($.$giper_bot.prototype), "prompt_text"));
 	($mol_mem(($.$giper_bot.prototype), "prompt_submit"));
 	($mol_mem(($.$giper_bot.prototype), "Prompt_text"));
@@ -19325,6 +19344,7 @@ var $;
 	($mol_mem(($.$giper_bot.prototype), "Digest"));
 	($mol_mem(($.$giper_bot.prototype), "Context"));
 	($mol_mem(($.$giper_bot.prototype), "Model"));
+	($mol_mem(($.$giper_bot.prototype), "quote"));
 
 
 ;
@@ -19507,6 +19527,23 @@ var $;
                 this.dialog_title(null);
                 this.digest('');
                 this.history([]);
+            }
+            quote_start() {
+                this.quote($mol_dom.document.getSelection()?.toString() ?? '');
+            }
+            quote_end() {
+                let quote = this.quote().trim();
+                if (!quote)
+                    return;
+                const [from, to] = this.Prompt_text().Edit().selection();
+                if (from !== to)
+                    return;
+                let text = this.prompt_text();
+                if (to < text.length - 1)
+                    return;
+                text = (text ? text + '\n' : '') + quote.replaceAll(/^/mg, '> ') + '\n';
+                this.prompt_text(text);
+                this.Prompt_text().Edit().selection([text.length, text.length]);
             }
         }
         __decorate([
