@@ -350,6 +350,8 @@
     "$mol_data_nullable",
     "$mol_data_optional",
     "$mol_fetch",
+    "$mol_error_enriched",
+    "$mol_error_fence",
     "$mol_array_shuffle_sync",
     "$mol_array_shuffle",
     "$mol_picture",
