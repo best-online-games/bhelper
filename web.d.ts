@@ -6518,6 +6518,188 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	export class $mol_icon_trash_can extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=can.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_trash_can_outline extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=outline.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_script extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=script.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_script_text extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=text.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_link_source extends $mol_link {
+		Icon( ): $mol_icon_script_text
+		hint( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=source.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_gift extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=gift.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_gift_outline extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=outline.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_link_donate extends $mol_link {
+		Icon( ): $mol_icon_gift_outline
+		hint( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=donate.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_face extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=face.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_face_agent extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=agent.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_link_support extends $mol_link {
+		Icon( ): $mol_icon_face_agent
+		hint( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=support.view.tree.d.ts.map
+declare namespace $ {
+    class $mol_dom_event<EventType extends Event> extends $mol_object {
+        readonly native: EventType;
+        constructor(native: EventType);
+        prevented(next?: boolean): boolean;
+        static wrap<EventType extends Event>(event: EventType): $mol_dom_event<EventType>;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_view__sub_mol_check_1 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $mol_check extends $mol_button_minor {
+		checked( next?: boolean ): boolean
+		aria_checked( ): string
+		aria_role( ): string
+		Icon( ): any
+		title( ): string
+		Title( ): $mol_view
+		label( ): readonly(any)[]
+		attr( ): ({ 
+			'mol_check_checked': ReturnType< $mol_check['checked'] >,
+			'aria-checked': ReturnType< $mol_check['aria_checked'] >,
+			'role': ReturnType< $mol_check['aria_role'] >,
+		})  & ReturnType< $mol_button_minor['attr'] >
+		sub( ): readonly($mol_view_content)[]
+	}
+	
+}
+
+//# sourceMappingURL=check.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_check extends $.$mol_check {
+        click(next?: Event): void;
+        sub(): readonly $mol_view_content[];
+        label(): readonly any[];
+        aria_checked(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_check_icon extends $mol_check {
+	}
+	
+}
+
+//# sourceMappingURL=icon.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_lights_toggle extends $mol_check_icon {
+		Lights_icon( ): $mol_icon_brightness_4
+		lights( next?: boolean ): boolean
+		Icon( ): ReturnType< $mol_lights_toggle['Lights_icon'] >
+		hint( ): string
+		checked( next?: ReturnType< $mol_lights_toggle['lights'] > ): ReturnType< $mol_lights_toggle['lights'] >
+	}
+	
+}
+
+//# sourceMappingURL=toggle.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_lights_toggle extends $.$mol_lights_toggle {
+        lights(next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
+
 	export class $mol_status extends $mol_view {
 		message( ): string
 		status( ): ReturnType< $mol_status['title'] >
@@ -6953,53 +7135,6 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=float.view.tree.d.ts.map
-declare namespace $ {
-    class $mol_dom_event<EventType extends Event> extends $mol_object {
-        readonly native: EventType;
-        constructor(native: EventType);
-        prevented(next?: boolean): boolean;
-        static wrap<EventType extends Event>(event: EventType): $mol_dom_event<EventType>;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	type $mol_view__sub_mol_check_1 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	export class $mol_check extends $mol_button_minor {
-		checked( next?: boolean ): boolean
-		aria_checked( ): string
-		aria_role( ): string
-		Icon( ): any
-		title( ): string
-		Title( ): $mol_view
-		label( ): readonly(any)[]
-		attr( ): ({ 
-			'mol_check_checked': ReturnType< $mol_check['checked'] >,
-			'aria-checked': ReturnType< $mol_check['aria_checked'] >,
-			'role': ReturnType< $mol_check['aria_role'] >,
-		})  & ReturnType< $mol_button_minor['attr'] >
-		sub( ): readonly($mol_view_content)[]
-	}
-	
-}
-
-//# sourceMappingURL=check.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_check extends $.$mol_check {
-        click(next?: Event): void;
-        sub(): readonly $mol_view_content[];
-        label(): readonly any[];
-        aria_checked(): string;
-    }
-}
-
 declare namespace $ {
 
 	export class $mol_icon_chevron extends $mol_icon {
@@ -8265,138 +8400,97 @@ declare namespace $ {
 
 //# sourceMappingURL=send.view.tree.d.ts.map
 declare namespace $ {
+}
 
-	export class $mol_icon_trash_can extends $mol_icon {
+declare namespace $ {
+
+	export class $mol_bar extends $mol_view {
+	}
+	
+}
+
+//# sourceMappingURL=bar.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_chevron_left extends $mol_icon {
 		path( ): string
 	}
 	
 }
 
-//# sourceMappingURL=can.view.tree.d.ts.map
+//# sourceMappingURL=left.view.tree.d.ts.map
 declare namespace $ {
 
-	export class $mol_icon_trash_can_outline extends $mol_icon {
+	export class $mol_icon_chevron_right extends $mol_icon {
 		path( ): string
 	}
 	
 }
 
-//# sourceMappingURL=outline.view.tree.d.ts.map
+//# sourceMappingURL=right.view.tree.d.ts.map
 declare namespace $ {
 
-	export class $mol_icon_script extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=script.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_script_text extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=text.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_link_source extends $mol_link {
-		Icon( ): $mol_icon_script_text
-		hint( ): string
+	type $mol_button_minor__hint_mol_paginator_1 = $mol_type_enforce<
+		ReturnType< $mol_paginator['backward_hint'] >
+		,
+		ReturnType< $mol_button_minor['hint'] >
+	>
+	type $mol_button_minor__click_mol_paginator_2 = $mol_type_enforce<
+		ReturnType< $mol_paginator['backward'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__sub_mol_paginator_3 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_view__sub_mol_paginator_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_button_minor__hint_mol_paginator_5 = $mol_type_enforce<
+		ReturnType< $mol_paginator['forward_hint'] >
+		,
+		ReturnType< $mol_button_minor['hint'] >
+	>
+	type $mol_button_minor__click_mol_paginator_6 = $mol_type_enforce<
+		ReturnType< $mol_paginator['forward'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__sub_mol_paginator_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	export class $mol_paginator extends $mol_bar {
+		backward_hint( ): string
+		backward( next?: any ): any
+		Backward_icon( ): $mol_icon_chevron_left
+		Backward( ): $mol_button_minor
+		value( next?: number ): number
+		Value( ): $mol_view
+		forward_hint( ): string
+		forward( next?: any ): any
+		Forward_icon( ): $mol_icon_chevron_right
+		Forward( ): $mol_button_minor
+		step( ): number
 		sub( ): readonly(any)[]
 	}
 	
 }
 
-//# sourceMappingURL=source.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_gift extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=gift.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_gift_outline extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=outline.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_link_donate extends $mol_link {
-		Icon( ): $mol_icon_gift_outline
-		hint( ): string
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=donate.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_face extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=face.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_face_agent extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=agent.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_link_support extends $mol_link {
-		Icon( ): $mol_icon_face_agent
-		hint( ): string
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=support.view.tree.d.ts.map
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_check_icon extends $mol_check {
-	}
-	
-}
-
-//# sourceMappingURL=icon.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_lights_toggle extends $mol_check_icon {
-		Lights_icon( ): $mol_icon_brightness_4
-		lights( next?: boolean ): boolean
-		Icon( ): ReturnType< $mol_lights_toggle['Lights_icon'] >
-		hint( ): string
-		checked( next?: ReturnType< $mol_lights_toggle['lights'] > ): ReturnType< $mol_lights_toggle['lights'] >
-	}
-	
-}
-
-//# sourceMappingURL=toggle.view.tree.d.ts.map
+//# sourceMappingURL=paginator.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $mol_lights_toggle extends $.$mol_lights_toggle {
-        lights(next?: boolean): boolean;
+    class $mol_paginator extends $.$mol_paginator {
+        backward(event: Event): void;
+        forward(event: Event): void;
     }
+}
+
+declare namespace $ {
 }
 
 declare namespace $ {
@@ -8466,6 +8560,17 @@ declare namespace $ {
     export const $mol_github_model_keys: string[];
     export const $mol_github_model_polyglots: string[];
     const Message: ((val: {
+        content: string | readonly ({
+            text: string;
+            type: "text";
+        } | {
+            type: "image_url";
+            image_url: {
+                url: string;
+            };
+        })[];
+        role: "system";
+    } | {
         tool_calls?: readonly {
             function: {
                 name: string;
@@ -8508,6 +8613,17 @@ declare namespace $ {
         role: "tool";
         tool_call_id: string;
     }) => Readonly<{
+        content: string | readonly (Readonly<{
+            text: string;
+            type: "text";
+        }> | Readonly<{
+            type: "image_url";
+            image_url: Readonly<{
+                url: string;
+            }>;
+        }>)[];
+        role: "system";
+    }> | Readonly<{
         tool_calls?: readonly Readonly<{
             function: Readonly<{
                 name: string;
@@ -8551,6 +8667,182 @@ declare namespace $ {
         tool_call_id: string;
     }>) & {
         config: [((val: {
+            content: string | readonly ({
+                text: string;
+                type: "text";
+            } | {
+                type: "image_url";
+                image_url: {
+                    url: string;
+                };
+            })[];
+            role: "system";
+        }) => Readonly<{
+            content: string | readonly (Readonly<{
+                text: string;
+                type: "text";
+            }> | Readonly<{
+                type: "image_url";
+                image_url: Readonly<{
+                    url: string;
+                }>;
+            }>)[];
+            role: "system";
+        }>) & {
+            config: {
+                role: ((val: "system") => "system") & {
+                    config: "system";
+                    Value: "system";
+                };
+                content: ((val: string | readonly ({
+                    text: string;
+                    type: "text";
+                } | {
+                    type: "image_url";
+                    image_url: {
+                        url: string;
+                    };
+                })[]) => string | readonly (Readonly<{
+                    text: string;
+                    type: "text";
+                }> | Readonly<{
+                    type: "image_url";
+                    image_url: Readonly<{
+                        url: string;
+                    }>;
+                }>)[]) & {
+                    config: [(val: string) => string, ((val: readonly ({
+                        text: string;
+                        type: "text";
+                    } | {
+                        type: "image_url";
+                        image_url: {
+                            url: string;
+                        };
+                    })[]) => readonly (Readonly<{
+                        text: string;
+                        type: "text";
+                    }> | Readonly<{
+                        type: "image_url";
+                        image_url: Readonly<{
+                            url: string;
+                        }>;
+                    }>)[]) & {
+                        config: ((val: {
+                            text: string;
+                            type: "text";
+                        } | {
+                            type: "image_url";
+                            image_url: {
+                                url: string;
+                            };
+                        }) => Readonly<{
+                            text: string;
+                            type: "text";
+                        }> | Readonly<{
+                            type: "image_url";
+                            image_url: Readonly<{
+                                url: string;
+                            }>;
+                        }>) & {
+                            config: [((val: {
+                                text: string;
+                                type: "text";
+                            }) => Readonly<{
+                                text: string;
+                                type: "text";
+                            }>) & {
+                                config: {
+                                    type: ((val: "text") => "text") & {
+                                        config: "text";
+                                        Value: "text";
+                                    };
+                                    text: (val: string) => string;
+                                };
+                                Value: Readonly<{
+                                    text: string;
+                                    type: "text";
+                                }>;
+                            }, ((val: {
+                                type: "image_url";
+                                image_url: {
+                                    url: string;
+                                };
+                            }) => Readonly<{
+                                type: "image_url";
+                                image_url: Readonly<{
+                                    url: string;
+                                }>;
+                            }>) & {
+                                config: {
+                                    type: ((val: "image_url") => "image_url") & {
+                                        config: "image_url";
+                                        Value: "image_url";
+                                    };
+                                    image_url: ((val: {
+                                        url: string;
+                                    }) => Readonly<{
+                                        url: string;
+                                    }>) & {
+                                        config: {
+                                            url: (val: string) => string;
+                                        };
+                                        Value: Readonly<{
+                                            url: string;
+                                        }>;
+                                    };
+                                };
+                                Value: Readonly<{
+                                    type: "image_url";
+                                    image_url: Readonly<{
+                                        url: string;
+                                    }>;
+                                }>;
+                            }];
+                            Value: Readonly<{
+                                text: string;
+                                type: "text";
+                            }> | Readonly<{
+                                type: "image_url";
+                                image_url: Readonly<{
+                                    url: string;
+                                }>;
+                            }>;
+                        };
+                        Value: readonly (Readonly<{
+                            text: string;
+                            type: "text";
+                        }> | Readonly<{
+                            type: "image_url";
+                            image_url: Readonly<{
+                                url: string;
+                            }>;
+                        }>)[];
+                    }];
+                    Value: string | readonly (Readonly<{
+                        text: string;
+                        type: "text";
+                    }> | Readonly<{
+                        type: "image_url";
+                        image_url: Readonly<{
+                            url: string;
+                        }>;
+                    }>)[];
+                };
+            };
+            Value: Readonly<{
+                content: string | readonly (Readonly<{
+                    text: string;
+                    type: "text";
+                }> | Readonly<{
+                    type: "image_url";
+                    image_url: Readonly<{
+                        url: string;
+                    }>;
+                }>)[];
+                role: "system";
+            }>;
+        }, ((val: {
             tool_calls?: readonly {
                 function: {
                     name: string;
@@ -9240,6 +9532,17 @@ declare namespace $ {
             }>;
         }];
         Value: Readonly<{
+            content: string | readonly (Readonly<{
+                text: string;
+                type: "text";
+            }> | Readonly<{
+                type: "image_url";
+                image_url: Readonly<{
+                    url: string;
+                }>;
+            }>)[];
+            role: "system";
+        }> | Readonly<{
             tool_calls?: readonly Readonly<{
                 function: Readonly<{
                     name: string;
@@ -9305,8 +9608,20 @@ declare namespace $ {
             params: Obj<any>;
             func: Function;
         }>;
+        state(next?: readonly string[]): readonly string[];
         params(next?: {}): {};
         history(next?: typeof Message.Value[]): (Readonly<{
+            content: string | readonly (Readonly<{
+                text: string;
+                type: "text";
+            }> | Readonly<{
+                type: "image_url";
+                image_url: Readonly<{
+                    url: string;
+                }>;
+            }>)[];
+            role: "system";
+        }> | Readonly<{
             tool_calls?: readonly Readonly<{
                 function: Readonly<{
                     name: string;
@@ -9446,32 +9761,67 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_status__status_giper_bot_1 = $mol_type_enforce<
+	type $giper_bot_state__1 = $mol_type_enforce<
+		`Далее идёт состояние документа, на который сейчас смотрит пользователь, и к которому относится его последний запрос:`
+		,
+		string
+	>
+	type $mol_button_minor__hint_giper_bot_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['hint'] >
+	>
+	type $mol_button_minor__click_giper_bot_3 = $mol_type_enforce<
+		ReturnType< $giper_bot['reset'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__sub_giper_bot_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_link_source__uri_giper_bot_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link_source['uri'] >
+	>
+	type $mol_link_donate__uri_giper_bot_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link_donate['uri'] >
+	>
+	type $mol_link_support__uri_giper_bot_7 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link_support['uri'] >
+	>
+	type $mol_status__status_giper_bot_8 = $mol_type_enforce<
 		ReturnType< $giper_bot['communication'] >
 		,
 		ReturnType< $mol_status['status'] >
 	>
-	type $mol_text__text_giper_bot_2 = $mol_type_enforce<
+	type $mol_text__text_giper_bot_9 = $mol_type_enforce<
 		ReturnType< $giper_bot['message_text'] >
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_view__sub_giper_bot_3 = $mol_type_enforce<
+	type $mol_view__sub_giper_bot_10 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_list__rows_giper_bot_4 = $mol_type_enforce<
+	type $mol_list__rows_giper_bot_11 = $mol_type_enforce<
 		ReturnType< $giper_bot['messages'] >
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_attach__items_giper_bot_5 = $mol_type_enforce<
+	type $mol_attach__items_giper_bot_12 = $mol_type_enforce<
 		ReturnType< $giper_bot['attach'] >
 		,
 		ReturnType< $mol_attach['items'] >
 	>
-	type $mol_textarea__event_giper_bot_6 = $mol_type_enforce<
+	type $mol_textarea__event_giper_bot_13 = $mol_type_enforce<
 		({ 
 			pointerdown( next?: ReturnType< $giper_bot['quote_start'] > ): ReturnType< $giper_bot['quote_start'] >,
 			pointerup( next?: ReturnType< $giper_bot['quote_end'] > ): ReturnType< $giper_bot['quote_end'] >,
@@ -9479,120 +9829,132 @@ declare namespace $ {
 		,
 		ReturnType< $mol_textarea['event'] >
 	>
-	type $mol_textarea__hint_giper_bot_7 = $mol_type_enforce<
+	type $mol_textarea__hint_giper_bot_14 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_textarea['hint'] >
 	>
-	type $mol_textarea__value_giper_bot_8 = $mol_type_enforce<
+	type $mol_textarea__value_giper_bot_15 = $mol_type_enforce<
 		ReturnType< $giper_bot['prompt_text'] >
 		,
 		ReturnType< $mol_textarea['value'] >
 	>
-	type $mol_textarea__submit_giper_bot_9 = $mol_type_enforce<
+	type $mol_textarea__submit_giper_bot_16 = $mol_type_enforce<
 		ReturnType< $giper_bot['prompt_submit'] >
 		,
 		ReturnType< $mol_textarea['submit'] >
 	>
-	type $mol_button_minor__hint_giper_bot_10 = $mol_type_enforce<
+	type $mol_button_minor__hint_giper_bot_17 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_minor['hint'] >
 	>
-	type $mol_button_minor__click_giper_bot_11 = $mol_type_enforce<
+	type $mol_button_minor__click_giper_bot_18 = $mol_type_enforce<
 		ReturnType< $giper_bot['prompt_submit'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub_giper_bot_12 = $mol_type_enforce<
+	type $mol_button_minor__sub_giper_bot_19 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
 	>
-	type $mol_page__title_content_giper_bot_13 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_page['title_content'] >
-	>
-	type $mol_page__body_content_giper_bot_14 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_page['body_content'] >
-	>
-	type $mol_page__foot_giper_bot_15 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_page['foot'] >
-	>
-	type $mol_button_minor__hint_giper_bot_16 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_button_minor['hint'] >
-	>
-	type $mol_button_minor__click_giper_bot_17 = $mol_type_enforce<
-		ReturnType< $giper_bot['reset'] >
-		,
-		ReturnType< $mol_button_minor['click'] >
-	>
-	type $mol_button_minor__sub_giper_bot_18 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_button_minor['sub'] >
-	>
-	type $mol_link_source__uri_giper_bot_19 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link_source['uri'] >
-	>
-	type $mol_link_donate__uri_giper_bot_20 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link_donate['uri'] >
-	>
-	type $mol_link_support__uri_giper_bot_21 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link_support['uri'] >
-	>
-	type $mol_text__text_giper_bot_22 = $mol_type_enforce<
-		ReturnType< $giper_bot['digest'] >
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_page__title_giper_bot_23 = $mol_type_enforce<
-		string
+	type $mol_page__title_giper_bot_20 = $mol_type_enforce<
+		ReturnType< $giper_bot['dialog_title'] >
 		,
 		ReturnType< $mol_page['title'] >
 	>
-	type $mol_page__tools_giper_bot_24 = $mol_type_enforce<
+	type $mol_page__tools_giper_bot_21 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['tools'] >
 	>
-	type $mol_page__body_giper_bot_25 = $mol_type_enforce<
+	type $mol_page__body_content_giper_bot_22 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_page['body_content'] >
+	>
+	type $mol_page__foot_giper_bot_23 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_page['foot'] >
+	>
+	type $mol_paginator__value_giper_bot_24 = $mol_type_enforce<
+		ReturnType< $giper_bot['version'] >
+		,
+		ReturnType< $mol_paginator['value'] >
+	>
+	type $mol_textarea__sidebar_showed_giper_bot_25 = $mol_type_enforce<
+		boolean
+		,
+		ReturnType< $mol_textarea['sidebar_showed'] >
+	>
+	type $mol_textarea__value_giper_bot_26 = $mol_type_enforce<
+		ReturnType< $giper_bot['result'] >
+		,
+		ReturnType< $mol_textarea['value'] >
+	>
+	type $mol_page__title_giper_bot_27 = $mol_type_enforce<
+		ReturnType< $giper_bot['result_title'] >
+		,
+		ReturnType< $mol_page['title'] >
+	>
+	type $mol_page__tools_giper_bot_28 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_page['tools'] >
+	>
+	type $mol_page__body_giper_bot_29 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['body'] >
 	>
-	type $mol_github_model__params_giper_bot_26 = $mol_type_enforce<
+	type $mol_text__text_giper_bot_30 = $mol_type_enforce<
+		ReturnType< $giper_bot['digest'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_page__title_giper_bot_31 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_page['title'] >
+	>
+	type $mol_page__body_giper_bot_32 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_page['body'] >
+	>
+	type $mol_github_model__params_giper_bot_33 = $mol_type_enforce<
 		({ 
 			'temperature': number,
 		}) 
 		,
 		ReturnType< $mol_github_model['params'] >
 	>
-	type $mol_github_model__rules_giper_bot_27 = $mol_type_enforce<
+	type $mol_github_model__rules_giper_bot_34 = $mol_type_enforce<
 		ReturnType< $giper_bot['context'] >
 		,
 		ReturnType< $mol_github_model['rules'] >
 	>
+	type $mol_github_model__state_giper_bot_35 = $mol_type_enforce<
+		ReturnType< $giper_bot['state'] >
+		,
+		ReturnType< $mol_github_model['state'] >
+	>
 	export class $giper_bot extends $mol_book2 {
 		rules( ): string
 		context( ): ReturnType< $giper_bot['rules'] >
+		state( ): readonly(string)[]
 		Theme( ): $mol_theme_auto
 		Space( ): $giper_web_frame
 		dialog_title( next?: string ): string
-		title( ): ReturnType< $giper_bot['dialog_title'] >
+		reset( next?: any ): any
+		Reset_icon( ): $mol_icon_trash_can_outline
+		Reset( ): $mol_button_minor
+		Sources( ): $mol_link_source
+		Donate( ): $mol_link_donate
+		Support( ): $mol_link_support
+		Lights( ): $mol_lights_toggle
 		communication( ): any
 		Status( ): $mol_status
 		message_text( id: any): string
@@ -9610,13 +9972,12 @@ declare namespace $ {
 		Prompt_submit_icon( ): $mol_icon_send
 		Prompt_submit( ): $mol_button_minor
 		Dialog( ): $mol_page
-		reset( next?: any ): any
-		Reset_icon( ): $mol_icon_trash_can_outline
-		Reset( ): $mol_button_minor
-		Sources( ): $mol_link_source
-		Donate( ): $mol_link_donate
-		Support( ): $mol_link_support
-		Lights( ): $mol_lights_toggle
+		result_title( next?: string ): string
+		version( next?: number ): number
+		Version( ): $mol_paginator
+		result( next?: string ): string
+		Result( ): $mol_textarea
+		Result_page( id: any): $mol_page
 		digest( next?: string ): string
 		Digest( ): $mol_text
 		Context( ): $mol_page
@@ -9631,14 +9992,32 @@ declare namespace $ {
 
 //# sourceMappingURL=bot.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $giper_bot extends $.$giper_bot {
-        dialog_title(next?: string | null): string;
-        digest(next?: string): string;
+    type Request = {
+        message: string;
+        files: string[];
+    };
+    type Response = {
+        message: string;
+        files: string[];
+        document: string | null;
+        confidence: number;
+        digest: string;
+        title: string;
+    };
+    type History = readonly (Request | Response)[];
+    export class $giper_bot extends $.$giper_bot {
+        pages(): ($mol_page | $.$giper_web_frame)[];
+        result_item(): Response | undefined;
+        result_title(): string;
+        digest(): string;
         prompt_text(next?: string): string;
-        history(next?: string[][]): string[][];
+        history(next?: History): History;
         messages(): $mol_view[];
         message_text(index: number): string;
         message_name(index: number): string;
+        results(): Response[];
+        version(next?: number): number;
+        result(next?: string): string;
         rules(): string;
         context(): string;
         communication(): void;
@@ -9647,6 +10026,7 @@ declare namespace $.$$ {
         quote_start(): void;
         quote_end(): void;
     }
+    export {};
 }
 
 declare namespace $.$$ {
@@ -10547,17 +10927,6 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=magnify.view.tree.d.ts.map
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_bar extends $mol_view {
-	}
-	
-}
-
-//# sourceMappingURL=bar.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $mol_icon_information extends $mol_icon {
