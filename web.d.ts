@@ -2172,7 +2172,7 @@ declare namespace $ {
     export class $mol_regexp<Groups extends Record<string, string>> extends RegExp {
         readonly groups: (Extract<keyof Groups, string>)[];
         constructor(source: string, flags?: string, groups?: (Extract<keyof Groups, string>)[]);
-        [Symbol.matchAll](str: string): RegExpStringIterator<RegExpMatchArray & $mol_type_override<RegExpMatchArray, {
+        [Symbol.matchAll](str: string): RegExpStringIterator<RegExpExecArray & $mol_type_override<RegExpExecArray, {
             groups?: {
                 [key in keyof Groups]: string;
             };
@@ -3430,6 +3430,11 @@ declare namespace $ {
             from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: any): Uint8Array<ArrayBuffer>;
             from(elements: Iterable<number>): Uint8Array<ArrayBuffer>;
             from<T>(elements: Iterable<T>, mapfn?: (v: T, k: number) => number, thisArg?: any): Uint8Array<ArrayBuffer>;
+            fromBase64(string: string, options?: {
+                alphabet?: "base64" | "base64url" | undefined;
+                lastChunkHandling?: "loose" | "strict" | "stop-before-partial" | undefined;
+            }): Uint8Array<ArrayBuffer>;
+            fromHex(string: string): Uint8Array<ArrayBuffer>;
         };
         bool: BooleanConstructor;
         int: BigIntConstructor;
@@ -6156,21 +6161,14 @@ declare namespace $ {
 
 declare namespace $ {
 
-	export class $mol_icon_brightness_4 extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=4.view.tree.d.ts.map
-declare namespace $ {
-
 	export class $bog_theme_auto extends $mol_plugin {
 		themes_default( ): readonly(any)[]
 		theme( ): string
 		themes( ): ReturnType< $bog_theme_auto['themes_default'] >
 		theme_light( ): string
 		theme_dark( ): string
+		mode( next?: string ): string
+		mode_next( next?: any ): any
 		theme_next( next?: any ): any
 		theme_prev( next?: any ): any
 		theme_set( next?: any ): any
@@ -6183,8 +6181,11 @@ declare namespace $ {
 
 //# sourceMappingURL=auto.view.tree.d.ts.map
 declare namespace $.$$ {
+    type $bog_theme_mode = 'light' | 'dark' | 'system' | 'custom';
     class $bog_theme_auto extends $.$bog_theme_auto {
         themes_default(): readonly $.$bog_theme_name[];
+        mode(next?: $bog_theme_mode): $bog_theme_mode;
+        mode_next(): void;
         theme_index(next?: number): number;
         system_theme_index(): number;
         theme(): any;
@@ -6306,6 +6307,33 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	export class $mol_icon_white_balance_sunny extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=sunny.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_weather_night extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=night.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_monitor extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=monitor.view.tree.d.ts.map
+declare namespace $ {
+
 	type $mol_view__event_bog_theme_toggle_1 = $mol_type_enforce<
 		({ 
 			click( next?: ReturnType< $bog_theme_toggle['backdrop_click'] > ): ReturnType< $bog_theme_toggle['backdrop_click'] >,
@@ -6329,7 +6357,7 @@ declare namespace $ {
 		ReturnType< $mol_button_minor['sub'] >
 	>
 	type $mol_button_minor__hint_bog_theme_toggle_5 = $mol_type_enforce<
-		string
+		ReturnType< $bog_theme_toggle['anchor_hint'] >
 		,
 		ReturnType< $mol_button_minor['hint'] >
 	>
@@ -6350,7 +6378,8 @@ declare namespace $ {
 		ReturnType< $mol_button_minor['event'] >
 	>
 	export class $bog_theme_toggle extends $mol_pop {
-		Icon( ): $mol_icon_brightness_4
+		Icon( ): $mol_view
+		anchor_hint( ): string
 		clicked( next?: any ): any
 		press_start( next?: any ): any
 		press_move( next?: any ): any
@@ -6365,6 +6394,9 @@ declare namespace $ {
 		showed( next?: boolean ): boolean
 		align( ): string
 		Anchor( ): $mol_button_minor
+		Icon_light( ): $mol_icon_white_balance_sunny
+		Icon_dark( ): $mol_icon_weather_night
+		Icon_system( ): $mol_icon_monitor
 		bubble_content( ): readonly(any)[]
 	}
 	
@@ -6379,6 +6411,8 @@ declare namespace $.$$ {
         private press_start_x;
         private press_start_y;
         private is_long_press;
+        Icon(): $mol_icon_white_balance_sunny | $mol_icon_weather_night | $mol_icon_monitor;
+        anchor_hint(): "Светлая тема" | "Тёмная тема" | "Пользовательская тема" | "Как в системе";
         clicked(event?: MouseEvent): null;
         press_start(event?: PointerEvent): null;
         press_move(event?: PointerEvent): null;
@@ -6686,6 +6720,15 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=icon.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_brightness_4 extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=4.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $mol_lights_toggle extends $mol_check_icon {
